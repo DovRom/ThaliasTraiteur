@@ -2484,3 +2484,64 @@ footer {
 .theme-toggle:active {
   transform: translateY(-1px) scale(0.96);
 }
+
+/* ===================== FULL MENU (price list) ===================== */
+#fullmenu {
+  background: var(--cream);
+}
+.fmcat {
+  margin-bottom: 34px;
+}
+.fmhead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin-bottom: 20px;
+}
+.fmhead i {
+  color: var(--primary);
+  font-size: 1rem;
+}
+.fmhead::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  border-radius: 2px;
+}
+.fmitem {
+  margin-bottom: 15px;
+}
+.fmrow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.fmname {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.98rem;
+}
+.fmlead {
+  flex: 1;
+  border-bottom: 2px dotted #d8cfc4;
+  min-width: 18px;
+  position: relative;
+  top: -4px;
+}
+.fmprice {
+  color: var(--primary);
+  font-weight: 800;
+  white-space: nowrap;
+  font-size: 0.98rem;
+}
+.fmdesc {
+  font-size: 0.79rem;
+  color: #8a8178;
+  margin-top: 3px;
+  max-width: 95%;
+}
