@@ -2545,3 +2545,49 @@ footer {
   margin-top: 3px;
   max-width: 95%;
 }
+
+/* ===================== SERVICES ===================== */
+.svccard {
+  background: #fff;
+  border-radius: 18px;
+  padding: 34px 26px;
+  height: 100%;
+  text-align: center;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+.svccard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.svcico {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.55rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  box-shadow: 0 8px 22px rgba(var(--primary-rgb), 0.35);
+}
+.svcico.g {
+  background: linear-gradient(135deg, var(--secondary), var(--green-dark));
+  box-shadow: 0 8px 22px rgba(var(--secondary-rgb), 0.35);
+}
+.svctit {
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+  font-size: 1.13rem;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+.svctxt {
+  font-size: 0.9rem;
+  color: #777;
+  line-height: 1.7;
+  margin: 0;
+}
