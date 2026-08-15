@@ -278,3 +278,228 @@ section {
     padding: 78px 0;
   }
 }
+
+/* ================================================================
+   EDITORIAL — full site component restyle
+   ================================================================ */
+
+/* ---------- Section header rhythm ---------- */
+.text-center .sline { margin-left: auto; margin-right: auto; }
+section .stitle { margin-bottom: 6px; }
+
+/* ---------- Marquee -> refined ticker ---------- */
+.mqsec {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+}
+.mqitem {
+  color: var(--text-muted);
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+.mqitem i { color: var(--primary); font-size: 0.4rem; vertical-align: middle; }
+
+/* ---------- Shared card language: flat + bordered ---------- */
+.mcard, .svccard, .blcard, .tescard, .catcard, .fcard, .hbadge, .chcard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: none !important;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.mcard:hover, .svccard:hover, .blcard:hover, .catcard:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary);
+}
+
+/* Menu featured cards */
+.mtit, .svctit, .bltit a, .chnm, .fcnum, .catnm {
+  font-family: "Playfair Display", serif !important;
+  font-weight: 700 !important;
+  color: var(--heading) !important;
+}
+.mcat, .bltag, .chrole {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.66rem !important;
+  font-weight: 600;
+  color: var(--primary) !important;
+}
+.mprice { font-family: "Playfair Display", serif; font-weight: 800; color: var(--heading); }
+.mprice small { color: var(--text-faint); }
+.mbdg, .mbdg.hot, .mbdg.new {
+  background: var(--heading);
+  color: var(--bg);
+  border-radius: 4px;
+  font-size: 0.6rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 5px 10px;
+}
+.madd {
+  background: var(--primary);
+  border-radius: 6px;
+  box-shadow: none;
+}
+.madd:hover { background: var(--primary-dark); }
+
+/* Filter pills */
+.filtbtn {
+  border-radius: 40px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.6px;
+  padding: 9px 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.filtbtn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+/* Category cards */
+.catcard { padding-bottom: 8px; }
+.catnm { font-size: 0.95rem !important; }
+.catct { text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.62rem; }
+
+/* ---------- La Carte (full menu list) ---------- */
+.fmhead {
+  font-family: "Playfair Display", serif;
+  text-transform: none;
+  letter-spacing: -0.3px;
+}
+.fmhead::after { background: var(--border); height: 1px; }
+.fmname { font-family: "Playfair Display", serif; font-size: 1.05rem; font-weight: 600; }
+.fmprice { font-family: "Playfair Display", serif; font-weight: 800; }
+
+/* ---------- About ---------- */
+.aexp {
+  border-radius: 8px;
+  box-shadow: none;
+  background: var(--primary);
+}
+.anum { font-family: "Playfair Display", serif; }
+.amain img, .asm img { border-radius: 10px; }
+.fti h6 { font-family: "Playfair Display", serif; font-weight: 700; color: var(--heading); }
+.fti p { color: var(--text-muted); }
+.ftico { border-radius: 8px !important; box-shadow: none !important; }
+
+/* ---------- Services -> numbered editorial ---------- */
+#services .row { counter-reset: svc; }
+.svccard {
+  text-align: left;
+  padding: 34px 28px;
+  position: relative;
+}
+.svccard::before {
+  counter-increment: svc;
+  content: "0" counter(svc);
+  font-family: "Playfair Display", serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--border);
+  position: absolute;
+  top: 22px;
+  right: 26px;
+  line-height: 1;
+}
+.svcico {
+  width: 54px; height: 54px;
+  border-radius: 8px;
+  margin: 0 0 22px;
+  font-size: 1.2rem;
+  box-shadow: none !important;
+  background: var(--surface-2) !important;
+  color: var(--primary) !important;
+  border: 1px solid var(--border);
+}
+.svcico.g { color: var(--secondary) !important; }
+.svctit { font-size: 1.16rem; margin-bottom: 10px; }
+.svctxt { color: var(--text-muted); }
+
+/* ---------- Gallery ---------- */
+.gitem { border-radius: 10px; }
+.gitem img { transition: transform 0.6s ease; }
+.gitem:hover img { transform: scale(1.06); }
+.gover span {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ---------- Timeline / story ---------- */
+.tlyear {
+  font-family: "Playfair Display", serif;
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+.tli h5 { font-family: "Playfair Display", serif; color: var(--heading); }
+.tli p { color: var(--text-muted); }
+.tldot { background: var(--primary); box-shadow: 0 0 0 5px var(--surface), 0 0 0 6px var(--border); }
+
+/* ---------- Testimonials -> big pull quotes ---------- */
+.tescard {
+  padding: 40px 38px;
+  border-radius: 12px;
+}
+.tesq { color: var(--primary); font-family: "Playfair Display", serif; }
+.testxt {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 1.22rem;
+  line-height: 1.6;
+  color: var(--heading);
+}
+.tess i { color: var(--primary); }
+.tesnm { font-family: "Playfair Display", serif; font-weight: 700; color: var(--heading); }
+.tesrl { text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.66rem; color: var(--text-muted); }
+
+/* ---------- Forms (devis / contact) ---------- */
+.flbl {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.fctrl {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+}
+.fctrl:focus { border-color: var(--primary); box-shadow: none; outline: none; }
+
+/* ---------- Blog ---------- */
+.bldatebdg { border-radius: 8px; background: var(--primary); }
+.bltit a { font-size: 1.15rem; line-height: 1.35; }
+.blmore { color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.72rem; }
+.blmeta { color: var(--text-muted); }
+
+/* ---------- Newsletter ---------- */
+.nlinput { border-radius: 6px; }
+.nlbtn { border-radius: 6px; }
+
+/* ---------- Footer ---------- */
+footer { border-top: 1px solid var(--border); }
+.fnm { font-family: "Playfair Display", serif; font-weight: 800; }
+.ftit { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; font-weight: 600; color: var(--heading); }
+.flinks a:hover { color: var(--primary); }
+
+/* ---------- Special offer & hours keep dark; refine type ---------- */
+.sptitle, .hrscard h5 { font-family: "Playfair Display", serif; }
+.cdnum { font-family: "Playfair Display", serif; font-weight: 800; }
+.sptag { text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
