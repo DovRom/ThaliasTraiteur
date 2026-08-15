@@ -2664,3 +2664,6 @@ footer {
   border-color: transparent;
   color: #fff;
 }
+[data-theme="dark"] .hbgtxt {
+  color: rgba(255, 255, 255, 0.05);
+}
