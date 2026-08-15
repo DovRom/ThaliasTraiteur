@@ -23,6 +23,15 @@
   --light: #f9f5f0;
   --shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.18);
+  /* neutral surface/text tokens (light) */
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f7f4ef;
+  --border: #ececec;
+  --text: #444444;
+  --text-muted: #777777;
+  --text-faint: #b3b3b3;
+  --heading: #1a1a1a;
 }
 
 :root[data-theme="classic"] {
@@ -42,6 +51,32 @@
   --cream2: #fef0dc;
   --light: #f9f5f0;
 }
+:root[data-theme="dark"] {
+  /* Ivorian flag accents kept */
+  --primary: #ff8200;
+  --primary-rgb: 255, 130, 0;
+  --primary-dark: #e06e00;
+  --primary-deep: #b35600;
+  --secondary: #009e60;
+  --secondary-rgb: 0, 158, 96;
+  --green: #009e60;
+  --green-dark: #00623c;
+  /* shadcn/ui dark neutrals */
+  --bg: #09090b;
+  --surface: #18181b;
+  --surface-2: #27272a;
+  --border: #27272a;
+  --text: #e4e4e7;
+  --text-muted: #a1a1aa;
+  --text-faint: #71717a;
+  --heading: #fafafa;
+  --dark: #18181b;
+  --cream: #09090b;
+  --cream2: #18181b;
+  --light: #18181b;
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.65);
+}
 * {
   margin: 0;
   padding: 0;
@@ -52,8 +87,8 @@ html {
 }
 body {
   font-family: "Poppins", sans-serif;
-  color: #444;
-  background: #fff;
+  color: var(--text);
+  background: var(--bg);
   overflow-x: hidden;
 }
 h1,
@@ -62,7 +97,7 @@ h3,
 h4,
 h5 {
   font-family: "Playfair Display", serif;
-  color: var(--dark);
+  color: var(--heading);
 }
 a {
   text-decoration: none;
@@ -122,7 +157,7 @@ img {
 
 /* ===================== NAVBAR ===================== */
 #nav {
-  background: #fff;
+  background: var(--surface);
   position: sticky;
   top: 0;
   z-index: 990;
@@ -155,7 +190,7 @@ img {
 .navbar-nav .nav-link {
   font-size: 0.87rem;
   font-weight: 500;
-  color: #333 !important;
+  color: var(--text) !important;
   padding: 26px 13px !important;
   position: relative;
 }
@@ -183,7 +218,7 @@ img {
   background: none;
   border: none;
   cursor: pointer;
-  color: #555;
+  color: var(--text-muted);
   font-size: 1rem;
   padding: 8px 10px;
   border-radius: 8px;
@@ -242,7 +277,7 @@ section {
   margin-left: 0;
 }
 .sdesc {
-  color: #777;
+  color: var(--text-muted);
   font-size: 0.93rem;
   line-height: 1.8;
 }
@@ -326,7 +361,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #fff;
+  background: var(--surface);
   border-radius: 30px;
   padding: 6px 16px 6px 6px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -346,7 +381,7 @@ section {
 .hbadge span {
   font-size: 0.76rem;
   font-weight: 600;
-  color: var(--dark);
+  color: var(--heading);
 }
 .htitle {
   font-size: clamp(2.7rem, 6vw, 4.8rem);
@@ -372,7 +407,7 @@ section {
 }
 .hdesc {
   font-size: 1rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.8;
   max-width: 470px;
   margin-bottom: 30px;
@@ -382,7 +417,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  color: var(--dark);
+  color: var(--heading);
   font-weight: 600;
   font-size: 0.9rem;
   padding: 10px 16px;
@@ -393,7 +428,7 @@ section {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -421,7 +456,7 @@ section {
   font-family: "Playfair Display", serif;
   font-size: 1.9rem;
   font-weight: 900;
-  color: var(--dark);
+  color: var(--heading);
   display: block;
   line-height: 1;
 }
@@ -431,13 +466,13 @@ section {
 }
 .hstat small {
   font-size: 0.7rem;
-  color: #aaa;
+  color: var(--text-faint);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 .sdiv {
   width: 1px;
-  background: #ddd;
+  background: var(--border);
   height: 38px;
   align-self: center;
 }
@@ -461,7 +496,7 @@ section {
 }
 .fcard {
   position: absolute;
-  background: #fff;
+  background: var(--surface);
   border-radius: 11px;
   padding: 10px 15px;
   box-shadow: var(--shadow);
@@ -517,13 +552,13 @@ section {
 .fcnum {
   font-weight: 700;
   font-size: 0.92rem;
-  color: var(--dark);
+  color: var(--heading);
   display: block;
   line-height: 1;
 }
 .fcsm {
   font-size: 0.66rem;
-  color: #999;
+  color: var(--text-muted);
 }
 
 /* ===================== MARQUEE ===================== */
@@ -564,7 +599,7 @@ section {
   background: var(--cream);
 }
 .catcard {
-  background: #fff;
+  background: var(--surface);
   border-radius: 15px;
   padding: 22px 14px;
   text-align: center;
@@ -594,17 +629,17 @@ section {
 .catnm {
   font-size: 0.86rem;
   font-weight: 600;
-  color: var(--dark);
+  color: var(--heading);
   margin-bottom: 3px;
 }
 .catct {
   font-size: 0.73rem;
-  color: #bbb;
+  color: var(--text-faint);
 }
 
 /* ===================== ABOUT ===================== */
 #about {
-  background: #fff;
+  background: var(--surface);
 }
 .astack {
   position: relative;
@@ -693,13 +728,13 @@ section {
 .fti h6 {
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--heading);
   margin-bottom: 2px;
   font-family: "Poppins", sans-serif;
 }
 .fti p {
   font-size: 0.8rem;
-  color: #888;
+  color: var(--text-muted);
   margin: 0;
   line-height: 1.6;
 }
@@ -710,13 +745,13 @@ section {
 }
 /* FIX 3 â€” Filter buttons */
 .filtbtn {
-  border: 2px solid #e5e5e5;
-  background: #fff;
+  border: 2px solid var(--border);
+  background: var(--surface);
   border-radius: 50px;
   padding: 8px 20px;
   font-size: 0.84rem;
   font-weight: 600;
-  color: #666;
+  color: var(--text-muted);
   cursor: pointer;
   transition: 0.3s;
   margin: 3px;
@@ -736,7 +771,7 @@ section {
   display: none !important;
 }
 .mcard {
-  background: #fff;
+  background: var(--surface);
   border-radius: 18px;
   overflow: hidden;
   transition: 0.4s;
@@ -778,7 +813,7 @@ section {
 }
 .mbdg.hot {
   background: var(--secondary);
-  color: var(--dark);
+  color: var(--heading);
 }
 /* FIX 4 â€” Heart & Plus buttons stop propagation */
 .mhrt {
@@ -788,7 +823,7 @@ section {
   width: 33px;
   height: 33px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--surface);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -820,7 +855,7 @@ section {
 }
 .mdesc {
   font-size: 0.78rem;
-  color: #aaa;
+  color: var(--text-muted);
   margin-bottom: 13px;
   line-height: 1.5;
 }
@@ -838,7 +873,7 @@ section {
 .mprice small {
   font-size: 0.72rem;
   font-weight: 400;
-  color: #ccc;
+  color: var(--text-faint);
   text-decoration: line-through;
   margin-left: 5px;
 }
@@ -889,7 +924,7 @@ section {
 .sptag {
   display: inline-block;
   background: var(--secondary);
-  color: var(--dark);
+  color: var(--heading);
   border-radius: 6px;
   padding: 4px 15px;
   font-size: 0.76rem;
@@ -1133,12 +1168,12 @@ section {
   font-weight: 700;
   margin-bottom: 7px;
   font-family: "Playfair Display", serif;
-  color: var(--dark);
+  color: var(--heading);
 }
 .tl-left p,
 .tl-right p {
   font-size: 0.83rem;
-  color: #888;
+  color: var(--text-muted);
   line-height: 1.7;
   margin: 0;
 }
@@ -1172,12 +1207,12 @@ section {
 
 /* ===================== CHEFS ===================== */
 #chefs {
-  background: #fff;
+  background: var(--surface);
 }
 .chcard {
   border-radius: 18px;
   overflow: hidden;
-  background: #fff;
+  background: var(--surface);
   transition: 0.4s;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
 }
@@ -1249,7 +1284,7 @@ section {
 }
 .chexp {
   font-size: 0.76rem;
-  color: #bbb;
+  color: var(--text-faint);
   margin-top: 5px;
 }
 
@@ -1328,7 +1363,7 @@ section {
   margin: 9px 0 18px;
 }
 .btnw {
-  background: #fff;
+  background: var(--surface);
   color: var(--primary);
   border-radius: 50px;
   padding: 11px 28px;
@@ -1345,7 +1380,7 @@ section {
 
 /* ===================== TESTIMONIALS ===================== */
 #testimonials {
-  background: #fff;
+  background: var(--surface);
 }
 .tescard {
   background: var(--cream);
@@ -1375,7 +1410,7 @@ section {
 }
 .testxt {
   font-size: 0.88rem;
-  color: #666;
+  color: var(--text-muted);
   line-height: 1.8;
   margin-bottom: 18px;
 }
@@ -1394,13 +1429,13 @@ section {
 .tesnm {
   font-weight: 700;
   font-size: 0.88rem;
-  color: var(--dark);
+  color: var(--heading);
   margin-bottom: 1px;
   font-family: "Poppins", sans-serif;
 }
 .tesrl {
   font-size: 0.73rem;
-  color: #aaa;
+  color: var(--text-faint);
 }
 
 /* ===================== RESERVATION â€” FIX 5 ===================== */
@@ -1422,28 +1457,28 @@ section {
 .flbl {
   font-size: 0.83rem;
   font-weight: 600;
-  color: var(--dark);
+  color: var(--heading);
   margin-bottom: 5px;
   display: block;
 }
 .fctrl {
   width: 100%;
-  border: 2px solid #eee;
+  border: 2px solid var(--border);
   border-radius: 9px;
   padding: 11px 15px;
   font-family: "Poppins", sans-serif;
   font-size: 0.88rem;
   outline: none;
   transition: 0.3s;
-  color: var(--dark);
-  background: #fff;
+  color: var(--heading);
+  background: var(--surface);
   appearance: auto;
 }
 .fctrl:focus {
   border-color: var(--primary);
 }
 .fcard {
-  background: #fff;
+  background: var(--surface);
   border-radius: 18px;
   padding: 32px;
   box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
@@ -1474,7 +1509,7 @@ section {
   background: var(--light);
 }
 .blcard {
-  background: #fff;
+  background: var(--surface);
   border-radius: 18px;
   overflow: hidden;
   transition: 0.4s;
@@ -1537,7 +1572,7 @@ section {
   line-height: 1.4;
 }
 .bltit a {
-  color: var(--dark);
+  color: var(--heading);
 }
 .bltit a:hover {
   color: var(--primary);
@@ -1546,7 +1581,7 @@ section {
   display: flex;
   gap: 14px;
   font-size: 0.76rem;
-  color: #bbb;
+  color: var(--text-faint);
   margin-bottom: 13px;
 }
 .blmeta i {
@@ -1565,7 +1600,7 @@ section {
   transition: 0.3s;
 }
 .blmore:hover {
-  color: var(--dark);
+  color: var(--heading);
 }
 .blmore:hover i {
   transform: translateX(5px);
@@ -1609,12 +1644,12 @@ section {
   font-size: 0.9rem;
   outline: none;
   font-family: "Poppins", sans-serif;
-  color: #333;
+  color: var(--text);
 }
 .nlbtn {
   flex-shrink: 0;
   background: var(--secondary);
-  color: var(--dark);
+  color: var(--heading);
   border: none;
   border-radius: 50px;
   padding: 14px 26px;
@@ -1646,7 +1681,7 @@ section {
 
 /* ===================== CONTACT â€” FIX 6 ===================== */
 #contact-section {
-  background: #fff;
+  background: var(--surface);
 }
 .ctdark {
   background: var(--dark);
@@ -1880,7 +1915,7 @@ footer {
   box-shadow: 0 7px 22px rgba(var(--secondary-rgb), 0.38);
   cursor: pointer;
   transition: 0.3s;
-  color: var(--dark);
+  color: var(--heading);
   font-weight: 700;
   font-size: 0.88rem;
 }
@@ -2048,7 +2083,7 @@ footer {
 }
 .sovtrend .ttag:hover {
   background: var(--secondary);
-  color: var(--dark);
+  color: var(--heading);
 }
 
 /* --- FIX 4: MENU DETAIL POPUP --- */
@@ -2068,7 +2103,7 @@ footer {
   animation: fadeov 0.28s ease;
 }
 .mpbox {
-  background: #fff;
+  background: var(--surface);
   border-radius: 22px;
   max-width: 800px;
   width: 100%;
@@ -2110,7 +2145,7 @@ footer {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: #f2f2f2;
+  background: var(--surface-2);
   border: none;
   font-size: 0.95rem;
   cursor: pointer;
@@ -2137,7 +2172,7 @@ footer {
   font-weight: 900;
   margin-bottom: 9px;
   font-family: "Playfair Display", serif;
-  color: var(--dark);
+  color: var(--heading);
 }
 #mpStars {
   color: var(--secondary);
@@ -2146,7 +2181,7 @@ footer {
 }
 #mpDesc {
   font-size: 0.88rem;
-  color: #777;
+  color: var(--text-muted);
   line-height: 1.8;
   margin-bottom: 18px;
 }
@@ -2159,7 +2194,7 @@ footer {
 }
 #mpPrice small {
   font-size: 0.95rem;
-  color: #ccc;
+  color: var(--text-faint);
   text-decoration: line-through;
   margin-left: 7px;
 }
@@ -2178,11 +2213,11 @@ footer {
 .mpmv {
   font-weight: 700;
   font-size: 0.92rem;
-  color: var(--dark);
+  color: var(--heading);
 }
 .mpml {
   font-size: 0.68rem;
-  color: #bbb;
+  color: var(--text-faint);
 }
 .mpqty {
   display: flex;
@@ -2212,7 +2247,7 @@ footer {
 .mpqnum {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--dark);
+  color: var(--heading);
   min-width: 30px;
   text-align: center;
 }
@@ -2224,7 +2259,7 @@ footer {
 }
 .mptag {
   background: rgba(var(--secondary-rgb), 0.11);
-  color: var(--dark);
+  color: var(--heading);
   border-radius: 20px;
   padding: 3px 11px;
   font-size: 0.73rem;
@@ -2499,7 +2534,7 @@ footer {
   font-family: "Playfair Display", serif;
   font-weight: 900;
   font-size: 1.3rem;
-  color: var(--dark);
+  color: var(--heading);
   margin-bottom: 20px;
 }
 .fmhead i {
@@ -2523,12 +2558,12 @@ footer {
 }
 .fmname {
   font-weight: 600;
-  color: var(--dark);
+  color: var(--heading);
   font-size: 0.98rem;
 }
 .fmlead {
   flex: 1;
-  border-bottom: 2px dotted #d8cfc4;
+  border-bottom: 2px dotted var(--border);
   min-width: 18px;
   position: relative;
   top: -4px;
@@ -2548,7 +2583,7 @@ footer {
 
 /* ===================== SERVICES ===================== */
 .svccard {
-  background: #fff;
+  background: var(--surface);
   border-radius: 18px;
   padding: 34px 26px;
   height: 100%;
@@ -2582,12 +2617,50 @@ footer {
   font-family: "Playfair Display", serif;
   font-weight: 800;
   font-size: 1.13rem;
-  color: var(--dark);
+  color: var(--heading);
   margin-bottom: 10px;
 }
 .svctxt {
   font-size: 0.9rem;
-  color: #777;
+  color: var(--text-muted);
   line-height: 1.7;
   margin: 0;
+}
+
+
+/* ===================== DARK THEME (shadcn) component tweaks ===================== */
+[data-theme="dark"] #nav {
+  border-bottom: 1px solid var(--border);
+  box-shadow: none;
+}
+[data-theme="dark"] #topbar {
+  background: #18181b;
+  border-bottom: 1px solid var(--border);
+}
+[data-theme="dark"] .mcard,
+[data-theme="dark"] .catcard,
+[data-theme="dark"] .blcard,
+[data-theme="dark"] .tescard,
+[data-theme="dark"] .svccard,
+[data-theme="dark"] .fcard,
+[data-theme="dark"] .hbadge {
+  border: 1px solid var(--border);
+}
+[data-theme="dark"] .fctrl {
+  background: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text);
+}
+[data-theme="dark"] .fctrl::placeholder {
+  color: var(--text-faint);
+}
+[data-theme="dark"] .filtbtn {
+  background: var(--surface-2);
+  border-color: var(--border);
+  color: var(--text-muted);
+}
+[data-theme="dark"] .filtbtn.active {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-color: transparent;
+  color: #fff;
 }
