@@ -74,6 +74,12 @@
           encodeURIComponent(subject) + "&body=" + encodeURIComponent(buildBody());
         // open the mail client without navigating away from the page
         setTimeout(function () { window.location.href = href; }, 400);
+        // success feedback (needed on commander.html where main.js is absent)
+        var ok = document.getElementById("resOk");
+        if (ok && ok.style.display !== "block") {
+          ok.style.display = "block";
+          ok.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
       });
     }
   });

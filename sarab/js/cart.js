@@ -97,6 +97,22 @@
       badges[b].textContent = count;
       badges[b].style.display = count > 0 ? "flex" : "none";
     }
+    // Inline summary (commander page)
+    var sum = document.getElementById("cartSummary");
+    if (sum) {
+      if (!items.length) {
+        sum.innerHTML = '<h3>Votre commande</h3><p class="cartsum-empty">Votre panier est vide. Ajoutez des plats depuis le <a class="editlink" href="menu.html">menu</a>.</p>';
+      } else {
+        var sr = items.map(function (i) {
+          return '<div class="cartsum-row"><div><div class="n">' + escapeHtml(i.name) +
+            '</div><div class="q">× ' + i.qty + '</div></div><div class="p">' + money(i.price * i.qty) + "</div></div>";
+        }).join("");
+        sum.innerHTML = "<h3>Votre commande</h3>" + sr +
+          '<div class="cartsum-total"><span>Total estimé</span><b>' + money(API.total()) + "</b></div>" +
+          '<p style="margin-top:12px;margin-bottom:0;"><a class="editlink" href="#" data-cart-toggle>Modifier le panier</a></p>';
+      }
+    }
+
     var body = document.getElementById("ttCartBody");
     var foot = document.getElementById("ttCartFoot");
     if (!body || !foot) return;
@@ -158,12 +174,12 @@
   /* ---------- Checkout: go to the devis form ---------- */
   function checkout() {
     closeDrawer();
-    var form = document.getElementById("reservation");
-    if (form) {
-      syncSelect();
-      form.scrollIntoView({ behavior: "smooth", block: "start" });
+    // On the commander page (has #cartSummary): scroll to the form. Elsewhere: go there.
+    if (document.getElementById("cartSummary")) {
+      var form = document.getElementById("reservation");
+      if (form) { syncSelect(); form.scrollIntoView({ behavior: "smooth", block: "start" }); }
     } else {
-      window.location.href = "index.html#reservation";
+      window.location.href = "commander.html";
     }
   }
 
