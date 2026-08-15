@@ -1,0 +1,200 @@
+/* ================================================================
+   Thalia's Traiteur — Cart (e-commerce style)
+   - Add dishes from the dish popup ("Ajouter à ma commande")
+   - Persists in localStorage; badge + slide-in drawer
+   - Feeds the devis form: pre-selects the Select2 "Plats souhaités"
+   Shared by index.html and menu.html.
+   ================================================================ */
+(function () {
+  var KEY = "tt-cart";
+
+  function read() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; }
+  }
+  function write(items) {
+    try { localStorage.setItem(KEY, JSON.stringify(items)); } catch (e) {}
+    render();
+    syncSelect();
+  }
+  function parsePrice(p) {
+    if (typeof p === "number") return p;
+    var m = ("" + p).replace(",", ".").match(/[\d.]+/);
+    return m ? parseFloat(m[0]) : 0;
+  }
+
+  var API = {
+    items: read,
+    count: function () { return read().reduce(function (s, i) { return s + i.qty; }, 0); },
+    total: function () { return read().reduce(function (s, i) { return s + i.qty * i.price; }, 0); },
+    add: function (name, price, qty) {
+      if (!name) return;
+      qty = qty || 1;
+      var items = read();
+      var ex = items.filter(function (i) { return i.name === name; })[0];
+      if (ex) ex.qty += qty;
+      else items.push({ name: name, price: parsePrice(price), qty: qty });
+      write(items);
+      openDrawer();
+    },
+    setQty: function (name, qty) {
+      var items = read();
+      for (var i = 0; i < items.length; i++) {
+        if (items[i].name === name) { items[i].qty = qty; break; }
+      }
+      items = items.filter(function (it) { return it.qty > 0; });
+      write(items);
+    },
+    remove: function (name) {
+      write(read().filter(function (i) { return i.name !== name; }));
+    },
+    clear: function () { write([]); }
+  };
+  window.TTCart = API;
+
+  /* ---------- Drawer + overlay (injected once) ---------- */
+  function buildDrawer() {
+    if (document.getElementById("ttCartDrawer")) return;
+    var wrap = document.createElement("div");
+    wrap.innerHTML =
+      '<div class="tt-cart-overlay" id="ttCartOverlay"></div>' +
+      '<aside class="tt-cart-drawer" id="ttCartDrawer" aria-hidden="true">' +
+      '  <div class="tt-cart-head">' +
+      '    <h4>Mon panier</h4>' +
+      '    <button class="tt-cart-close" data-cart-close aria-label="Fermer"><i class="fas fa-times"></i></button>' +
+      '  </div>' +
+      '  <div class="tt-cart-body" id="ttCartBody"></div>' +
+      '  <div class="tt-cart-foot" id="ttCartFoot"></div>' +
+      "</aside>";
+    document.body.appendChild(wrap);
+  }
+
+  function openDrawer() {
+    var d = document.getElementById("ttCartDrawer");
+    var o = document.getElementById("ttCartOverlay");
+    if (d) { d.classList.add("open"); d.setAttribute("aria-hidden", "false"); }
+    if (o) o.classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closeDrawer() {
+    var d = document.getElementById("ttCartDrawer");
+    var o = document.getElementById("ttCartOverlay");
+    if (d) { d.classList.remove("open"); d.setAttribute("aria-hidden", "true"); }
+    if (o) o.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+
+  function money(n) {
+    return (Math.round(n * 100) / 100).toFixed(0) + " $";
+  }
+
+  /* ---------- Render badge + drawer contents ---------- */
+  function render() {
+    var items = read();
+    var count = API.count();
+    // badges
+    var badges = document.querySelectorAll(".tt-cart-count");
+    for (var b = 0; b < badges.length; b++) {
+      badges[b].textContent = count;
+      badges[b].style.display = count > 0 ? "flex" : "none";
+    }
+    var body = document.getElementById("ttCartBody");
+    var foot = document.getElementById("ttCartFoot");
+    if (!body || !foot) return;
+
+    if (!items.length) {
+      body.innerHTML =
+        '<div class="tt-cart-empty"><i class="fas fa-basket-shopping"></i>' +
+        "<p>Votre panier est vide.</p><span>Ajoutez des plats depuis le menu.</span></div>";
+      foot.innerHTML = "";
+      return;
+    }
+
+    var rows = items.map(function (i) {
+      return (
+        '<div class="tt-cart-item" data-name="' + escapeAttr(i.name) + '">' +
+        '  <div class="tt-ci-main">' +
+        '    <div class="tt-ci-name">' + escapeHtml(i.name) + "</div>" +
+        '    <div class="tt-ci-price">' + money(i.price) + " / portion</div>" +
+        "  </div>" +
+        '  <div class="tt-ci-qty">' +
+        '    <button data-cart-dec aria-label="moins">−</button>' +
+        "    <span>" + i.qty + "</span>" +
+        '    <button data-cart-inc aria-label="plus">+</button>' +
+        "  </div>" +
+        '  <button class="tt-ci-del" data-cart-del aria-label="retirer"><i class="fas fa-trash-can"></i></button>' +
+        "</div>"
+      );
+    }).join("");
+    body.innerHTML = rows;
+
+    foot.innerHTML =
+      '<div class="tt-cart-total"><span>Total estimé</span><b>' + money(API.total()) + "</b></div>" +
+      '<p class="tt-cart-note">Prix indicatifs par portion — le devis final vous sera confirmé.</p>' +
+      '<a class="btn-ed--solid tt-cart-checkout" data-cart-checkout>Finaliser ma commande</a>' +
+      '<button class="tt-cart-clear" data-cart-clear>Vider le panier</button>';
+  }
+
+  function escapeHtml(s) {
+    return ("" + s).replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; });
+  }
+  function escapeAttr(s) { return escapeHtml(s).replace(/"/g, "&quot;"); }
+
+  /* ---------- Sync the devis Select2 with cart ---------- */
+  function syncSelect() {
+    var sel = document.getElementById("devisPlats");
+    if (!sel) return;
+    var names = read().map(function (i) { return i.name; });
+    if (window.jQuery && window.jQuery(sel).data("select2")) {
+      window.jQuery(sel).val(names).trigger("change");
+    } else {
+      // plain fallback
+      for (var o = 0; o < sel.options.length; o++) {
+        sel.options[o].selected = names.indexOf(sel.options[o].value) > -1;
+      }
+    }
+  }
+  window.TTCartSync = syncSelect;
+
+  /* ---------- Checkout: go to the devis form ---------- */
+  function checkout() {
+    closeDrawer();
+    var form = document.getElementById("reservation");
+    if (form) {
+      syncSelect();
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.location.href = "index.html#reservation";
+    }
+  }
+
+  /* ---------- Event delegation ---------- */
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    if (t.closest("[data-cart-toggle]")) { e.preventDefault(); openDrawer(); }
+    else if (t.closest("[data-cart-close]") || t.id === "ttCartOverlay") closeDrawer();
+    else if (t.closest("[data-cart-checkout]")) { e.preventDefault(); checkout(); }
+    else if (t.closest("[data-cart-clear]")) API.clear();
+    else if (t.closest("[data-cart-inc]")) {
+      var it1 = t.closest(".tt-cart-item"); adjust(it1, +1);
+    } else if (t.closest("[data-cart-dec]")) {
+      var it2 = t.closest(".tt-cart-item"); adjust(it2, -1);
+    } else if (t.closest("[data-cart-del]")) {
+      var it3 = t.closest(".tt-cart-item"); if (it3) API.remove(it3.getAttribute("data-name"));
+    }
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrawer(); });
+
+  function adjust(itemEl, delta) {
+    if (!itemEl) return;
+    var name = itemEl.getAttribute("data-name");
+    var cur = read().filter(function (i) { return i.name === name; })[0];
+    if (cur) API.setQty(name, cur.qty + delta);
+  }
+
+  /* ---------- Init ---------- */
+  document.addEventListener("DOMContentLoaded", function () {
+    buildDrawer();
+    render();
+    syncSelect();
+  });
+})();

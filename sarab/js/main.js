@@ -179,6 +179,8 @@ function openMenuPop(card) {
     var desc = card.getAttribute('data-desc');
     var tags = card.getAttribute('data-tags') || '';
 
+    window.__ttDish = { name: title, price: price };
+
     document.getElementById('mpImg').setAttribute('src', img);
     document.getElementById('mpCat').textContent = cat;
     document.getElementById('mpTitle').textContent = title;
@@ -260,8 +262,7 @@ document.getElementById('mpMinus').addEventListener('click', function() {
 
 // Add to cart button
 document.getElementById('mpAddCart').addEventListener('click', function() {
-    var cnt = parseInt(document.getElementById('cartCount').textContent) + mpQty;
-    document.getElementById('cartCount').textContent = cnt;
+    if (window.TTCart && window.__ttDish) window.TTCart.add(window.__ttDish.name, window.__ttDish.price, mpQty);
     this.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
     this.style.background = 'linear-gradient(135deg,var(--green),var(--green-dark))';
     var self = this;

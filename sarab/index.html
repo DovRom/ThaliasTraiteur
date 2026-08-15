@@ -32,6 +32,8 @@
    <link rel="stylesheet" href="css/magnific-popup.css" />
    <!-- Style CSS -->
    <link rel="stylesheet" href="css/style.css" />
+   <!-- Select2 (vendored) -->
+   <link rel="stylesheet" href="css/select2.min.css" />
    <!-- Editorial redesign layer -->
    <link rel="stylesheet" href="css/redesign.css" />
 </head>
@@ -84,6 +86,7 @@
             <div class="d-flex align-items-center gap-1">
                <!-- FIX 1: Search button -->
                <button id="navSearchBtn" title="Rechercher"><i class="fas fa-search"></i></button>
+               <button class="tt-cart-btn" data-cart-toggle type="button" title="Mon panier" aria-label="Mon panier"><i class="fas fa-shopping-bag"></i><span class="tt-cart-count">0</span></button>
                <a href="#contact-section" class="nav-link nav-cta"><i class="fas fa-file-signature me-1"></i>Demander un devis</a>
             </div>
          </div>
@@ -1097,15 +1100,15 @@
             <div class="col-lg-8" data-aos="fade-left">
                <div class="fcard">
                   <div class="row g-3">
-                     <div class="col-sm-6"><label class="flbl">Nom complet *</label><input type="text" class="fctrl"
+                     <div class="col-sm-6"><label class="flbl">Nom complet *</label><input type="text" id="devNom" class="fctrl"
                            placeholder="Ex : Awa Koné" /></div>
-                     <div class="col-sm-6"><label class="flbl">Téléphone *</label><input type="tel" class="fctrl"
+                     <div class="col-sm-6"><label class="flbl">Téléphone *</label><input type="tel" id="devTel" class="fctrl"
                            placeholder="+1 (514) 000-0000" /></div>
-                     <div class="col-sm-6"><label class="flbl">Courriel *</label><input type="email" class="fctrl"
+                     <div class="col-sm-6"><label class="flbl">Courriel *</label><input type="email" id="devMail" class="fctrl"
                            placeholder="vous@courriel.com" /></div>
                      <div class="col-sm-6">
                         <label class="flbl">Nombre de convives *</label>
-                        <select class="fctrl">
+                        <select id="devConvives" class="fctrl">
                            <option>1 - 5 personnes</option>
                            <option>6 - 10 personnes</option>
                            <option>11 - 20 personnes</option>
@@ -1114,10 +1117,10 @@
                            <option>100+ personnes</option>
                         </select>
                      </div>
-                     <div class="col-sm-6"><label class="flbl">Date de l'événement *</label><input type="date" class="fctrl" /></div>
+                     <div class="col-sm-6"><label class="flbl">Date de l'événement *</label><input type="date" id="devDate" class="fctrl" /></div>
                      <div class="col-sm-6">
                         <label class="flbl">Type d'événement *</label>
-                        <select class="fctrl">
+                        <select id="devType" class="fctrl">
                            <option>Mariage</option>
                            <option>Baptême</option>
                            <option>Anniversaire</option>
@@ -1126,7 +1129,58 @@
                            <option>Autre</option>
                         </select>
                      </div>
-                     <div class="col-12"><label class="flbl">Votre demande</label><textarea class="fctrl" rows="3"
+                     <div class="col-12">
+                        <label class="flbl">Plats souhaités (pré-remplis depuis votre panier)</label>
+                        <select id="devisPlats" name="plats" multiple>
+                           <optgroup label="Nos Spécialités">
+                              <option value="Tchep">Tchep — 32 $</option>
+                              <option value="Riz">Riz — 32 $</option>
+                              <option value="Placali Sauce Kopé">Placali Sauce Kopé — 32 $</option>
+                              <option value="Chocouya">Chocouya — 27 $</option>
+                              <option value="Garba">Garba — 22 $</option>
+                              <option value="Dôkounou">Dôkounou — 27 $</option>
+                              <option value="Abolo">Abolo — 27 $</option>
+                           </optgroup>
+                           <optgroup label="Plats Grillés">
+                              <option value="Poulet Braisé">Poulet Braisé — 27 $</option>
+                              <option value="Poisson Braisé">Poisson Braisé — 27 $</option>
+                              <option value="Côtelettes de Porc Braisées">Côtelettes de Porc Braisées — 29 $</option>
+                              <option value="Brochettes de Poulet">Brochettes de Poulet — 27 $</option>
+                              <option value="Brochettes de Tilapia">Brochettes de Tilapia — 27 $</option>
+                              <option value="Poulet BBQ et ses Légumes Grillés">Poulet BBQ et ses Légumes Grillés — 27 $</option>
+                              <option value="Saumon Grillé et ses Légumes">Saumon Grillé et ses Légumes — 32 $</option>
+                           </optgroup>
+                           <optgroup label="Soupes &amp; Entrées">
+                              <option value="Soupe du Chasseur">Soupe du Chasseur — 37 $</option>
+                              <option value="Soupe du Pêcheur">Soupe du Pêcheur — 37 $</option>
+                              <option value="Escargots Sautés">Escargots Sautés — 37 $</option>
+                              <option value="Gbofloto">Gbofloto — 17 $</option>
+                           </optgroup>
+                           <optgroup label="Plats Exotiques &amp; Autres">
+                              <option value="Beignets Jaune + Vermicelles">Beignets Jaune + Vermicelles — 17 $</option>
+                              <option value="Repas d&#x27;Ailleurs">Repas d&#x27;Ailleurs — 12 $</option>
+                              <option value="Brochettes de Filles Mignons">Brochettes de Filles Mignons — 32 $</option>
+                              <option value="Marmite de Fruits de Mer et Légumes">Marmite de Fruits de Mer et Légumes — 37 $</option>
+                           </optgroup>
+                           <optgroup label="Entrées Fraîches">
+                              <option value="Salade Crevettes Avocat">Salade Crevettes Avocat — 17 $</option>
+                              <option value="Nems ou Rouleaux">Nems ou Rouleaux — 17 $</option>
+                              <option value="Salade de Thon">Salade de Thon — 17 $</option>
+                              <option value="Salade de tomates mozzarella">Salade de tomates mozzarella — 17 $</option>
+                              <option value="Salade de tomates au concombre et mozzarella">Salade de tomates au concombre et mozzarella — 17 $</option>
+                              <option value="Tomate farcie aux œufs">Tomate farcie aux œufs — 17 $</option>
+                              <option value="Salade de tomates aux épices grecques">Salade de tomates aux épices grecques — 17 $</option>
+                              <option value="Salade de tomates">Salade de tomates — 17 $</option>
+                           </optgroup>
+                           <optgroup label="Desserts">
+                              <option value="Salade de fruits de saison">Salade de fruits de saison — 10 $</option>
+                              <option value="Crème glacée au baobab">Crème glacée au baobab — 10 $</option>
+                              <option value="Deguê">Deguê — 10 $</option>
+                              <option value="Gâteau triple chocolat">Gâteau triple chocolat — 10 $</option>
+                           </optgroup>
+                        </select>
+                     </div>
+                     <div class="col-12"><label class="flbl">Votre demande</label><textarea id="devMsg" class="fctrl" rows="3"
                            placeholder="Plats souhaités, allergies, budget, lieu de livraison..."></textarea></div>
                      <div class="col-12"><button class="btn-red w-100 justify-content-center" id="resBtn"><i
                               class="fas fa-calendar-check"></i>Envoyer ma demande</button></div>
@@ -1373,6 +1427,8 @@
 
    <!-- jQuery -->
    <script src="js/jquery-3.7.1.min.js"></script>
+   <!-- Select2 (vendored) -->
+   <script src="js/select2.min.js"></script>
    <!-- Bootstrap 5 -->
    <script src="js/bootstrap.bundle.min.js"></script>
    <!-- AOS -->
@@ -1383,6 +1439,10 @@
    <script src="js/jquery.magnific-popup.min.js"></script>
    <!-- Main js -->
    <script src="js/main.js"></script>
+   <!-- Cart (e-commerce) -->
+   <script src="js/cart.js"></script>
+   <!-- Devis form: Select2 "plats souhaités" bound to the cart -->
+   <script src="js/devis-form.js"></script>
    <!-- Theme switcher (dev tool — remove button + script to lock a single theme) -->
    <button id="themeToggle" class="theme-toggle" type="button" title="Changer de thème"
       aria-label="Changer de thème">

@@ -35,6 +35,7 @@
   }
 
   function openPop(card) {
+    window.__ttDish = { name: g(card, "data-title"), price: g(card, "data-price") };
     document.getElementById("mpImg").src = g(card, "data-img");
     document.getElementById("mpCat").textContent = g(card, "data-cat");
     document.getElementById("mpTitle").textContent = g(card, "data-title");
@@ -109,6 +110,7 @@
     document.getElementById("mpQnum").textContent = qty;
   });
   document.getElementById("mpAddCart").addEventListener("click", function () {
+    if (window.TTCart && window.__ttDish) window.TTCart.add(window.__ttDish.name, window.__ttDish.price, qty);
     this.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
     this.style.background = "linear-gradient(135deg,var(--green),var(--green-dark))";
     var self = this;
