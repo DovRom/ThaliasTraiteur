@@ -503,3 +503,43 @@ footer { border-top: 1px solid var(--border); }
 .sptitle, .hrscard h5 { font-family: "Playfair Display", serif; }
 .cdnum { font-family: "Playfair Display", serif; font-weight: 800; }
 .sptag { text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+
+/* ================================================================
+   NAVBAR — compact & premium (the "barre des menus")
+   ================================================================ */
+/* slimmer top bar */
+#topbar {
+  padding: 7px 0;
+  font-size: 0.76rem;
+  background: var(--heading);
+}
+#topbar span { color: var(--text-faint); }
+#topbar .top-contact span i { color: var(--primary); }
+.ttag {
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 0.62rem;
+}
+
+/* shorter navbar + refined links */
+#nav { padding: 0; }
+.navbar-nav .nav-link {
+  padding: 20px 16px !important;
+  font-size: 0.76rem !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+}
+.navbar-nav .nav-link::after { height: 2px; }
+/* smaller logo => shorter header */
+.blogo-img { height: 42px; }
+#nav.scrolled .blogo-img { height: 38px; }
+@media (max-width: 575.98px) { .blogo-img { height: 38px; } }
+/* refined CTA */
+.nav-cta {
+  padding: 9px 18px !important;
+  font-size: 0.68rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+#navSearchBtn { font-size: 0.9rem; padding: 6px 10px; }
