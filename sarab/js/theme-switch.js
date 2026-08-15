@@ -8,8 +8,12 @@
    ================================================================ */
 (function () {
   var KEY = "tt-theme";
-  var THEMES = ["ivoire", "classic"];
-  var LABELS = { ivoire: "Ivoire (drapeau)", classic: "Classic (Sarab)" };
+  var THEMES = ["ivoire", "classic", "dark"];
+  var LABELS = {
+    ivoire: "Ivoire (drapeau)",
+    classic: "Classic (Sarab)",
+    dark: "Dark (shadcn)",
+  };
   var root = document.documentElement;
 
   function current() {
