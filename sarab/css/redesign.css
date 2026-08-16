@@ -872,3 +872,74 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 .legal ul { padding-left: 20px; }
 .legal a { color: var(--primary); }
 .legal .muted { font-size: 0.82rem; color: var(--text-faint); }
+
+/* ================================================================
+   ORDER PAGE — mode switch (livraison vs événement) + dish checklist
+   ================================================================ */
+.order-modes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 44px;
+}
+.order-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-align: left;
+  padding: 22px 24px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.25s, transform 0.25s, background 0.25s;
+}
+.order-mode:hover { transform: translateY(-3px); }
+.order-mode i { font-size: 1.4rem; color: var(--text-muted); margin-bottom: 6px; }
+.order-mode .om-t { font-family: "Playfair Display", serif; font-weight: 800; font-size: 1.15rem; color: var(--heading); }
+.order-mode .om-s { font-size: 0.86rem; color: var(--text-muted); }
+.order-mode.active {
+  border-color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.05);
+}
+.order-mode.active i { color: var(--primary); }
+@media (max-width: 700px) { .order-modes { grid-template-columns: 1fr; } }
+
+/* Dish checklist (replaces Select2) */
+.dishcheck {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 6px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--surface);
+}
+.dishcheck-empty { color: var(--text-muted); font-size: 0.9rem; padding: 16px; text-align: center; }
+.dchk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.dchk:hover { background: var(--surface-2); }
+.dchk input { position: absolute; opacity: 0; width: 0; height: 0; }
+.dchk .box {
+  width: 22px; height: 22px; flex-shrink: 0;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 0.72rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+.dchk input:checked + .box { background: var(--primary); border-color: var(--primary); }
+.dchk .box i { opacity: 0; }
+.dchk input:checked + .box i { opacity: 1; }
+.dchk .lbl { flex: 1; color: var(--text); font-size: 0.94rem; transition: color 0.2s; }
+.dchk .pr { color: var(--text-muted); font-size: 0.84rem; white-space: nowrap; }
+.dchk.struck .lbl { text-decoration: line-through; color: var(--text-faint); }
+.dchk.struck .pr { text-decoration: line-through; color: var(--text-faint); }
+.dishcheck-hint { font-size: 0.78rem; color: var(--text-faint); margin-top: 8px; }

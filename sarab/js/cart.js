@@ -15,6 +15,7 @@
     try { localStorage.setItem(KEY, JSON.stringify(items)); } catch (e) {}
     render();
     syncSelect();
+    try { document.dispatchEvent(new CustomEvent("tt-cart-change")); } catch (e) {}
   }
   function parsePrice(p) {
     if (typeof p === "number") return p;
@@ -105,7 +106,7 @@
       } else {
         var sr = items.map(function (i) {
           return '<div class="cartsum-row"><div><div class="n">' + escapeHtml(i.name) +
-            '</div><div class="q">× ' + i.qty + '</div></div><div class="p">' + money(i.price * i.qty) + "</div></div>";
+            '</div><div class="q">' + i.qty + ' pers.</div></div><div class="p">' + money(i.price * i.qty) + "</div></div>";
         }).join("");
         sum.innerHTML = "<h3>Votre commande</h3>" + sr +
           '<div class="cartsum-total"><span>Total estimé</span><b>' + money(API.total()) + "</b></div>" +
@@ -130,7 +131,7 @@
         '<div class="tt-cart-item" data-name="' + escapeAttr(i.name) + '">' +
         '  <div class="tt-ci-main">' +
         '    <div class="tt-ci-name">' + escapeHtml(i.name) + "</div>" +
-        '    <div class="tt-ci-price">' + money(i.price) + " / portion</div>" +
+        '    <div class="tt-ci-price">' + money(i.price) + " / personne</div>" +
         "  </div>" +
         '  <div class="tt-ci-qty">' +
         '    <button data-cart-dec aria-label="moins">−</button>' +

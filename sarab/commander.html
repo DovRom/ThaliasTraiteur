@@ -11,7 +11,6 @@
    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
    <link href="css/bootstrap.min.css" rel="stylesheet" />
    <link rel="stylesheet" href="css/all.min.css" />
-   <link rel="stylesheet" href="css/select2.min.css" />
    <link rel="stylesheet" href="css/style.css" />
    <link rel="stylesheet" href="css/redesign.css" />
 </head>
@@ -65,12 +64,27 @@
    <section class="pagehero">
       <div class="container">
          <div class="crumb"><a href="index.html">Accueil</a> &nbsp;/&nbsp; Commander</div>
-         <h1>Composez votre <span>commande</span></h1>
-         <p>Votre panier est repris ci-dessous et dans le formulaire. Renseignez votre événement et recevez un devis personnalisé.</p>
+         <h1>Passez votre <span>commande</span></h1>
+         <p>Choisissez votre type de commande. Votre panier est repris automatiquement ci-dessous.</p>
       </div>
    </section>
    <section id="reservation">
       <div class="container">
+
+         <!-- Order type switch -->
+         <div class="order-modes">
+            <button type="button" class="order-mode active" data-mode="livraison">
+               <i class="fas fa-truck-fast"></i>
+               <span class="om-t">Commande &amp; Livraison</span>
+               <span class="om-s">Vos plats préparés et livrés chez vous.</span>
+            </button>
+            <button type="button" class="order-mode" data-mode="evenement">
+               <i class="fas fa-champagne-glasses"></i>
+               <span class="om-t">Traiteur &amp; Événement</span>
+               <span class="om-s">Devis sur mesure pour votre réception.</span>
+            </button>
+         </div>
+
          <div class="row g-5">
             <div class="col-lg-5">
                <div class="cartsum" id="cartSummary"><h3>Votre commande</h3><p class="cartsum-empty">Votre panier est vide. Ajoutez des plats depuis le <a class="editlink" href="menu.html">menu</a>.</p></div>
@@ -78,77 +92,42 @@
             <div class="col-lg-7">
                <div class="fcard">
                   <div class="row g-3">
-                     <div class="col-sm-6"><label class="flbl">Nom complet *</label><input type="text" id="devNom" class="fctrl" placeholder="Ex : Awa Koné" /></div>
-                     <div class="col-sm-6"><label class="flbl">Téléphone *</label><input type="tel" id="devTel" class="fctrl" placeholder="+1 (514) 000-0000" /></div>
-                     <div class="col-sm-6"><label class="flbl">Courriel *</label><input type="email" id="devMail" class="fctrl" placeholder="vous@courriel.com" /></div>
-                     <div class="col-sm-6">
-                        <label class="flbl">Nombre de convives *</label>
-                        <select id="devConvives" class="fctrl">
-                           <option>1 - 5 personnes</option><option>6 - 10 personnes</option><option>11 - 20 personnes</option><option>21 - 50 personnes</option><option>51 - 100 personnes</option><option>100+ personnes</option>
-                        </select>
-                     </div>
-                     <div class="col-sm-6"><label class="flbl">Date de l'événement *</label><input type="date" id="devDate" class="fctrl" /></div>
-                     <div class="col-sm-6">
+                     <!-- Common fields -->
+                     <div class="col-sm-6"><label class="flbl">Nom complet *</label><input type="text" id="oNom" class="fctrl" placeholder="Ex : Awa Koné" /></div>
+                     <div class="col-sm-6"><label class="flbl">Téléphone *</label><input type="tel" id="oTel" class="fctrl" placeholder="+1 (514) 000-0000" /></div>
+                     <div class="col-12"><label class="flbl">Courriel *</label><input type="email" id="oMail" class="fctrl" placeholder="vous@courriel.com" /></div>
+
+                     <!-- Livraison-only -->
+                     <div class="col-sm-6 js-liv"><label class="flbl">Date de livraison *</label><input type="date" id="oDate" class="fctrl" /></div>
+                     <div class="col-sm-6 js-liv"><label class="flbl">Heure *</label><input type="time" id="oHeure" class="fctrl" /></div>
+                     <div class="col-12 js-liv"><label class="flbl">Adresse de livraison *</label><input type="text" id="oAdresse" class="fctrl" placeholder="N°, rue, ville, code postal" /></div>
+
+                     <!-- Événement-only -->
+                     <div class="col-sm-6 js-evt">
                         <label class="flbl">Type d'événement *</label>
-                        <select id="devType" class="fctrl">
+                        <select id="oType" class="fctrl">
                            <option>Mariage</option><option>Baptême</option><option>Anniversaire</option><option>Événement d'entreprise</option><option>Réception / Cocktail</option><option>Autre</option>
                         </select>
                      </div>
-                     <div class="col-12">
-                        <label class="flbl">Plats souhaités (pré-remplis depuis votre panier)</label>
-                        <select id="devisPlats" name="plats" multiple>
-                           <optgroup label="Nos Spécialités">
-                              <option value="Tchep">Tchep — 32 $</option>
-                              <option value="Riz">Riz — 32 $</option>
-                              <option value="Placali Sauce Kopé">Placali Sauce Kopé — 32 $</option>
-                              <option value="Chocouya">Chocouya — 27 $</option>
-                              <option value="Garba">Garba — 22 $</option>
-                              <option value="Dôkounou">Dôkounou — 27 $</option>
-                              <option value="Abolo">Abolo — 27 $</option>
-                           </optgroup>
-                           <optgroup label="Plats Grillés">
-                              <option value="Poulet Braisé">Poulet Braisé — 27 $</option>
-                              <option value="Poisson Braisé">Poisson Braisé — 27 $</option>
-                              <option value="Côtelettes de Porc Braisées">Côtelettes de Porc Braisées — 29 $</option>
-                              <option value="Brochettes de Poulet">Brochettes de Poulet — 27 $</option>
-                              <option value="Brochettes de Tilapia">Brochettes de Tilapia — 27 $</option>
-                              <option value="Poulet BBQ et ses Légumes Grillés">Poulet BBQ et ses Légumes Grillés — 27 $</option>
-                              <option value="Saumon Grillé et ses Légumes">Saumon Grillé et ses Légumes — 32 $</option>
-                           </optgroup>
-                           <optgroup label="Soupes &amp; Entrées">
-                              <option value="Soupe du Chasseur">Soupe du Chasseur — 37 $</option>
-                              <option value="Soupe du Pêcheur">Soupe du Pêcheur — 37 $</option>
-                              <option value="Escargots Sautés">Escargots Sautés — 37 $</option>
-                              <option value="Gbofloto">Gbofloto — 17 $</option>
-                           </optgroup>
-                           <optgroup label="Plats Exotiques &amp; Autres">
-                              <option value="Beignets Jaune + Vermicelles">Beignets Jaune + Vermicelles — 17 $</option>
-                              <option value="Repas d&#x27;Ailleurs">Repas d&#x27;Ailleurs — 12 $</option>
-                              <option value="Brochettes de Filles Mignons">Brochettes de Filles Mignons — 32 $</option>
-                              <option value="Marmite de Fruits de Mer et Légumes">Marmite de Fruits de Mer et Légumes — 37 $</option>
-                           </optgroup>
-                           <optgroup label="Entrées Fraîches">
-                              <option value="Salade Crevettes Avocat">Salade Crevettes Avocat — 17 $</option>
-                              <option value="Nems ou Rouleaux">Nems ou Rouleaux — 17 $</option>
-                              <option value="Salade de Thon">Salade de Thon — 17 $</option>
-                              <option value="Salade de tomates mozzarella">Salade de tomates mozzarella — 17 $</option>
-                              <option value="Salade de tomates au concombre et mozzarella">Salade de tomates au concombre et mozzarella — 17 $</option>
-                              <option value="Tomate farcie aux œufs">Tomate farcie aux œufs — 17 $</option>
-                              <option value="Salade de tomates aux épices grecques">Salade de tomates aux épices grecques — 17 $</option>
-                              <option value="Salade de tomates">Salade de tomates — 17 $</option>
-                           </optgroup>
-                           <optgroup label="Desserts">
-                              <option value="Salade de fruits de saison">Salade de fruits de saison — 10 $</option>
-                              <option value="Crème glacée au baobab">Crème glacée au baobab — 10 $</option>
-                              <option value="Deguê">Deguê — 10 $</option>
-                              <option value="Gâteau triple chocolat">Gâteau triple chocolat — 10 $</option>
-                           </optgroup>
+                     <div class="col-sm-6 js-evt">
+                        <label class="flbl">Nombre de convives *</label>
+                        <select id="oConvives" class="fctrl">
+                           <option>1 - 5 personnes</option><option>6 - 10 personnes</option><option>11 - 20 personnes</option><option>21 - 50 personnes</option><option>51 - 100 personnes</option><option>100+ personnes</option>
                         </select>
                      </div>
-                     <div class="col-12"><label class="flbl">Votre demande</label><textarea id="devMsg" class="fctrl" rows="3" placeholder="Allergies, budget, lieu et heure de livraison, précisions..."></textarea></div>
-                     <div class="col-12"><button class="btn-red w-100 justify-content-center" id="resBtn"><i class="fas fa-calendar-check"></i>Envoyer ma demande</button></div>
+                     <div class="col-sm-6 js-evt"><label class="flbl">Date de l'événement *</label><input type="date" id="oDateE" class="fctrl" /></div>
+                     <div class="col-sm-6 js-evt"><label class="flbl">Lieu de l'événement</label><input type="text" id="oLieu" class="fctrl" placeholder="Salle, ville…" /></div>
+                     <div class="col-12 js-evt">
+                        <label class="flbl">Plats sélectionnés (synchronisés avec votre panier)</label>
+                        <div class="dishcheck" id="dishChecklist"></div>
+                        <p class="dishcheck-hint">Décochez un plat pour le retirer — il se barre et disparaît du panier. Ajoutez-en d'autres depuis le <a href="menu.html">menu</a>.</p>
+                     </div>
+
+                     <!-- Common -->
+                     <div class="col-12"><label class="flbl">Précisions</label><textarea id="oMsg" class="fctrl" rows="3" placeholder="Allergies, budget, précisions..."></textarea></div>
+                     <div class="col-12"><button class="btn-red w-100 justify-content-center" id="orderBtn"><i class="fas fa-truck"></i>Passer la commande</button></div>
                   </div>
-                  <div class="sucmsg" id="resOk"><i class="fas fa-check-circle"></i><p>Demande envoyée ! Nous vous recontactons très vite avec un devis.</p></div>
+                  <div class="sucmsg" id="resOk"><i class="fas fa-check-circle"></i><p>Demande envoyée ! Votre logiciel de messagerie s'ouvre avec le récapitulatif — envoyez-le et nous vous recontactons vite.</p></div>
                </div>
             </div>
          </div>
@@ -211,10 +190,9 @@
    <button id="themeToggle" class="theme-toggle" type="button" title="Changer de thème" aria-label="Changer de thème"><i class="fas fa-palette"></i></button>
 
    <script src="js/jquery-3.7.1.min.js"></script>
-   <script src="js/select2.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
    <script src="js/cart.js"></script>
-   <script src="js/devis-form.js"></script>
+   <script src="js/order-form.js"></script>
    <script src="js/theme-switch.js"></script>
 </body>
 
