@@ -27,7 +27,7 @@
     items: read,
     count: function () { return read().reduce(function (s, i) { return s + i.qty; }, 0); },
     total: function () { return read().reduce(function (s, i) { return s + i.qty * i.price; }, 0); },
-    add: function (name, price, qty) {
+    add: function (name, price, qty, silent) {
       if (!name) return;
       qty = qty || 1;
       var items = read();
@@ -35,7 +35,7 @@
       if (ex) ex.qty += qty;
       else items.push({ name: name, price: parsePrice(price), qty: qty });
       write(items);
-      openDrawer();
+      if (!silent) openDrawer();
     },
     setQty: function (name, qty) {
       var items = read();
@@ -63,10 +63,17 @@
       '    <h4>Mon panier</h4>' +
       '    <button class="tt-cart-close" data-cart-close aria-label="Fermer"><i class="fas fa-times"></i></button>' +
       '  </div>' +
+      '  <div class="tt-cart-typebar"><span class="lbl">Type</span>' +
+      '    <div class="ordtoggle">' +
+      '      <button type="button" data-ordtoggle="livraison"><i class="fas fa-truck-fast"></i>Livraison</button>' +
+      '      <button type="button" data-ordtoggle="evenement"><i class="fas fa-champagne-glasses"></i>Événement</button>' +
+      '    </div>' +
+      '  </div>' +
       '  <div class="tt-cart-body" id="ttCartBody"></div>' +
       '  <div class="tt-cart-foot" id="ttCartFoot"></div>' +
       "</aside>";
     document.body.appendChild(wrap);
+    if (window.TTOrder && window.TTOrder.refreshToggles) window.TTOrder.refreshToggles();
   }
 
   function openDrawer() {

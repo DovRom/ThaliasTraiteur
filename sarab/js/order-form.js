@@ -84,7 +84,7 @@
         var lab = e.target.closest(".dchk"); if (!lab) return;
         var name = lab.getAttribute("data-name");
         if (e.target.checked) {
-          if (!inCart(name)) window.TTCart.add(name, PRICE[name] || 0, 1);
+          if (!inCart(name)) window.TTCart.add(name, PRICE[name] || 0, 1, true); // silent: don't open drawer
         } else {
           window.TTCart.remove(name);
         }

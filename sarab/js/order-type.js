@@ -64,11 +64,38 @@
       }
     }
   };
+  /* Reflect the current type on any segmented toggles (popup + cart) */
+  function refreshToggles() {
+    var t = TTOrder.type();
+    document.querySelectorAll("[data-ordtoggle]").forEach(function (b) {
+      b.classList.toggle("active", b.getAttribute("data-ordtoggle") === t);
+    });
+  }
+  TTOrder.refreshToggles = refreshToggles;
+
+  function popupOpen() {
+    var p = document.getElementById("menuPop");
+    return p && p.classList.contains("open");
+  }
+
   window.TTOrder = TTOrder;
 
-  /* Nav "Livraison" / "Événement" buttons: set the type before navigating */
   document.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-set-order]");
-    if (b) TTOrder.set(b.getAttribute("data-set-order"));
+    // Nav buttons: set the type (then the link navigates)
+    var nav = e.target.closest("[data-set-order]");
+    if (nav) { TTOrder.set(nav.getAttribute("data-set-order")); return; }
+    // In-place toggle (popup / cart): change type and update live
+    var tog = e.target.closest("[data-ordtoggle]");
+    if (tog) {
+      TTOrder.set(tog.getAttribute("data-ordtoggle"));
+      if (popupOpen()) TTOrder.applyPopup();
+    }
   });
+
+  // Keep toggles + open popup in sync whenever the type changes
+  document.addEventListener("tt-order-change", function () {
+    refreshToggles();
+    if (popupOpen()) TTOrder.applyPopup();
+  });
+  document.addEventListener("DOMContentLoaded", refreshToggles);
 })();
