@@ -981,3 +981,7 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 }
 .order-placeholder i { font-size: 2rem; color: var(--primary); margin-bottom: 14px; display: block; }
 .order-placeholder b { display: block; color: var(--heading); font-family: "Playfair Display", serif; font-size: 1.2rem; margin-bottom: 6px; }
+
+/* Fix: popup two-column layout now lives inside .mpview (was direct children of .mpbox) */
+#menuPop .mpview { display: flex; flex-wrap: wrap; width: 100%; }
+#menuPop .mpchooser { width: 100%; }
