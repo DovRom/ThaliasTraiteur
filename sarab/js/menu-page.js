@@ -81,6 +81,7 @@
 
     menuPop.classList.add("open");
     document.body.style.overflow = "hidden";
+    if (window.TTOrder) window.TTOrder.ensureView();
   }
 
   function closePop() {

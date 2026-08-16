@@ -28,8 +28,13 @@
     /* ---- Mode switch ---- */
     var mode = "livraison";
     var btnSubmit = document.getElementById("orderBtn");
-    function applyMode(m) {
+    var placeholder = document.getElementById("orderPlaceholder");
+    var content = document.getElementById("orderContent");
+    function applyMode(m, skipSet) {
       mode = m;
+      if (!skipSet && window.TTOrder) window.TTOrder.set(m); // sync global type (cart re-renders)
+      if (placeholder) placeholder.style.display = "none";
+      if (content) content.style.display = "";
       document.querySelectorAll(".order-mode").forEach(function (b) {
         b.classList.toggle("active", b.getAttribute("data-mode") === m);
       });
@@ -139,6 +144,15 @@
       });
     }
 
-    applyMode("livraison");
+    // Show the form only if a type was already chosen (nav buttons / dish popup);
+    // otherwise keep the indicative placeholder until the user picks a mode.
+    var t = window.TTOrder && window.TTOrder.type();
+    if (t) applyMode(t, true);
+    // react if the type changes elsewhere while on this page
+    document.addEventListener("tt-order-change", function () {
+      var nt = window.TTOrder && window.TTOrder.type();
+      if (nt && nt !== mode) applyMode(nt, true);
+    });
   });
 })();
+

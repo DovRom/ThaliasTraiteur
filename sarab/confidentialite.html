@@ -55,7 +55,10 @@
             </ul>
             <div class="d-flex align-items-center gap-1">
                <button class="tt-cart-btn" data-cart-toggle type="button" title="Mon panier" aria-label="Mon panier"><i class="fas fa-shopping-bag"></i><span class="tt-cart-count">0</span></button>
-               <a href="commander.html" class="nav-link nav-cta"><i class="fas fa-file-signature me-1"></i>Demander un devis</a>
+               <div class="nav-orders">
+               <a href="menu.html" class="nav-ord nav-ord--liv" data-set-order="livraison" title="Commander pour livraison"><i class="fas fa-truck-fast"></i>Livraison</a>
+               <a href="menu.html" class="nav-ord nav-ord--evt" data-set-order="evenement" title="Commander pour un événement"><i class="fas fa-champagne-glasses"></i>Événement</a>
+            </div>
             </div>
          </div>
       </div>
@@ -139,6 +142,7 @@
 
    <script src="js/jquery-3.7.1.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="js/order-type.js"></script>
    <script src="js/cart.js"></script>
    <script src="js/theme-switch.js"></script>
 </body>

@@ -92,6 +92,8 @@
   function render() {
     var items = read();
     var count = API.count();
+    var ev = window.TTOrder && window.TTOrder.isEvent();
+    function unit(q) { return q + " " + (ev ? (q > 1 ? "personnes" : "personne") : (q > 1 ? "portions" : "portion")); }
     // badges
     var badges = document.querySelectorAll(".tt-cart-count");
     for (var b = 0; b < badges.length; b++) {
@@ -106,10 +108,13 @@
       } else {
         var sr = items.map(function (i) {
           return '<div class="cartsum-row"><div><div class="n">' + escapeHtml(i.name) +
-            '</div><div class="q">' + i.qty + ' pers.</div></div><div class="p">' + money(i.price * i.qty) + "</div></div>";
+            '</div><div class="q">' + unit(i.qty) + '</div></div><div class="p">' +
+            (ev ? "" : money(i.price * i.qty)) + "</div></div>";
         }).join("");
-        sum.innerHTML = "<h3>Votre commande</h3>" + sr +
-          '<div class="cartsum-total"><span>Total estimé</span><b>' + money(API.total()) + "</b></div>" +
+        var totalHtml = ev
+          ? '<div class="cartsum-total"><span>Total</span><b style="font-size:1rem;">Sur devis</b></div>'
+          : '<div class="cartsum-total"><span>Total estimé</span><b>' + money(API.total()) + "</b></div>";
+        sum.innerHTML = "<h3>Votre commande</h3>" + sr + totalHtml +
           '<p style="margin-top:12px;margin-bottom:0;"><a class="editlink" href="#" data-cart-toggle>Modifier le panier</a></p>';
       }
     }
@@ -131,7 +136,7 @@
         '<div class="tt-cart-item" data-name="' + escapeAttr(i.name) + '">' +
         '  <div class="tt-ci-main">' +
         '    <div class="tt-ci-name">' + escapeHtml(i.name) + "</div>" +
-        '    <div class="tt-ci-price">' + money(i.price) + " / personne</div>" +
+        '    <div class="tt-ci-price">' + (ev ? "Sur devis" : money(i.price) + " / portion") + "</div>" +
         "  </div>" +
         '  <div class="tt-ci-qty">' +
         '    <button data-cart-dec aria-label="moins">−</button>' +
@@ -145,8 +150,11 @@
     body.innerHTML = rows;
 
     foot.innerHTML =
-      '<div class="tt-cart-total"><span>Total estimé</span><b>' + money(API.total()) + "</b></div>" +
-      '<p class="tt-cart-note">Prix indicatifs par portion — le devis final vous sera confirmé.</p>' +
+      (ev
+        ? '<div class="tt-cart-total"><span>Total</span><b style="font-size:1.1rem;">Sur devis</b></div>' +
+          '<p class="tt-cart-note">Commande événement — un devis personnalisé vous sera confirmé.</p>'
+        : '<div class="tt-cart-total"><span>Total estimé</span><b>' + money(API.total()) + "</b></div>" +
+          '<p class="tt-cart-note">Prix indicatifs par portion — le total final vous sera confirmé.</p>') +
       '<a class="btn-ed--solid tt-cart-checkout" data-cart-checkout>Finaliser ma commande</a>' +
       '<button class="tt-cart-clear" data-cart-clear>Vider le panier</button>';
   }
@@ -207,6 +215,9 @@
     var cur = read().filter(function (i) { return i.name === name; })[0];
     if (cur) API.setQty(name, cur.qty + delta);
   }
+
+  /* Re-render when the order type changes (portions/personnes, prices) */
+  document.addEventListener("tt-order-change", function () { render(); });
 
   /* ---------- Init ---------- */
   document.addEventListener("DOMContentLoaded", function () {

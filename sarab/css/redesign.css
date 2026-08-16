@@ -943,3 +943,41 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 .dchk.struck .lbl { text-decoration: line-through; color: var(--text-faint); }
 .dchk.struck .pr { text-decoration: line-through; color: var(--text-faint); }
 .dishcheck-hint { font-size: 0.78rem; color: var(--text-faint); margin-top: 8px; }
+
+/* ================================================================
+   ORDER TYPE — popup chooser, nav order buttons, placeholder
+   ================================================================ */
+.mpchooser { padding: 44px 36px; }
+.mpchooser h4 { font-family: "Playfair Display", serif; font-weight: 800; font-size: 1.5rem; color: var(--heading); margin: 0 0 6px; }
+.mpchooser > p { color: var(--text-muted); font-size: 0.92rem; margin: 0 0 22px; }
+.mpchoose-btns { display: grid; gap: 14px; }
+.mpchoose-btns button {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left;
+  padding: 18px 20px; border: 1.5px solid var(--border); border-radius: 12px;
+  background: var(--surface); color: var(--text); cursor: pointer; transition: border-color 0.2s, transform 0.2s;
+}
+.mpchoose-btns button:hover { border-color: var(--primary); transform: translateY(-2px); }
+.mpchoose-btns i { color: var(--primary); font-size: 1.3rem; margin-bottom: 4px; }
+.mpchoose-btns b { font-family: "Playfair Display", serif; font-weight: 800; font-size: 1.1rem; color: var(--heading); }
+.mpchoose-btns small { color: var(--text-muted); font-size: 0.82rem; }
+
+/* Nav order buttons (two) */
+.nav-orders { display: flex; gap: 8px; align-items: center; }
+.nav-ord {
+  display: inline-flex; align-items: center; gap: 6px; padding: 9px 13px; border-radius: 6px;
+  font-family: "Poppins", sans-serif; font-size: 0.66rem; font-weight: 600; letter-spacing: 1px;
+  text-transform: uppercase; white-space: nowrap; transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.nav-ord--liv { background: var(--primary); color: #fff; border: 1px solid var(--primary); }
+.nav-ord--liv:hover { background: var(--primary-dark); color: #fff; transform: translateY(-2px); }
+.nav-ord--evt { background: transparent; color: var(--primary); border: 1px solid var(--primary); }
+.nav-ord--evt:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+@media (max-width: 1200px) { .nav-ord small, .nav-ord .lbl-long { display: none; } }
+
+/* Commander placeholder (before a type is chosen) */
+.order-placeholder {
+  text-align: center; padding: 54px 24px; color: var(--text-muted);
+  border: 1px dashed var(--border); border-radius: 14px; background: var(--surface);
+}
+.order-placeholder i { font-size: 2rem; color: var(--primary); margin-bottom: 14px; display: block; }
+.order-placeholder b { display: block; color: var(--heading); font-family: "Playfair Display", serif; font-size: 1.2rem; margin-bottom: 6px; }

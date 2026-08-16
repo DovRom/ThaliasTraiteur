@@ -55,7 +55,10 @@
             </ul>
             <div class="d-flex align-items-center gap-1">
                <button class="tt-cart-btn" data-cart-toggle type="button" title="Mon panier" aria-label="Mon panier"><i class="fas fa-shopping-bag"></i><span class="tt-cart-count">0</span></button>
-               <a href="commander.html" class="nav-link nav-cta"><i class="fas fa-file-signature me-1"></i>Demander un devis</a>
+               <div class="nav-orders">
+               <a href="menu.html" class="nav-ord nav-ord--liv" data-set-order="livraison" title="Commander pour livraison"><i class="fas fa-truck-fast"></i>Livraison</a>
+               <a href="menu.html" class="nav-ord nav-ord--evt" data-set-order="evenement" title="Commander pour un événement"><i class="fas fa-champagne-glasses"></i>Événement</a>
+            </div>
             </div>
          </div>
       </div>
@@ -73,7 +76,7 @@
 
          <!-- Order type switch -->
          <div class="order-modes">
-            <button type="button" class="order-mode active" data-mode="livraison">
+            <button type="button" class="order-mode" data-mode="livraison">
                <i class="fas fa-truck-fast"></i>
                <span class="om-t">Commande &amp; Livraison</span>
                <span class="om-s">Vos plats préparés et livrés chez vous.</span>
@@ -85,6 +88,13 @@
             </button>
          </div>
 
+         <div id="orderPlaceholder" class="order-placeholder">
+            <i class="fas fa-hand-pointer"></i>
+            <b>Choisissez d'abord votre type de commande</b>
+            <span>Sélectionnez « Commande &amp; Livraison » ou « Traiteur &amp; Événement » ci-dessus pour afficher le formulaire.</span>
+         </div>
+
+         <div id="orderContent" style="display:none;">
          <div class="row g-5">
             <div class="col-lg-5">
                <div class="cartsum" id="cartSummary"><h3>Votre commande</h3><p class="cartsum-empty">Votre panier est vide. Ajoutez des plats depuis le <a class="editlink" href="menu.html">menu</a>.</p></div>
@@ -130,6 +140,7 @@
                   <div class="sucmsg" id="resOk"><i class="fas fa-check-circle"></i><p>Demande envoyée ! Votre logiciel de messagerie s'ouvre avec le récapitulatif — envoyez-le et nous vous recontactons vite.</p></div>
                </div>
             </div>
+         </div>
          </div>
       </div>
    </section>
@@ -191,6 +202,7 @@
 
    <script src="js/jquery-3.7.1.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
+   <script src="js/order-type.js"></script>
    <script src="js/cart.js"></script>
    <script src="js/order-form.js"></script>
    <script src="js/theme-switch.js"></script>
