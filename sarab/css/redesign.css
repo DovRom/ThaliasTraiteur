@@ -1022,3 +1022,6 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 .tt-cart-typebar .lbl { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600; }
 .tt-cart-typebar .ordtoggle { flex: 1; }
 .tt-cart-typebar .ordtoggle button { flex: 1; justify-content: center; }
+
+/* Anchors used as buttons (no href) still need the pointer cursor */
+.btn-ed--solid, .btn-ed--ghost, .tt-cart-checkout, [data-cart-checkout], [data-cart-toggle] { cursor: pointer; }
