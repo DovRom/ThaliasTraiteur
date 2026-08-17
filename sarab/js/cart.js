@@ -133,7 +133,8 @@
     if (!items.length) {
       body.innerHTML =
         '<div class="tt-cart-empty"><i class="fas fa-basket-shopping"></i>' +
-        "<p>Votre panier est vide.</p><span>Ajoutez des plats depuis le menu.</span></div>";
+        "<p>Votre panier est vide.</p><span>Ajoutez des plats depuis le menu.</span>" +
+        '<a class="tt-cart-continue" data-cart-continue href="menu.html" style="max-width:240px;margin:22px auto 0;"><i class="fas fa-arrow-left"></i>Voir le menu</a></div>';
       foot.innerHTML = "";
       return;
     }
@@ -162,6 +163,7 @@
           '<p class="tt-cart-note">Commande événement — un devis personnalisé vous sera confirmé.</p>'
         : '<div class="tt-cart-total"><span>Total estimé</span><b>' + money(API.total()) + "</b></div>" +
           '<p class="tt-cart-note">Prix indicatifs par portion — le total final vous sera confirmé.</p>') +
+      '<a class="tt-cart-continue" data-cart-continue href="menu.html"><i class="fas fa-arrow-left"></i>Continuer mes choix</a>' +
       '<a class="btn-ed--solid tt-cart-checkout" data-cart-checkout>Finaliser ma commande</a>' +
       '<button class="tt-cart-clear" data-cart-clear>Vider le panier</button>';
   }
@@ -204,6 +206,10 @@
     var t = e.target;
     if (t.closest("[data-cart-toggle]")) { e.preventDefault(); openDrawer(); }
     else if (t.closest("[data-cart-close]") || t.id === "ttCartOverlay") closeDrawer();
+    else if (t.closest("[data-cart-continue]")) {
+      // On the menu page: just close the drawer. Elsewhere: let the link go to menu.html.
+      if (document.getElementById("mgrid")) { e.preventDefault(); closeDrawer(); }
+    }
     else if (t.closest("[data-cart-checkout]")) { e.preventDefault(); checkout(); }
     else if (t.closest("[data-cart-clear]")) API.clear();
     else if (t.closest("[data-cart-inc]")) {

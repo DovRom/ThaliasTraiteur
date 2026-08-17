@@ -314,7 +314,7 @@
          <div class="row g-4" id="mgrid">
             <!-- CARD 1: Tchep (Spécialités) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="specialites" data-aos="fade-up">
-               <div class="mcard" data-img="img/dishes/tchep.jpg" data-title="Tchep" data-cat="Nos Spécialités"
+               <div class="mcard" data-img="img/dishes/tchep.jpg" data-imgs="img/dishes/tchep.jpg,img/dishes/tchep-2.jpg" data-title="Tchep" data-cat="Nos Spécialités"
                   data-price="32 $" data-old="" data-rating="5.0" data-reviews="214" data-cal="1 pers."
                   data-time="48h"
                   data-desc="Le grand classique festif ivoirien : riz parfumé mijoté à la tomate, servi au poisson ou à la viande au choix. Généreux, coloré et plein de saveurs."
@@ -370,7 +370,7 @@
             </div>
             <!-- CARD 3: Poulet Braisé (Grillades) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="grillades" data-aos="fade-up" data-aos-delay="160">
-               <div class="mcard" data-img="img/dishes/poulet-braise.jpg" data-title="Poulet Braisé" data-cat="Plats Grillés"
+               <div class="mcard" data-img="img/dishes/poulet-braise.jpg" data-imgs="img/dishes/poulet-braise.jpg,img/dishes/poulet-braise-2.jpg,img/dishes/poulet-braise-3.jpg,img/dishes/poulet-braise-4.jpg,img/dishes/poulet-braise-5.jpg" data-title="Poulet Braisé" data-cat="Plats Grillés"
                   data-price="27 $" data-old="" data-rating="4.9" data-reviews="176" data-cal="1 pers."
                   data-time="48h"
                   data-desc="Poulet mariné aux épices puis braisé au feu, servi avec frites, alloco et igname frite. Une valeur sûre qui fait l'unanimité."
@@ -647,7 +647,14 @@
             </div>
          </div>
          <div class="mpview">
-            <div class="mpimg"><img id="mpImg" src="" alt="" /></div>
+            <div class="mpimg">
+               <div class="mpcar" id="mpCar">
+                  <div class="mpcar-track" id="mpCarTrack"></div>
+                  <button class="mpcar-nav mpcar-prev" id="mpCarPrev" type="button" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+                  <button class="mpcar-nav mpcar-next" id="mpCarNext" type="button" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+                  <div class="mpcar-dots" id="mpCarDots"></div>
+               </div>
+            </div>
             <div class="mpbody">
                <div class="mp-typebar">
                   <span class="mp-typelbl">Type de commande</span>
@@ -1320,6 +1327,7 @@
    <!-- Cart (e-commerce) -->
    <script src="js/order-type.js"></script>
    <script src="js/cart.js"></script>
+   <script src="js/popup-carousel.js"></script>
    <!-- Theme switcher (dev tool — remove button + script to lock a single theme) -->
    <button id="themeToggle" class="theme-toggle" type="button" title="Changer de thème"
       aria-label="Changer de thème">

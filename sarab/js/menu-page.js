@@ -36,7 +36,7 @@
 
   function openPop(card) {
     window.__ttDish = { name: g(card, "data-title"), price: g(card, "data-price") };
-    document.getElementById("mpImg").src = g(card, "data-img");
+    if (window.TTCarousel) window.TTCarousel.load(g(card, "data-imgs") || g(card, "data-img"), g(card, "data-title"));
     document.getElementById("mpCat").textContent = g(card, "data-cat");
     document.getElementById("mpTitle").textContent = g(card, "data-title");
 

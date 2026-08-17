@@ -181,7 +181,7 @@ function openMenuPop(card) {
 
     window.__ttDish = { name: title, price: price };
 
-    document.getElementById('mpImg').setAttribute('src', img);
+    if (window.TTCarousel) window.TTCarousel.load(card.getAttribute('data-imgs') || img, title);
     document.getElementById('mpCat').textContent = cat;
     document.getElementById('mpTitle').textContent = title;
 
