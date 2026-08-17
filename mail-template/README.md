@@ -1,18 +1,20 @@
 # Template e-mail — Thalia's Traiteur (Formspree)
 
-Deux fichiers à copier tels quels dans Formspree :
+**`formspree-template.html` est un document HTML complet et autonome**
+(du `<!doctype html>` au `</html>`, CSS déjà embarqué dans le `<head>`).
+C'est le seul fichier à coller.
 
-| Fichier | Où le coller dans Formspree |
+| Fichier | Usage |
 |---|---|
-| `formspree-template.html` | champ **HTML** du template |
-| `formspree-template.css`  | champ **CSS** du template |
+| `formspree-template.html` | **le fichier à coller** (complet, CSS inclus) |
+| `formspree-template.css`  | *optionnel* — le CSS seul, si un jour tu as des champs HTML/CSS séparés |
+| `preview.html` | aperçu local à ouvrir dans un navigateur (données d'exemple) |
 
 ## Étapes
 1. Formspree → ton formulaire → **Settings → Email Templates** (ou *Customize*).
-2. Colle le contenu de `formspree-template.html` dans la zone **HTML**.
-3. Colle le contenu de `formspree-template.css` dans la zone **CSS**.
-4. **Sujet de l'e-mail** : mets `{{ subject }}` (ou `Nouvelle demande — {{ name }}`).
-5. **Enregistre**, puis envoie une demande de test depuis le site pour vérifier.
+2. Colle **tout** le contenu de `formspree-template.html` (du `<!doctype>` au `</html>`).
+3. **Sujet de l'e-mail** : mets `{{ subject }}` (ou `Nouvelle demande — {{ name }}`).
+4. **Enregistre**, puis envoie une demande de test depuis le site pour vérifier.
 
 ## Un seul template pour les deux formulaires
 Le template gère **Commander** et **Contact** grâce aux blocs `{{#if ...}}` :

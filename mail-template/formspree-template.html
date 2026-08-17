@@ -1,14 +1,255 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Thalia's Traiteur — Nouvelle demande</title>
 <!-- ================================================================
      Thalia's Traiteur — Template e-mail de notification (Formspree)
-     >>> Colle CE fichier dans le champ HTML de Formspree.
-     >>> Colle formspree-template.css dans le champ CSS.
-     Variables utilisées (champs envoyés par le site) :
+     >>> Colle TOUT ce fichier (du <!doctype> au </html>) dans Formspree.
+     Variables (champs envoyés par le site) :
        name · email · phone · subject · order_type · event_type
        guests · date · time · address · place · dishes · total
        topic · message
-     Les blocs {{#if ...}} n'affichent une section que si le champ existe,
-     donc le MÊME template gère la page Commander ET la page Contact.
+     Les blocs {{#if ...}} n'affichent une section que si le champ existe :
+     le MEME fichier gere la page Commander ET la page Contact.
      ================================================================ -->
+<style>
+/* ================================================================
+   Thalia's Traiteur — CSS du template e-mail (Formspree)
+   >>> Colle CE fichier dans le champ CSS de Formspree.
+   Palette : orange drapeau #ff8200 · vert #009e60 · crème #faf5ef.
+   Pensé pour Gmail, Apple Mail, iOS, Outlook mobile.
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
+
+body,
+.tt-bg { margin: 0; padding: 0; }
+
+/* aperçu masqué */
+.tt-preheader {
+  display: none !important;
+  visibility: hidden;
+  opacity: 0;
+  height: 0; width: 0;
+  overflow: hidden;
+  mso-hide: all;
+  font-size: 1px;
+  line-height: 1px;
+  color: #f3ece2;
+}
+
+.tt-bg {
+  background: #f3ece2;
+  padding: 34px 12px;
+  font-family: 'Poppins', -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #4a3f36;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tt-outer { width: 100%; }
+
+.tt-card {
+  width: 600px;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(60, 40, 20, 0.13);
+}
+
+/* ---- bandeau drapeau ---- */
+.tt-flag td { height: 5px; line-height: 5px; font-size: 0; }
+.tt-flag-o { background: #ff8200; width: 33.33%; }
+.tt-flag-w { background: #ffffff; width: 33.34%; }
+.tt-flag-g { background: #009e60; width: 33.33%; }
+
+/* ---- marque ---- */
+.tt-head {
+  padding: 36px 40px 6px;
+  text-align: center;
+}
+.tt-brand {
+  font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  font-size: 31px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #241a12;
+}
+.tt-tag {
+  margin-top: 7px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ff8200;
+  font-weight: 600;
+}
+
+/* ---- titre ---- */
+.tt-hero {
+  padding: 24px 40px 6px;
+  text-align: center;
+}
+.tt-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #009e60;
+  margin-bottom: 10px;
+}
+.tt-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 25px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #241a12;
+}
+
+/* ---- sections ---- */
+.tt-section { padding: 24px 40px 2px; }
+.tt-section-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #a6957f;
+  margin-bottom: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #efe6da;
+}
+
+.tt-rows { border-collapse: collapse; }
+.tt-rows td {
+  padding: 9px 0;
+  vertical-align: top;
+  font-size: 15px;
+  border-bottom: 1px solid #f5efe6;
+}
+.tt-rows tr:last-child td { border-bottom: 0; }
+.tt-k {
+  width: 150px;
+  color: #9a8b7b;
+  font-weight: 500;
+}
+.tt-v {
+  color: #3a2f26;
+  font-weight: 500;
+}
+.tt-link {
+  color: #e06f00;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.tt-chip {
+  display: inline-block;
+  background: #fff3e6;
+  color: #c85f00;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tt-dishes {
+  background: #faf5ef;
+  border: 1px solid #efe6da;
+  border-radius: 10px;
+  padding: 15px 16px;
+  font-size: 15px;
+  color: #3a2f26;
+  line-height: 1.7;
+}
+
+.tt-total {
+  margin-top: 14px;
+  background: #241a12;
+  border-radius: 10px;
+}
+.tt-total td { padding: 15px 20px; vertical-align: middle; }
+.tt-total-l {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e9c9a5;
+}
+.tt-total-r {
+  text-align: right;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 23px;
+  font-weight: 700;
+  color: #ffb15c;
+}
+
+.tt-message {
+  background: #faf5ef;
+  border-left: 3px solid #ff8200;
+  border-radius: 0 10px 10px 0;
+  padding: 15px 18px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4a3f36;
+  white-space: pre-line;
+}
+
+/* ---- bouton ---- */
+.tt-cta-wrap {
+  padding: 30px 40px 10px;
+  text-align: center;
+}
+.tt-cta {
+  display: inline-block;
+  background: #ff8200;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 15px 38px;
+  border-radius: 8px;
+  letter-spacing: 0.3px;
+}
+
+/* ---- pied ---- */
+.tt-foot {
+  padding: 32px 40px 36px;
+  text-align: center;
+  background: #faf5ef;
+}
+.tt-foot-brand {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  color: #241a12;
+  font-weight: 700;
+}
+.tt-foot-line {
+  font-size: 13px;
+  color: #8a7d70;
+  margin-top: 4px;
+}
+.tt-foot-note {
+  font-size: 11px;
+  color: #b6a998;
+  margin-top: 15px;
+}
+
+/* ---- mobile ---- */
+@media (max-width: 620px) {
+  .tt-card { width: 100% !important; border-radius: 12px; }
+  .tt-head, .tt-hero, .tt-section, .tt-cta-wrap, .tt-foot {
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+  .tt-k { width: 116px; }
+  .tt-title { font-size: 21px; }
+  .tt-brand { font-size: 27px; }
+}
+</style>
+</head>
+<body style="margin:0;padding:0;">
 <div class="tt-bg">
 
   <!-- pré-en-tête masqué (aperçu dans la boîte de réception) -->
@@ -167,3 +408,5 @@
   </table>
 
 </div>
+</body>
+</html>
