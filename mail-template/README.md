@@ -17,10 +17,15 @@ C'est le seul fichier à coller.
 4. **Enregistre**, puis envoie une demande de test depuis le site pour vérifier.
 
 ## Un seul template pour les deux formulaires
-Le template gère **Commander** et **Contact** grâce aux blocs `{{#if ...}}` :
-une section ne s'affiche que si le champ correspondant est présent. Donc une
-commande montre Type / Date / Plats / Total, et un message de contact montre
-juste Objet / Message — sans lignes vides.
+Formspree utilise **Liquid**. Le template gère **Commander** et **Contact**
+grâce aux blocs `{% if champ != blank %} … {% endif %}` : une section ne
+s'affiche que si le champ correspondant est rempli. Donc une commande montre
+Type / Date / Plats / Total, et un message de contact montre juste
+Objet / Message — sans lignes vides.
+
+> ⚠️ Ne remets pas la syntaxe Handlebars `{{#if}}` : Formspree la refuse et
+> renvoie l'erreur « Something went wrong on our end ». C'est bien du Liquid
+> (`{% if %}`) qu'il faut.
 
 ## Variables disponibles (champs envoyés par le site)
 `name` · `email` · `phone` · `subject` · `order_type` · `event_type` ·
@@ -30,9 +35,9 @@ juste Objet / Message — sans lignes vides.
 > `details` = tout le récapitulatif déjà mis en forme en texte (utile si tu
 > veux un template ultra-simple : un seul `{{ details }}` suffit).
 
-## Si Formspree n'accepte pas les `{{#if}}`
-Selon le plan, les conditions ne sont pas toujours supportées. Dans ce cas :
-- soit tu **supprimes les balises** `{{#if ...}}` et `{{/if}}` (les lignes
+## Si les conditions `{% if %}` posent problème
+Dans ce cas :
+- soit tu **supprimes les balises** `{% if ... %}` et `{% endif %}` (les lignes
   s'afficheront alors même vides — enlève à la main celles que tu n'utilises pas),
 - soit tu remplaces tout le corps par un simple bloc `{{ details }}` (le style
   `.tt-message` avec `white-space: pre-line` conserve les retours à la ligne).
