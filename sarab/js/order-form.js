@@ -143,6 +143,11 @@
       var items = (window.TTCart ? window.TTCart.items() : []);
       var subject = (mode === "evenement" ? "Demande de devis – " : "Commande livraison – ") + (val("oNom") || "Nouveau client");
       var ev = (mode === "evenement");
+      var unit = ev ? "personne" : "portion";
+      // one dish per line: "Nom — N portion(s)" (email box renders line breaks)
+      var dishList = items.map(function (i) {
+        return i.name + " — " + i.qty + " " + unit + (i.qty > 1 ? "s" : "");
+      }).join("\n");
       // ALWAYS send every key (empty when N/A) so the email template never
       // shows a leftover token; empty rows are hidden by the template CSS.
       return {
@@ -161,7 +166,7 @@
         "address": ev ? "" : val("oAdresse"),
         "place": ev ? val("oLieu") : "",
         "topic": "",                  // used by the contact form only
-        "dishes": items.map(function (i) { return i.name + " × " + i.qty + " pers."; }).join(", "),
+        "dishes": dishList,
         "total": ev ? "Sur devis" : (window.TTCart ? Math.round(window.TTCart.total()) + " $" : ""),
         "message": val("oMsg"),
         "details": body()

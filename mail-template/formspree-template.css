@@ -125,10 +125,11 @@ body { margin: 0; padding: 0; }
   background: #faf5ef;
   border: 1px solid #efe6da;
   border-radius: 10px;
-  padding: 15px 16px;
+  padding: 8px 20px;
   font-size: 15px;
   color: #3a2f26;
-  line-height: 1.7;
+  line-height: 2.15;
+  white-space: pre-line;
 }
 
 .tt-total { width: 100%; margin-top: 14px; background: #241a12; border-radius: 10px; }
