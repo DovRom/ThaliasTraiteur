@@ -1219,3 +1219,100 @@ html { overflow-x: hidden; }
 @media (max-width: 991.98px) {
   .hero-media::after { inset: 12px; }   /* was -16px right/bottom -> overflowed on mobile */
 }
+
+/* ================================================================
+   RESPONSIVE — mobile & tablet, meticulous
+   ================================================================ */
+
+/* ---- Navbar: cart always visible; menu collapses cleanly ---- */
+.navbar-toggler i { color: var(--primary); font-size: 1.5rem; line-height: 1; }
+.tt-cart-btn { font-size: 1.15rem; }
+
+@media (max-width: 991.98px) {
+  .nav-actions { gap: 6px; }
+  #navmenu {
+    width: 100%;
+    flex-basis: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-top: 12px;
+    padding: 8px 14px 16px;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.14);
+  }
+  .navbar-nav { gap: 0; width: 100%; }
+  .navbar-nav .nav-link {
+    padding: 15px 6px !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid var(--border);
+    text-transform: none;
+  }
+  .navbar-nav .nav-item:last-child .nav-link { border-bottom: none; }
+  .navbar-nav .nav-link::after { display: none; }
+  .navbar-nav .nav-link.active { color: var(--primary) !important; }
+  .nav-orders { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; width: 100%; }
+  .nav-ord { justify-content: center; padding: 14px 10px; font-size: 0.72rem; }
+  .nav-ord small { display: inline; }
+}
+
+/* ---- Section rhythm on tablet / phone ---- */
+@media (max-width: 991.98px) { section { padding: 74px 0; } }
+@media (max-width: 600px) {
+  section { padding: 52px 0; }
+  .container { padding-left: 18px; padding-right: 18px; }
+  .stitle { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  .pagehero { padding: 40px 0 30px; }
+}
+
+/* ---- Top bar declutter on small screens ---- */
+@media (max-width: 600px) {
+  #topbar { font-size: 0.72rem; }
+  #topbar .ttag { display: none; }
+  #topbar .top-contact span:not(:first-child)::after { display: none; }
+}
+@media (max-width: 420px) {
+  #topbar .top-contact span:nth-child(3) { display: none; } /* hide "Montréal, QC", keep phone+email */
+}
+
+/* ---- Reassurance strip: 2 columns on phone ---- */
+@media (max-width: 620px) {
+  .reassure { gap: 12px 16px; padding: 16px; }
+  .reassure .r { flex: 1 1 44%; font-size: 0.8rem; }
+}
+
+/* ---- Order page: modes stack, guidance banner stacks ---- */
+@media (max-width: 760px) {
+  .order-modes { grid-template-columns: 1fr; }
+}
+
+/* ---- Cart drawer full-width feel on phone ---- */
+@media (max-width: 440px) {
+  .tt-cart-drawer { width: 100%; max-width: 100%; }
+}
+
+/* ---- Popup: image on top, content below, comfortable on phone ---- */
+@media (max-width: 767.98px) {
+  #menuPop .mpview { flex-direction: column; }
+  #menuPop .mpbox .mpimg, #menuPop .mpbody { width: 100% !important; }
+  .mpcar, .mpcar-slide { min-height: 220px; }
+  .mp-typebar { margin-bottom: 12px; }
+}
+
+/* ---- Hero tighter on phone ---- */
+@media (max-width: 600px) {
+  .hero-inner { padding: 24px 0 44px; gap: 30px; }
+  .hero-title { font-size: clamp(2.6rem, 13vw, 3.4rem); }
+  .hero-actions { gap: 16px 22px; margin-bottom: 34px; }
+  .hero-media img { height: 300px; }
+}
+
+/* ---- Footer stacks with breathing room ---- */
+@media (max-width: 600px) {
+  footer .row { --bs-gutter-y: 30px; }
+  .fbot .d-flex { flex-direction: column; gap: 10px; text-align: center; }
+  .fbot div { justify-content: center; }
+}
+
+/* ---- Keep the theme toggle out of the way on phone ---- */
+@media (max-width: 600px) { .theme-toggle { width: 40px; height: 40px; left: 12px; bottom: 12px; opacity: 0.85; } }
