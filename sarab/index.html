@@ -74,9 +74,10 @@
          <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav mx-auto">
                <li class="nav-item"><a class="nav-link active" href="#hero">Accueil</a></li>
-               <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
-               <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                <li class="nav-item"><a class="nav-link" href="menu.html">Menu</a></li>
+               <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+               <li class="nav-item"><a class="nav-link" href="commander.html">Commander</a></li>
+               <li class="nav-item"><a class="nav-link" href="apropos.html">À propos</a></li>
                <li class="nav-item"><a class="nav-link" href="avis.html">Avis</a></li>
                <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>
@@ -187,7 +188,7 @@
       </div>
    </div>
    <!-- CATEGORY -->
-   <section id="category">
+      <section id="category">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
             <span class="slbl">Ce que nous proposons</span>
@@ -242,58 +243,6 @@
          </div>
       </div>
    </section>
-   <!-- ABOUT -->
-   <section id="about">
-      <div class="container">
-         <div class="row align-items-center g-5">
-            <div class="col-lg-5" data-aos="fade-right">
-               <div class="astack">
-                  <div class="aexp"><span class="anum">10+</span><small>Ans de<br />Passion</small></div>
-                  <div class="amain"><img src="img/about1.jpg" alt="Thalia's Traiteur" /></div>
-                  <div class="asm"><img src="img/about2.jpg" alt="" /></div>
-               </div>
-            </div>
-            <div class="col-lg-7" data-aos="fade-left">
-               <span class="slbl">Notre Histoire</span>
-               <h2 class="stitle text-start">Le goût de la Côte d'Ivoire,<br />livré <span>chez vous</span></h2>
-               <div class="sline lft"></div>
-               <p class="sdesc mb-4">Thalia's Traiteur, c'est avant tout une passion : faire voyager vos invités jusqu'à
-                  Abidjan, le temps d'un repas. Spécialisés dans le service traiteur, nous préparons pour vos réceptions
-                  des plats ivoiriens authentiques, généreux et cuisinés maison, du grand mariage au dîner intime.</p>
-               <div class="mb-4">
-                  <div class="fti">
-                     <div class="ftico r"><i class="fas fa-leaf"></i></div>
-                     <div>
-                        <h6>Fait maison, produits frais</h6>
-                        <p>Chaque plat est cuisiné à la commande, avec des ingrédients frais et les épices
-                           authentiques du pays.</p>
-                     </div>
-                  </div>
-                  <div class="fti">
-                     <div class="ftico y"><i class="fas fa-champagne-glasses"></i></div>
-                     <div>
-                        <h6>Pour tous vos événements</h6>
-                        <p>Mariages, baptêmes, anniversaires, cocktails d'entreprise : un menu sur mesure pour chaque
-                           occasion.</p>
-                     </div>
-                  </div>
-                  <div class="fti">
-                     <div class="ftico g"><i class="fas fa-truck"></i></div>
-                     <div>
-                        <h6>Livraison & dressage</h6>
-                        <p>Nous livrons et dressons vos plats partout dans le Grand Montréal, prêts à régaler vos
-                           convives.</p>
-                     </div>
-                  </div>
-               </div>
-               <a href="#menu" class="btn-red"><i class="fas fa-book-open"></i>Voir tout le menu</a>
-            </div>
-         </div>
-      </div>
-   </section>
-   <!-- ============================================================
-         MENU � FIX 3 (filter works) + FIX 4 (plus opens popup)
-         ============================================================ -->
    <section id="menu">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
@@ -478,11 +427,6 @@
          </div>
       </div>
    </section>
-
-
-   <!-- ============================================================
-         FULL MENU (complete price list from the flyer)
-         ============================================================ -->
    <section id="fullmenu">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
@@ -632,143 +576,113 @@
          <div class="text-center mt-4" data-aos="fade-up"><a href="contact.html" class="btn-red"><i class="fas fa-file-signature"></i>Demander un devis pour mon événement</a></div>
       </div>
    </section>
-   <!-- ============================================================
-         FIX 4 � MENU DETAIL POPUP MODAL
-         ============================================================ -->
-   <div id="menuPop">
-      <div class="mpbox">
-         <button class="mpclose" id="mpClose"><i class="fas fa-times"></i></button>
-         <div class="mpchooser" style="display:none;">
-            <h4>Comment souhaitez-vous commander&nbsp;?</h4>
-            <p>Choisissez d'abord votre type de commande.</p>
-            <div class="mpchoose-btns">
-               <button type="button" data-choose="livraison"><i class="fas fa-truck-fast"></i><b>Commande &amp; Livraison</b><small>Plats livrés chez vous · à la portion, prix affichés</small></button>
-               <button type="button" data-choose="evenement"><i class="fas fa-champagne-glasses"></i><b>Traiteur &amp; Événement</b><small>Devis sur mesure · au nombre de personnes</small></button>
-            </div>
-         </div>
-         <div class="mpview">
-            <div class="mpimg">
-               <div class="mpcar" id="mpCar">
-                  <div class="mpcar-track" id="mpCarTrack"></div>
-                  <button class="mpcar-nav mpcar-prev" id="mpCarPrev" type="button" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
-                  <button class="mpcar-nav mpcar-next" id="mpCarNext" type="button" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
-                  <div class="mpcar-dots" id="mpCarDots"></div>
-               </div>
-            </div>
-            <div class="mpbody">
-               <div class="mp-typebar">
-                  <span class="mp-typelbl">Type de commande</span>
-                  <div class="ordtoggle">
-                     <button type="button" data-ordtoggle="livraison"><i class="fas fa-truck-fast"></i>Livraison</button>
-                     <button type="button" data-ordtoggle="evenement"><i class="fas fa-champagne-glasses"></i>Événement</button>
-                  </div>
-               </div>
-               <div id="mpCat"></div>
-               <div id="mpTitle"></div>
-               <div id="mpStars"></div>
-               <div id="mpDesc"></div>
-               <div id="mpPrice"></div>
-               <div class="mpmeta" id="mpMeta"></div>
-               <div class="mpqty">
-                  <button class="mpqbtn" id="mpMinus">-</button>
-                  <span class="mpqnum" id="mpQnum">1</span>
-                  <button class="mpqbtn" id="mpPlus">+</button>
-                  <span id="mpQtyLabel" style="font-size:.82rem;color:#aaa;margin-left:9px;">portion(s)</span>
-               </div>
-               <div class="mptags" id="mpTags"></div>
-               <button class="mpaddcart" id="mpAddCart"><i class="fas fa-shopping-cart"></i>Ajouter à ma commande</button>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- SPECIAL OFFER -->
-   <section id="special">
-      <div class="spbg"></div>
-      <div class="container" style="position:relative;z-index:2;">
-         <div class="row align-items-center g-5">
-            <div class="col-lg-6" data-aos="fade-right">
-               <div class="sptag"><i class="fas fa-bolt me-1"></i>Offre découverte</div>
-               <h2 class="sptitle">-15% sur votre<br />premier<br /><span>événement</span> traiteur</h2>
-               <p class="spdesc">Vous organisez une réception ? Profitez de 15% de réduction sur votre première commande
-                  traiteur de 10 personnes ou plus. Réservez vite, l'offre est limitée.</p>
-               <div class="cdwrap">
-                  <div class="cditem"><span class="cdnum" id="cdH">08</span><span class="cdlbl">Heures</span></div>
-                  <div class="cditem"><span class="cdnum" id="cdM">45</span><span class="cdlbl">Minutes</span></div>
-                  <div class="cditem"><span class="cdnum" id="cdS">30</span><span class="cdlbl">Secondes</span></div>
-               </div>
-               <a href="contact.html" class="btn-red"><i class="fas fa-file-signature"></i>J'en profite</a>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-               <div class="spimgw">
-                  <div class="spglow"></div>
-                  <div class="sppbdg"><span class="old">$24.99</span><span class="np">$17.49</span></div>
-                  <img src="img/off-img.jpg" alt="Offre découverte traiteur" />
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-
-
-   <!-- ============================================================
-         GALLERY � FIX 7 (click opens detail popup)
-         ============================================================ -->
-   <section id="gallery">
+   <section id="how">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
-            <span class="slbl">En images</span>
-            <h2 class="stitle">Un aperçu de <span>nos tables</span></h2>
+            <span class="slbl">Simple &amp; rapide</span>
+            <h2 class="stitle">Comment <span>commander</span> ?</h2>
             <div class="sline"></div>
+            <p class="sdesc mx-auto" style="max-width:520px;">De votre envie à la table, en quatre étapes — à livrer chez vous ou en traiteur pour votre événement.</p>
          </div>
-         <div class="ggrid" data-aos="fade-up">
-            <div class="gitem" data-gi="0" data-gimg="img/portfolio/work1.jpg" data-gtitle="Grandes Spécialités"
-               data-gdesc="Tchep, placali, riz sauce graine : nos plats signatures, cuisinés maison pour vos plus belles réceptions.">
-               <img src="img/portfolio/work1.jpg" alt="Spécialités ivoiriennes" />
-               <div class="gover"><span><i class="fas fa-expand-alt"></i> Grandes Spécialités</span></div>
+         <div class="howsteps" data-aos="fade-up">
+            <div class="howstep"><div class="n">Étape 01</div><div class="ic"><i class="fas fa-hand-pointer"></i></div><h5>Choisissez votre formule</h5><p>Commande à livrer, ou devis traiteur pour un événement.</p></div>
+            <div class="howstep"><div class="n">Étape 02</div><div class="ic"><i class="fas fa-utensils"></i></div><h5>Composez votre menu</h5><p>Ajoutez vos plats au panier depuis notre carte ivoirienne.</p></div>
+            <div class="howstep"><div class="n">Étape 03</div><div class="ic"><i class="fas fa-file-signature"></i></div><h5>Envoyez votre demande</h5><p>On vous confirme prix et détails avec un devis personnalisé.</p></div>
+            <div class="howstep"><div class="n">Étape 04</div><div class="ic"><i class="fas fa-truck"></i></div><h5>On s'occupe du reste</h5><p>Cuisine maison, livraison et dressage partout à Montréal.</p></div>
+         </div>
+         <div class="text-center mt-5" data-aos="fade-up"><a href="commander.html" class="btn-ed--solid"><i class="fas fa-bag-shopping"></i>Commencer ma commande</a></div>
+      </div>
+   </section>
+   <section id="services">
+      <div class="container">
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Ce que nous faisons</span>
+            <h2 class="stitle">Nos <span>Services</span></h2>
+            <div class="sline"></div>
+            <p class="sdesc mx-auto" style="max-width:500px;">Du grand mariage au dîner intime, nous cuisinons, livrons
+               et dressons les saveurs de la Côte d'Ivoire pour tous vos événements.</p>
+         </div>
+         <div class="row g-4">
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+               <div class="svccard">
+                  <div class="svcico"><i class="fas fa-ring"></i></div>
+                  <div class="svctit">Mariages &amp; Réceptions</div>
+                  <p class="svctxt">Buffets généreux et menus raffinés pour célébrer vos plus beaux moments.</p>
+               </div>
             </div>
-            <div class="gitem" data-gi="1" data-gimg="img/portfolio/work2.jpg" data-gtitle="Grillades & Braisés"
-               data-gdesc="Poulet et poisson braisés au feu, brochettes et alloco doré : le goût de la rue d'Abidjan chez vous.">
-               <img src="img/portfolio/work2.jpg" alt="Grillades" />
-               <div class="gover"><span><i class="fas fa-expand-alt"></i> Grillades &amp; Braisés</span></div>
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+               <div class="svccard">
+                  <div class="svcico g"><i class="fas fa-briefcase"></i></div>
+                  <div class="svctit">Événements d'entreprise</div>
+                  <p class="svctxt">Cocktails, déjeuners d'affaires et lancements, livrés et dressés sur place.</p>
+               </div>
             </div>
-            <div class="gitem" data-gi="2" data-gimg="img/portfolio/work3.jpg" data-gtitle="Buffets d'événements"
-               data-gdesc="Des buffets généreux et colorés, dressés avec soin pour mariages, baptêmes et fêtes de famille.">
-               <img src="img/portfolio/work3.jpg" alt="Buffet traiteur" />
-               <div class="gover"><span><i class="fas fa-expand-alt"></i> Buffets d'événements</span></div>
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+               <div class="svccard">
+                  <div class="svcico"><i class="fas fa-cake-candles"></i></div>
+                  <div class="svctit">Fêtes de famille</div>
+                  <p class="svctxt">Baptêmes, anniversaires, retrouvailles : la cuisine du pays qui rassemble.</p>
+               </div>
             </div>
-            <div class="gitem" data-gi="3" data-gimg="img/portfolio/work4.jpg" data-gtitle="Desserts du Pays"
-               data-gdesc="Deguê, dôkounou, salade de fruits et douceurs maison pour terminer le repas sur une note sucrée.">
-               <img src="img/portfolio/work4.jpg" alt="Desserts" />
-               <div class="gover"><span><i class="fas fa-expand-alt"></i> Desserts du Pays</span></div>
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+               <div class="svccard">
+                  <div class="svcico g"><i class="fas fa-truck"></i></div>
+                  <div class="svctit">Livraison &amp; Dressage</div>
+                  <p class="svctxt">Partout dans le Grand Montréal, vos plats arrivent prêts à régaler vos convives.</p>
+               </div>
             </div>
-            <div class="gitem" data-gi="4" data-gimg="img/portfolio/work5.jpg" data-gtitle="Entrées Fraîches"
-               data-gdesc="Salades, nems et rouleaux, tomates farcies : des entrées fraîches et raffinées pour ouvrir vos réceptions.">
-               <img src="img/portfolio/work5.jpg" alt="Entrées fraîches" />
-               <div class="gover"><span><i class="fas fa-expand-alt"></i> Entrées Fraîches</span></div>
+         </div>
+         <div class="text-center mt-5" data-aos="fade-up"><a href="contact.html" class="btn-red"><i class="fas fa-file-signature"></i>Composer mon menu sur mesure</a></div>
+      </div>
+   </section>
+   <section id="about">
+      <div class="container">
+         <div class="row align-items-center g-5">
+            <div class="col-lg-5" data-aos="fade-right">
+               <div class="astack">
+                  <div class="aexp"><span class="anum">10+</span><small>Ans de<br />Passion</small></div>
+                  <div class="amain"><img src="img/about1.jpg" alt="Thalia's Traiteur" /></div>
+                  <div class="asm"><img src="img/about2.jpg" alt="" /></div>
+               </div>
+            </div>
+            <div class="col-lg-7" data-aos="fade-left">
+               <span class="slbl">Notre Histoire</span>
+               <h2 class="stitle text-start">Le goût de la Côte d'Ivoire,<br />livré <span>chez vous</span></h2>
+               <div class="sline lft"></div>
+               <p class="sdesc mb-4">Thalia's Traiteur, c'est avant tout une passion : faire voyager vos invités jusqu'à
+                  Abidjan, le temps d'un repas. Spécialisés dans le service traiteur, nous préparons pour vos réceptions
+                  des plats ivoiriens authentiques, généreux et cuisinés maison, du grand mariage au dîner intime.</p>
+               <div class="mb-4">
+                  <div class="fti">
+                     <div class="ftico r"><i class="fas fa-leaf"></i></div>
+                     <div>
+                        <h6>Fait maison, produits frais</h6>
+                        <p>Chaque plat est cuisiné à la commande, avec des ingrédients frais et les épices
+                           authentiques du pays.</p>
+                     </div>
+                  </div>
+                  <div class="fti">
+                     <div class="ftico y"><i class="fas fa-champagne-glasses"></i></div>
+                     <div>
+                        <h6>Pour tous vos événements</h6>
+                        <p>Mariages, baptêmes, anniversaires, cocktails d'entreprise : un menu sur mesure pour chaque
+                           occasion.</p>
+                     </div>
+                  </div>
+                  <div class="fti">
+                     <div class="ftico g"><i class="fas fa-truck"></i></div>
+                     <div>
+                        <h6>Livraison & dressage</h6>
+                        <p>Nous livrons et dressons vos plats partout dans le Grand Montréal, prêts à régaler vos
+                           convives.</p>
+                     </div>
+                  </div>
+               </div>
+               <a href="#menu" class="btn-red"><i class="fas fa-book-open"></i>Voir tout le menu</a>
             </div>
          </div>
       </div>
    </section>
-   <!-- FIX 7 � GALLERY POPUP -->
-   <div id="galPop">
-      <div class="gpbox">
-         <button class="gpclose" id="gpClose"><i class="fas fa-times"></i></button>
-         <img id="gpImg" src="" alt="" />
-         <div class="gpcap">
-            <h5 id="gpTitle"></h5>
-            <p id="gpDesc"></p>
-         </div>
-         <div class="gpnav">
-            <button id="gpPrev"><i class="fas fa-chevron-left me-1"></i>Prev</button>
-            <button id="gpNext">Next <i class="fas fa-chevron-right ms-1"></i></button>
-         </div>
-      </div>
-   </div>
-
-
-   <!-- ============================================================
-         HISTORY � FIX 8 (alternating left/right text)
-         ============================================================ -->
    <section id="history">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
@@ -854,54 +768,161 @@
          </div>
       </div>
    </section>
-
-
-   <!-- SERVICES -->
-   <section id="services">
+   <section id="gallery">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
-            <span class="slbl">Ce que nous faisons</span>
-            <h2 class="stitle">Nos <span>Services</span></h2>
+            <span class="slbl">En images</span>
+            <h2 class="stitle">Un aperçu de <span>nos tables</span></h2>
             <div class="sline"></div>
-            <p class="sdesc mx-auto" style="max-width:500px;">Du grand mariage au dîner intime, nous cuisinons, livrons
-               et dressons les saveurs de la Côte d'Ivoire pour tous vos événements.</p>
          </div>
-         <div class="row g-4">
-            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
-               <div class="svccard">
-                  <div class="svcico"><i class="fas fa-ring"></i></div>
-                  <div class="svctit">Mariages &amp; Réceptions</div>
-                  <p class="svctxt">Buffets généreux et menus raffinés pour célébrer vos plus beaux moments.</p>
-               </div>
+         <div class="ggrid" data-aos="fade-up">
+            <div class="gitem" data-gi="0" data-gimg="img/portfolio/work1.jpg" data-gtitle="Grandes Spécialités"
+               data-gdesc="Tchep, placali, riz sauce graine : nos plats signatures, cuisinés maison pour vos plus belles réceptions.">
+               <img src="img/portfolio/work1.jpg" alt="Spécialités ivoiriennes" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Grandes Spécialités</span></div>
             </div>
-            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
-               <div class="svccard">
-                  <div class="svcico g"><i class="fas fa-briefcase"></i></div>
-                  <div class="svctit">Événements d'entreprise</div>
-                  <p class="svctxt">Cocktails, déjeuners d'affaires et lancements, livrés et dressés sur place.</p>
-               </div>
+            <div class="gitem" data-gi="1" data-gimg="img/portfolio/work2.jpg" data-gtitle="Grillades & Braisés"
+               data-gdesc="Poulet et poisson braisés au feu, brochettes et alloco doré : le goût de la rue d'Abidjan chez vous.">
+               <img src="img/portfolio/work2.jpg" alt="Grillades" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Grillades &amp; Braisés</span></div>
             </div>
-            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
-               <div class="svccard">
-                  <div class="svcico"><i class="fas fa-cake-candles"></i></div>
-                  <div class="svctit">Fêtes de famille</div>
-                  <p class="svctxt">Baptêmes, anniversaires, retrouvailles : la cuisine du pays qui rassemble.</p>
-               </div>
+            <div class="gitem" data-gi="2" data-gimg="img/portfolio/work3.jpg" data-gtitle="Buffets d'événements"
+               data-gdesc="Des buffets généreux et colorés, dressés avec soin pour mariages, baptêmes et fêtes de famille.">
+               <img src="img/portfolio/work3.jpg" alt="Buffet traiteur" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Buffets d'événements</span></div>
             </div>
-            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
-               <div class="svccard">
-                  <div class="svcico g"><i class="fas fa-truck"></i></div>
-                  <div class="svctit">Livraison &amp; Dressage</div>
-                  <p class="svctxt">Partout dans le Grand Montréal, vos plats arrivent prêts à régaler vos convives.</p>
-               </div>
+            <div class="gitem" data-gi="3" data-gimg="img/portfolio/work4.jpg" data-gtitle="Desserts du Pays"
+               data-gdesc="Deguê, dôkounou, salade de fruits et douceurs maison pour terminer le repas sur une note sucrée.">
+               <img src="img/portfolio/work4.jpg" alt="Desserts" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Desserts du Pays</span></div>
+            </div>
+            <div class="gitem" data-gi="4" data-gimg="img/portfolio/work5.jpg" data-gtitle="Entrées Fraîches"
+               data-gdesc="Salades, nems et rouleaux, tomates farcies : des entrées fraîches et raffinées pour ouvrir vos réceptions.">
+               <img src="img/portfolio/work5.jpg" alt="Entrées fraîches" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Entrées Fraîches</span></div>
             </div>
          </div>
-         <div class="text-center mt-5" data-aos="fade-up"><a href="contact.html" class="btn-red"><i class="fas fa-file-signature"></i>Composer mon menu sur mesure</a></div>
       </div>
    </section>
-
-
-   <!-- HOURS -->
+   <section id="testimonials">
+      <div class="container">
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Ils nous font confiance</span>
+            <h2 class="stitle">L'avis de nos <span>clients</span></h2>
+            <div class="sline"></div>
+         </div>
+         <div class="swiper tesSwiper" data-aos="fade-up">
+            <div class="swiper-wrapper">
+               <div class="swiper-slide">
+                  <div class="tescard">
+                     <div class="tesq">"</div>
+                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                     <p class="testxt">Thalia's a assuré le traiteur de notre mariage : 120 invités conquis ! Le tchep et
+                        le poulet braisé étaient exactement comme au pays. Un service impeccable, on recommande à 200%.</p>
+                     <div class="tesauth">
+                        <img src="img/testimonial/1.jpg" alt="" />
+                        <div>
+                           <div class="tesnm">Mariam & Serge</div>
+                           <div class="tesrl">Mariage · Laval</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="tescard">
+                     <div class="tesq">"</div>
+                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                     <p class="testxt">Livraison à l'heure, plats chauds et généreux, présentation soignée. Le placali sauce
+                        kopé a fait l'unanimité au baptême de ma fille. Une adresse à garder précieusement !</p>
+                     <div class="tesauth">
+                        <img src="img/testimonial/2.jpg" alt="" />
+                        <div>
+                           <div class="tesnm">Fatou D.</div>
+                           <div class="tesrl">Baptême · Montréal</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="tescard">
+                     <div class="tesq">"</div>
+                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                     <p class="testxt">Des saveurs authentiques et une cheffe passionnée. La marmite de fruits de mer était
+                        divine. Thalia s'adapte à tous les budgets et conseille avec le sourire. Merci pour tout !</p>
+                     <div class="tesauth">
+                        <img src="img/testimonial/3.jpg" alt="" />
+                        <div>
+                           <div class="tesnm">Grace A.</div>
+                           <div class="tesrl">Anniversaire · Brossard</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="swiper-slide">
+                  <div class="tescard">
+                     <div class="tesq">"</div>
+                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                     <p class="testxt">Nous avons fait appel à Thalia's pour un événement d'entreprise de 50 personnes :
+                        tout était parfait, frais, à l'heure et joliment présenté. Le poulet braisé a fait sensation !</p>
+                     <div class="tesauth">
+                        <img src="img/testimonial/4.jpg" alt="" />
+                        <div>
+                           <div class="tesnm">David P.</div>
+                           <div class="tesrl">Client entreprise</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="swiper-pagination mt-4" style="position:static;"></div>
+         </div>
+      </div>
+   </section>
+   <section id="special">
+      <div class="spbg"></div>
+      <div class="container" style="position:relative;z-index:2;">
+         <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+               <div class="sptag"><i class="fas fa-bolt me-1"></i>Offre découverte</div>
+               <h2 class="sptitle">-15% sur votre<br />premier<br /><span>événement</span> traiteur</h2>
+               <p class="spdesc">Vous organisez une réception ? Profitez de 15% de réduction sur votre première commande
+                  traiteur de 10 personnes ou plus. Réservez vite, l'offre est limitée.</p>
+               <div class="cdwrap">
+                  <div class="cditem"><span class="cdnum" id="cdH">08</span><span class="cdlbl">Heures</span></div>
+                  <div class="cditem"><span class="cdnum" id="cdM">45</span><span class="cdlbl">Minutes</span></div>
+                  <div class="cditem"><span class="cdnum" id="cdS">30</span><span class="cdlbl">Secondes</span></div>
+               </div>
+               <a href="contact.html" class="btn-red"><i class="fas fa-file-signature"></i>J'en profite</a>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+               <div class="spimgw">
+                  <div class="spglow"></div>
+                  <div class="sppbdg"><span class="old">$24.99</span><span class="np">$17.49</span></div>
+                  <img src="img/off-img.jpg" alt="Offre découverte traiteur" />
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section id="reservation">
+      <div class="container">
+         <div class="text-center" data-aos="fade-up">
+            <span class="slbl">Passez commande</span>
+            <h2 class="stitle">Envie de <span>commander</span> ?</h2>
+            <div class="sline"></div>
+            <p class="sdesc mx-auto" style="max-width:540px;">Faites-vous livrer vos plats favoris, ou demandez un devis
+               traiteur sur mesure pour votre événement. Tout se passe sur une seule page.</p>
+            <div class="d-flex flex-wrap gap-3 justify-content-center" style="margin-top:26px;">
+               <a href="commander.html" class="btn-ed--solid"><i class="fas fa-truck-fast"></i>Commande &amp; livraison</a>
+               <a href="commander.html" class="btn-ed--ghost">Devis événement <i class="fas fa-arrow-right"></i></a>
+            </div>
+         </div>
+      </div>
+   </section>
    <section id="hours">
       <div class="hrsbg"></div>
       <div class="container" style="position:relative;z-index:2;">
@@ -983,125 +1004,6 @@
          </div>
       </div>
    </section>
-
-
-   <!-- TESTIMONIALS -->
-   <section id="testimonials">
-      <div class="container">
-         <div class="text-center mb-5" data-aos="fade-up">
-            <span class="slbl">Ils nous font confiance</span>
-            <h2 class="stitle">L'avis de nos <span>clients</span></h2>
-            <div class="sline"></div>
-         </div>
-         <div class="swiper tesSwiper" data-aos="fade-up">
-            <div class="swiper-wrapper">
-               <div class="swiper-slide">
-                  <div class="tescard">
-                     <div class="tesq">"</div>
-                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Thalia's a assuré le traiteur de notre mariage : 120 invités conquis ! Le tchep et
-                        le poulet braisé étaient exactement comme au pays. Un service impeccable, on recommande à 200%.</p>
-                     <div class="tesauth">
-                        <img src="img/testimonial/1.jpg" alt="" />
-                        <div>
-                           <div class="tesnm">Mariam & Serge</div>
-                           <div class="tesrl">Mariage · Laval</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="swiper-slide">
-                  <div class="tescard">
-                     <div class="tesq">"</div>
-                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Livraison à l'heure, plats chauds et généreux, présentation soignée. Le placali sauce
-                        kopé a fait l'unanimité au baptême de ma fille. Une adresse à garder précieusement !</p>
-                     <div class="tesauth">
-                        <img src="img/testimonial/2.jpg" alt="" />
-                        <div>
-                           <div class="tesnm">Fatou D.</div>
-                           <div class="tesrl">Baptême · Montréal</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="swiper-slide">
-                  <div class="tescard">
-                     <div class="tesq">"</div>
-                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Des saveurs authentiques et une cheffe passionnée. La marmite de fruits de mer était
-                        divine. Thalia s'adapte à tous les budgets et conseille avec le sourire. Merci pour tout !</p>
-                     <div class="tesauth">
-                        <img src="img/testimonial/3.jpg" alt="" />
-                        <div>
-                           <div class="tesnm">Grace A.</div>
-                           <div class="tesrl">Anniversaire · Brossard</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="swiper-slide">
-                  <div class="tescard">
-                     <div class="tesq">"</div>
-                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Nous avons fait appel à Thalia's pour un événement d'entreprise de 50 personnes :
-                        tout était parfait, frais, à l'heure et joliment présenté. Le poulet braisé a fait sensation !</p>
-                     <div class="tesauth">
-                        <img src="img/testimonial/4.jpg" alt="" />
-                        <div>
-                           <div class="tesnm">David P.</div>
-                           <div class="tesrl">Client entreprise</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="swiper-pagination mt-4" style="position:static;"></div>
-         </div>
-      </div>
-   </section>
-
-   <!-- RESERVATION FORM -->
-   <section id="reservation">
-      <div class="container">
-         <div class="text-center" data-aos="fade-up">
-            <span class="slbl">Passez commande</span>
-            <h2 class="stitle">Envie de <span>commander</span> ?</h2>
-            <div class="sline"></div>
-            <p class="sdesc mx-auto" style="max-width:540px;">Faites-vous livrer vos plats favoris, ou demandez un devis
-               traiteur sur mesure pour votre événement. Tout se passe sur une seule page.</p>
-            <div class="d-flex flex-wrap gap-3 justify-content-center" style="margin-top:26px;">
-               <a href="commander.html" class="btn-ed--solid"><i class="fas fa-truck-fast"></i>Commande &amp; livraison</a>
-               <a href="commander.html" class="btn-ed--ghost">Devis événement <i class="fas fa-arrow-right"></i></a>
-            </div>
-         </div>
-      </div>
-   </section>
-
-   <!-- HOW IT WORKS -->
-   <section id="how">
-      <div class="container">
-         <div class="text-center mb-5" data-aos="fade-up">
-            <span class="slbl">Simple &amp; rapide</span>
-            <h2 class="stitle">Comment <span>commander</span> ?</h2>
-            <div class="sline"></div>
-            <p class="sdesc mx-auto" style="max-width:520px;">De votre envie à la table, en quatre étapes — à livrer chez vous ou en traiteur pour votre événement.</p>
-         </div>
-         <div class="howsteps" data-aos="fade-up">
-            <div class="howstep"><div class="n">Étape 01</div><div class="ic"><i class="fas fa-hand-pointer"></i></div><h5>Choisissez votre formule</h5><p>Commande à livrer, ou devis traiteur pour un événement.</p></div>
-            <div class="howstep"><div class="n">Étape 02</div><div class="ic"><i class="fas fa-utensils"></i></div><h5>Composez votre menu</h5><p>Ajoutez vos plats au panier depuis notre carte ivoirienne.</p></div>
-            <div class="howstep"><div class="n">Étape 03</div><div class="ic"><i class="fas fa-file-signature"></i></div><h5>Envoyez votre demande</h5><p>On vous confirme prix et détails avec un devis personnalisé.</p></div>
-            <div class="howstep"><div class="n">Étape 04</div><div class="ic"><i class="fas fa-truck"></i></div><h5>On s'occupe du reste</h5><p>Cuisine maison, livraison et dressage partout à Montréal.</p></div>
-         </div>
-         <div class="text-center mt-5" data-aos="fade-up"><a href="commander.html" class="btn-ed--solid"><i class="fas fa-bag-shopping"></i>Commencer ma commande</a></div>
-      </div>
-   </section>
-
-   <!-- NEWSLETTER -->
    <section id="newsletter">
       <div class="nlbg"></div>
       <div class="container">
@@ -1120,10 +1022,6 @@
          </div>
       </div>
    </section>
-
-   <!-- ============================================================
-         FIX 6 � CONTACT FORM
-         ============================================================ -->
    <section id="contact-section">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
@@ -1196,6 +1094,67 @@
          </div>
       </div>
    </section>
+
+   <div id="menuPop">
+      <div class="mpbox">
+         <button class="mpclose" id="mpClose"><i class="fas fa-times"></i></button>
+         <div class="mpchooser" style="display:none;">
+            <h4>Comment souhaitez-vous commander&nbsp;?</h4>
+            <p>Choisissez d'abord votre type de commande.</p>
+            <div class="mpchoose-btns">
+               <button type="button" data-choose="livraison"><i class="fas fa-truck-fast"></i><b>Commande &amp; Livraison</b><small>Plats livrés chez vous · à la portion, prix affichés</small></button>
+               <button type="button" data-choose="evenement"><i class="fas fa-champagne-glasses"></i><b>Traiteur &amp; Événement</b><small>Devis sur mesure · au nombre de personnes</small></button>
+            </div>
+         </div>
+         <div class="mpview">
+            <div class="mpimg">
+               <div class="mpcar" id="mpCar">
+                  <div class="mpcar-track" id="mpCarTrack"></div>
+                  <button class="mpcar-nav mpcar-prev" id="mpCarPrev" type="button" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+                  <button class="mpcar-nav mpcar-next" id="mpCarNext" type="button" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+                  <div class="mpcar-dots" id="mpCarDots"></div>
+               </div>
+            </div>
+            <div class="mpbody">
+               <div class="mp-typebar">
+                  <span class="mp-typelbl">Type de commande</span>
+                  <div class="ordtoggle">
+                     <button type="button" data-ordtoggle="livraison"><i class="fas fa-truck-fast"></i>Livraison</button>
+                     <button type="button" data-ordtoggle="evenement"><i class="fas fa-champagne-glasses"></i>Événement</button>
+                  </div>
+               </div>
+               <div id="mpCat"></div>
+               <div id="mpTitle"></div>
+               <div id="mpStars"></div>
+               <div id="mpDesc"></div>
+               <div id="mpPrice"></div>
+               <div class="mpmeta" id="mpMeta"></div>
+               <div class="mpqty">
+                  <button class="mpqbtn" id="mpMinus">-</button>
+                  <span class="mpqnum" id="mpQnum">1</span>
+                  <button class="mpqbtn" id="mpPlus">+</button>
+                  <span id="mpQtyLabel" style="font-size:.82rem;color:#aaa;margin-left:9px;">portion(s)</span>
+               </div>
+               <div class="mptags" id="mpTags"></div>
+               <button class="mpaddcart" id="mpAddCart"><i class="fas fa-shopping-cart"></i>Ajouter à ma commande</button>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div id="galPop">
+      <div class="gpbox">
+         <button class="gpclose" id="gpClose"><i class="fas fa-times"></i></button>
+         <img id="gpImg" src="" alt="" />
+         <div class="gpcap">
+            <h5 id="gpTitle"></h5>
+            <p id="gpDesc"></p>
+         </div>
+         <div class="gpnav">
+            <button id="gpPrev"><i class="fas fa-chevron-left me-1"></i>Prev</button>
+            <button id="gpNext">Next <i class="fas fa-chevron-right ms-1"></i></button>
+         </div>
+      </div>
+   </div>
 
    <!-- FOOTER -->
    <footer>
