@@ -31,14 +31,19 @@ Variables : `subject` · `name` · `email` · `phone` · `order_type` ·
 `event_type` · `guests` · `date` · `time` · `address` · `place` · `dishes` ·
 `total` · `topic` · `message`.
 
-## ⚠️ Note sur Gmail
-Le masquage des lignes vides utilise `:has()` / `:empty`, **supportés par Apple
-Mail, iOS Mail et la plupart des clients récents, mais PAS par Gmail**. Les
-e-mails de **commande / devis** sont parfaits partout (tous les champs sont
-remplis, rien à masquer). Pour un **message de contact lu dans Gmail**,
-quelques lignes vides peuvent apparaître.
+## Styles 100 % inline (compatibilité Gmail / Pixel)
+Tous les styles visuels (largeur, alignement, couleurs, marges) sont écrits
+**inline sur chaque élément**, car l'appli **Gmail Android (Pixel)** ignore
+souvent le bloc `<style>`. Le `<style>` restant ne sert qu'à deux choses
+optionnelles : masquer les lignes vides (`:has` / `:empty`) et le responsive
+mobile — le rendu reste correct même si un client les ignore.
 
-➡️ Si tu veux un rendu **impeccable aussi pour le contact dans Gmail**, le plus
-propre est de créer un **2ᵉ formulaire Formspree dédié au contact** avec un
-template simplifié. Dis-le-moi, je te le prépare et je branche
-`FORM_ENDPOINT_CONTACT` côté site.
+## ⚠️ Note sur Gmail (uniquement le formulaire de contact)
+Le masquage des lignes vides utilise `:has()` / `:empty`, **non supportés par
+Gmail**. Les e-mails de **commande / devis** sont parfaits partout (tous les
+champs sont remplis, rien à masquer). Pour un **message de contact lu dans
+Gmail**, quelques lignes vides peuvent apparaître.
+
+➡️ Pour un contact **impeccable aussi dans Gmail**, le plus propre est un
+**2ᵉ formulaire Formspree dédié au contact** (template simplifié) branché sur
+`FORM_ENDPOINT_CONTACT`. Dis-le-moi, je le prépare.
