@@ -6,29 +6,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Thalia's Traiteur — Nouvelle demande</title>
 <!-- ================================================================
-     Thalia's Traiteur — Template e-mail de notification (Formspree)
-     >>> Colle TOUT ce fichier (du <!doctype> au </html>) dans Formspree.
-     Variables (champs envoyés par le site) :
-       name · email · phone · subject · order_type · event_type
-       guests · date · time · address · place · dishes · total
-       topic · message
-     Les sections conditionnelles ne s'affichent que si le champ existe :
-     le MEME fichier gere la page Commander ET la page Contact.
+     Thalia's Traiteur - Template e-mail de notification (Formspree)
+     >>> Colle TOUT ce fichier (du doctype au /html) dans Formspree.
+     Formspree ne remplace QUE les variables entre doubles accolades ;
+     il ne gere aucune logique conditionnelle. On s'appuie donc sur la
+     variable "details" (le recapitulatif deja mis en forme, envoye par
+     le site) qui contient tout le contenu, que ce soit une commande ou
+     un simple message de contact.
+     Variables utilisees : subject . name . email . details
      ================================================================ -->
 <style>
 /* ================================================================
-   Thalia's Traiteur — CSS du template e-mail (Formspree)
-   >>> Colle CE fichier dans le champ CSS de Formspree.
-   Palette : orange drapeau #ff8200 · vert #009e60 · crème #faf5ef.
-   Pensé pour Gmail, Apple Mail, iOS, Outlook mobile.
+   Thalia's Traiteur - CSS du template e-mail (Formspree)
+   Palette : orange drapeau #ff8200 . vert #009e60 . creme #faf5ef.
+   Pense pour Gmail, Apple Mail, iOS, Outlook mobile.
    ================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
 
-body,
-.tt-bg { margin: 0; padding: 0; }
+body { margin: 0; padding: 0; }
 
-/* aperçu masqué */
 .tt-preheader {
   display: none !important;
   visibility: hidden;
@@ -67,10 +64,7 @@ body,
 .tt-flag-g { background: #009e60; width: 33.33%; }
 
 /* ---- marque ---- */
-.tt-head {
-  padding: 36px 40px 6px;
-  text-align: center;
-}
+.tt-head { padding: 36px 40px 6px; text-align: center; }
 .tt-brand {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-size: 31px;
@@ -88,10 +82,7 @@ body,
 }
 
 /* ---- titre ---- */
-.tt-hero {
-  padding: 24px 40px 6px;
-  text-align: center;
-}
+.tt-hero { padding: 24px 40px 8px; text-align: center; }
 .tt-eyebrow {
   display: inline-block;
   font-size: 11px;
@@ -108,99 +99,39 @@ body,
   font-weight: 700;
   color: #241a12;
 }
+.tt-from {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #9a8b7b;
+}
+.tt-from b { color: #3a2f26; font-weight: 600; }
 
-/* ---- sections ---- */
-.tt-section { padding: 24px 40px 2px; }
+/* ---- section détails ---- */
+.tt-section { padding: 26px 40px 4px; }
 .tt-section-label {
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
   color: #a6957f;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   padding-bottom: 9px;
   border-bottom: 1px solid #efe6da;
 }
-
-.tt-rows { border-collapse: collapse; }
-.tt-rows td {
-  padding: 9px 0;
-  vertical-align: top;
-  font-size: 15px;
-  border-bottom: 1px solid #f5efe6;
-}
-.tt-rows tr:last-child td { border-bottom: 0; }
-.tt-k {
-  width: 150px;
-  color: #9a8b7b;
-  font-weight: 500;
-}
-.tt-v {
-  color: #3a2f26;
-  font-weight: 500;
-}
-.tt-link {
-  color: #e06f00;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.tt-chip {
-  display: inline-block;
-  background: #fff3e6;
-  color: #c85f00;
-  padding: 5px 14px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.tt-dishes {
+.tt-details {
   background: #faf5ef;
   border: 1px solid #efe6da;
-  border-radius: 10px;
-  padding: 15px 16px;
-  font-size: 15px;
-  color: #3a2f26;
-  line-height: 1.7;
-}
-
-.tt-total {
-  margin-top: 14px;
-  background: #241a12;
-  border-radius: 10px;
-}
-.tt-total td { padding: 15px 20px; vertical-align: middle; }
-.tt-total-l {
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #e9c9a5;
-}
-.tt-total-r {
-  text-align: right;
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 23px;
-  font-weight: 700;
-  color: #ffb15c;
-}
-
-.tt-message {
-  background: #faf5ef;
   border-left: 3px solid #ff8200;
-  border-radius: 0 10px 10px 0;
-  padding: 15px 18px;
+  border-radius: 0 12px 12px 0;
+  padding: 20px 22px;
   font-size: 15px;
-  line-height: 1.75;
-  color: #4a3f36;
+  line-height: 1.8;
+  color: #3a2f26;
   white-space: pre-line;
 }
 
 /* ---- bouton ---- */
-.tt-cta-wrap {
-  padding: 30px 40px 10px;
-  text-align: center;
-}
+.tt-cta-wrap { padding: 30px 40px 10px; text-align: center; }
 .tt-cta {
   display: inline-block;
   background: #ff8200;
@@ -212,29 +143,23 @@ body,
   border-radius: 8px;
   letter-spacing: 0.3px;
 }
+.tt-cta-note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #b6a998;
+}
+.tt-cta-note a { color: #e06f00; text-decoration: none; font-weight: 600; }
 
 /* ---- pied ---- */
-.tt-foot {
-  padding: 32px 40px 36px;
-  text-align: center;
-  background: #faf5ef;
-}
+.tt-foot { padding: 32px 40px 36px; text-align: center; background: #faf5ef; }
 .tt-foot-brand {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 17px;
   color: #241a12;
   font-weight: 700;
 }
-.tt-foot-line {
-  font-size: 13px;
-  color: #8a7d70;
-  margin-top: 4px;
-}
-.tt-foot-note {
-  font-size: 11px;
-  color: #b6a998;
-  margin-top: 15px;
-}
+.tt-foot-line { font-size: 13px; color: #8a7d70; margin-top: 4px; }
+.tt-foot-note { font-size: 11px; color: #b6a998; margin-top: 15px; }
 
 /* ---- mobile ---- */
 @media (max-width: 620px) {
@@ -243,7 +168,6 @@ body,
     padding-left: 22px !important;
     padding-right: 22px !important;
   }
-  .tt-k { width: 116px; }
   .tt-title { font-size: 21px; }
   .tt-brand { font-size: 27px; }
 }
@@ -282,100 +206,46 @@ body,
             </td>
           </tr>
 
-          <!-- titre -->
+          <!-- titre + expéditeur -->
           <tr>
             <td class="tt-hero">
               <div class="tt-eyebrow">Nouvelle demande</div>
               <div class="tt-title">Commande livraison – Awa Koné</div>
+              <div class="tt-from">Reçu de <b>Awa Koné</b></div>
             </td>
           </tr>
 
-          <!-- coordonnées client -->
-          <tr>
-            <td class="tt-section">
-              <div class="tt-section-label">Coordonnées du client</div>
-              <table role="presentation" width="100%" class="tt-rows" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td class="tt-k">Nom</td>
-                  <td class="tt-v">Awa Koné</td>
-                </tr>
-                <tr>
-                  <td class="tt-k">Courriel</td>
-                  <td class="tt-v"><a class="tt-link" href="mailto:awa.kone@example.com">awa.kone@example.com</a></td>
-                </tr>
-                
-                <tr>
-                  <td class="tt-k">Téléphone</td>
-                  <td class="tt-v"><a class="tt-link" href="tel:+1 (514) 549-3405">+1 (514) 549-3405</a></td>
-                </tr>
-                
-              </table>
-            </td>
-          </tr>
-
-          <!-- détails de la commande / événement -->
-          
+          <!-- détails (récapitulatif complet, commande OU contact) -->
           <tr>
             <td class="tt-section">
               <div class="tt-section-label">Détails de la demande</div>
-              <table role="presentation" width="100%" class="tt-rows" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td class="tt-k">Type</td>
-                  <td class="tt-v"><span class="tt-chip">Livraison</span></td>
-                </tr>
-                
-                
-                
-                <tr><td class="tt-k">Date</td><td class="tt-v">1 septembre 2026</td></tr>
-                
-                
-                <tr><td class="tt-k">Heure</td><td class="tt-v">18:30</td></tr>
-                
-                
-                <tr><td class="tt-k">Adresse</td><td class="tt-v">123 rue Sainte-Catherine, Montréal, H2X 1K4</td></tr>
-                
-                
-              </table>
+              <div class="tt-details">Bonjour Thalia's Traiteur,
+
+Je souhaite passer une COMMANDE À LIVRER :
+
+• Nom : Awa Koné
+• Téléphone : +1 (514) 549-3405
+• Courriel : awa.kone@example.com
+• Date de livraison : 1 septembre 2026
+• Heure : 18:30
+• Adresse de livraison : 123 rue Sainte-Catherine, Montréal, H2X 1K4
+
+Plats commandés :
+   - Tchep × 4 pers. (128 $)
+   - Poulet Braisé × 2 pers. (54 $)
+   - Garba × 2 pers. (44 $)
+
+Total estimé : 226 $
+
+Précisions : Prévoir un plat sans piment svp. Merci !</div>
             </td>
           </tr>
-          
-
-          <!-- plats + total -->
-          
-          <tr>
-            <td class="tt-section">
-              <div class="tt-section-label">Plats souhaités</div>
-              <div class="tt-dishes">Tchep × 4 pers., Poulet Braisé × 2 pers., Garba × 2 pers.</div>
-              
-              <table role="presentation" width="100%" class="tt-total" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td class="tt-total-l">Total estimé</td>
-                  <td class="tt-total-r">212 $</td>
-                </tr>
-              </table>
-              
-            </td>
-          </tr>
-          
-
-          <!-- objet (formulaire de contact) -->
-          
-
-          <!-- message -->
-          
-          <tr>
-            <td class="tt-section">
-              <div class="tt-section-label">Message</div>
-              <div class="tt-message">Bonjour, prévoir un plat sans piment pour deux personnes svp.
-Merci beaucoup !</div>
-            </td>
-          </tr>
-          
 
           <!-- bouton répondre -->
           <tr>
             <td class="tt-cta-wrap">
               <a class="tt-cta" href="mailto:awa.kone@example.com">Répondre au client</a>
+              <div class="tt-cta-note">ou écrire à <a href="mailto:awa.kone@example.com">awa.kone@example.com</a></div>
             </td>
           </tr>
 

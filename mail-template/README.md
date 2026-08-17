@@ -7,7 +7,7 @@ C'est le seul fichier à coller.
 | Fichier | Usage |
 |---|---|
 | `formspree-template.html` | **le fichier à coller** (complet, CSS inclus) |
-| `formspree-template.css`  | *optionnel* — le CSS seul, si un jour tu as des champs HTML/CSS séparés |
+| `formspree-template.css`  | *optionnel* — le même CSS seul, si champs HTML/CSS séparés |
 | `preview.html` | aperçu local à ouvrir dans un navigateur (données d'exemple) |
 
 ## Étapes
@@ -16,35 +16,27 @@ C'est le seul fichier à coller.
 3. **Sujet de l'e-mail** : mets `{{ subject }}` (ou `Nouvelle demande — {{ name }}`).
 4. **Enregistre**, puis envoie une demande de test depuis le site pour vérifier.
 
-## Un seul template pour les deux formulaires
-Formspree utilise **Liquid**. Le template gère **Commander** et **Contact**
-grâce aux blocs `{% if champ != blank %} … {% endif %}` : une section ne
-s'affiche que si le champ correspondant est rempli. Donc une commande montre
-Type / Date / Plats / Total, et un message de contact montre juste
-Objet / Message — sans lignes vides.
+## Important : Formspree ne fait QUE de la substitution de variables
+Formspree remplace uniquement les `{{ variable }}` — **il ne gère aucune
+logique** (`{% if %}`, `{{#if}}`… sortent tels quels dans l'e-mail, ou font
+planter le rendu). Le template n'utilise donc **que 4 variables**, toujours
+présentes :
 
-> ⚠️ Ne remets pas la syntaxe Handlebars `{{#if}}` : Formspree la refuse et
-> renvoie l'erreur « Something went wrong on our end ». C'est bien du Liquid
-> (`{% if %}`) qu'il faut.
+| Variable | Contenu |
+|---|---|
+| `{{ subject }}` | l'objet (« Commande livraison – Awa Koné », « Contact – … ») |
+| `{{ name }}` | le nom du client |
+| `{{ email }}` | le courriel du client (bouton **Répondre au client**) |
+| `{{ details }}` | **le récapitulatif complet déjà mis en forme** par le site |
 
-## Variables disponibles (champs envoyés par le site)
-`name` · `email` · `phone` · `subject` · `order_type` · `event_type` ·
-`guests` · `date` · `time` · `address` · `place` · `dishes` · `total` ·
-`topic` · `message` · `details`
+`{{ details }}` contient tout le détail — coordonnées, date, plats, total,
+message — que ce soit une **commande** ou un simple **message de contact**.
+Un seul template gère donc les deux formulaires, sans aucune condition.
+La mise en forme des retours à la ligne est assurée par `white-space: pre-line`.
 
-> `details` = tout le récapitulatif déjà mis en forme en texte (utile si tu
-> veux un template ultra-simple : un seul `{{ details }}` suffit).
-
-## Si les conditions `{% if %}` posent problème
-Dans ce cas :
-- soit tu **supprimes les balises** `{% if ... %}` et `{% endif %}` (les lignes
-  s'afficheront alors même vides — enlève à la main celles que tu n'utilises pas),
-- soit tu remplaces tout le corps par un simple bloc `{{ details }}` (le style
-  `.tt-message` avec `white-space: pre-line` conserve les retours à la ligne).
-
-## Notes de rendu
+## Bon à savoir
 - Les polices Google (Playfair / Poppins) se chargent sur Apple Mail / iOS ;
   ailleurs (Gmail, Outlook) un repli **Georgia / Poppins système** prend le
   relais — le rendu reste soigné.
 - Le bouton « Répondre au client » ouvre un mail pré-adressé à `{{ email }}`.
-- Aperçu local : ouvre `preview.html` dans un navigateur (données d'exemple).
+- Aperçu local : ouvre `preview.html` dans un navigateur.
