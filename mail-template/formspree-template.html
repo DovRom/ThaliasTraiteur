@@ -8,18 +8,18 @@
 <!-- ================================================================
      Thalia's Traiteur - Template e-mail de notification (Formspree)
      >>> Colle TOUT ce fichier (du doctype au /html) dans Formspree.
-     Formspree ne remplace QUE les variables entre doubles accolades ;
-     il ne gere aucune logique conditionnelle. On s'appuie donc sur la
-     variable "details" (le recapitulatif deja mis en forme, envoye par
-     le site) qui contient tout le contenu, que ce soit une commande ou
-     un simple message de contact.
-     Variables utilisees : subject . name . email . details
+     AUCUNE logique : Formspree ne fait que remplacer les {{ variables }}.
+     Le site envoie TOUJOURS tous les champs (vides si non applicables),
+     donc aucune balise ne reste "en dur". Les lignes/sections dont la
+     valeur est vide sont masquees par la regle CSS :empty.
+     Variables : subject . name . email . phone . order_type . event_type
+                 guests . date . time . address . place . dishes . total
+                 topic . message
      ================================================================ -->
 <style>
 /* ================================================================
    Thalia's Traiteur - CSS du template e-mail (Formspree)
    Palette : orange drapeau #ff8200 . vert #009e60 . creme #faf5ef.
-   Pense pour Gmail, Apple Mail, iOS, Outlook mobile.
    ================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap');
@@ -82,7 +82,7 @@ body { margin: 0; padding: 0; }
 }
 
 /* ---- titre ---- */
-.tt-hero { padding: 24px 40px 8px; text-align: center; }
+.tt-hero { padding: 24px 40px 6px; text-align: center; }
 .tt-eyebrow {
   display: inline-block;
   font-size: 11px;
@@ -99,36 +99,88 @@ body { margin: 0; padding: 0; }
   font-weight: 700;
   color: #241a12;
 }
-.tt-from {
-  margin-top: 12px;
-  font-size: 13px;
-  color: #9a8b7b;
-}
-.tt-from b { color: #3a2f26; font-weight: 600; }
 
-/* ---- section détails ---- */
-.tt-section { padding: 26px 40px 4px; }
+/* ---- sections ---- */
+.tt-section { padding: 24px 40px 2px; }
 .tt-section-label {
   font-size: 11px;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
   color: #a6957f;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   padding-bottom: 9px;
   border-bottom: 1px solid #efe6da;
 }
-.tt-details {
+
+.tt-rows { border-collapse: collapse; width: 100%; }
+.tt-rows td {
+  padding: 9px 0;
+  vertical-align: top;
+  font-size: 15px;
+  border-bottom: 1px solid #f5efe6;
+}
+.tt-k { width: 150px; color: #9a8b7b; font-weight: 500; }
+.tt-v { color: #3a2f26; font-weight: 500; }
+.tt-link { color: #e06f00; text-decoration: none; font-weight: 600; }
+
+/* masque une ligne dont la valeur est vide (champ non applicable) */
+.tt-row-opt td.tt-v:empty { color: transparent; }
+.tt-row-opt:has(td.tt-v:empty) { display: none; }
+.tt-chip:empty { display: none; }
+.tt-row-opt:has(.tt-chip:empty) { display: none; }
+
+.tt-chip {
+  display: inline-block;
+  background: #fff3e6;
+  color: #c85f00;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tt-dishes {
   background: #faf5ef;
   border: 1px solid #efe6da;
-  border-left: 3px solid #ff8200;
-  border-radius: 0 12px 12px 0;
-  padding: 20px 22px;
+  border-radius: 10px;
+  padding: 15px 16px;
   font-size: 15px;
-  line-height: 1.8;
   color: #3a2f26;
+  line-height: 1.7;
+}
+
+.tt-total { width: 100%; margin-top: 14px; background: #241a12; border-radius: 10px; }
+.tt-total td { padding: 15px 20px; vertical-align: middle; }
+.tt-total-l {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e9c9a5;
+}
+.tt-total-r {
+  text-align: right;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 23px;
+  font-weight: 700;
+  color: #ffb15c;
+}
+
+.tt-message {
+  background: #faf5ef;
+  border-left: 3px solid #ff8200;
+  border-radius: 0 10px 10px 0;
+  padding: 15px 18px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4a3f36;
   white-space: pre-line;
 }
+
+/* sections entieres masquables si leur contenu est vide */
+.tt-opt:has(.tt-dishes:empty) { display: none; }
+.tt-opt:has(.tt-message:empty) { display: none; }
+.tt-opt:has(.tt-v:empty) { display: none; }
 
 /* ---- bouton ---- */
 .tt-cta-wrap { padding: 30px 40px 10px; text-align: center; }
@@ -143,11 +195,7 @@ body { margin: 0; padding: 0; }
   border-radius: 8px;
   letter-spacing: 0.3px;
 }
-.tt-cta-note {
-  margin-top: 12px;
-  font-size: 12px;
-  color: #b6a998;
-}
+.tt-cta-note { margin-top: 12px; font-size: 12px; color: #b6a998; }
 .tt-cta-note a { color: #e06f00; text-decoration: none; font-weight: 600; }
 
 /* ---- pied ---- */
@@ -168,6 +216,7 @@ body { margin: 0; padding: 0; }
     padding-left: 22px !important;
     padding-right: 22px !important;
   }
+  .tt-k { width: 116px; }
   .tt-title { font-size: 21px; }
   .tt-brand { font-size: 27px; }
 }
@@ -206,20 +255,95 @@ body { margin: 0; padding: 0; }
             </td>
           </tr>
 
-          <!-- titre + expéditeur -->
+          <!-- titre -->
           <tr>
             <td class="tt-hero">
               <div class="tt-eyebrow">Nouvelle demande</div>
               <div class="tt-title">{{ subject }}</div>
-              <div class="tt-from">Reçu de <b>{{ name }}</b></div>
             </td>
           </tr>
 
-          <!-- détails (récapitulatif complet, commande OU contact) -->
+          <!-- coordonnées client -->
+          <tr>
+            <td class="tt-section">
+              <div class="tt-section-label">Coordonnées du client</div>
+              <table role="presentation" class="tt-rows" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="tt-k">Nom</td>
+                  <td class="tt-v">{{ name }}</td>
+                </tr>
+                <tr>
+                  <td class="tt-k">Courriel</td>
+                  <td class="tt-v"><a class="tt-link" href="mailto:{{ email }}">{{ email }}</a></td>
+                </tr>
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Téléphone</td>
+                  <td class="tt-v">{{ phone }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- détails de la demande -->
           <tr>
             <td class="tt-section">
               <div class="tt-section-label">Détails de la demande</div>
-              <div class="tt-details">{{ details }}</div>
+              <table role="presentation" class="tt-rows" cellpadding="0" cellspacing="0">
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Type</td>
+                  <td class="tt-v"><span class="tt-chip">{{ order_type }}</span></td>
+                </tr>
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Événement</td>
+                  <td class="tt-v">{{ event_type }}</td>
+                </tr>
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Convives</td>
+                  <td class="tt-v">{{ guests }}</td>
+                </tr>
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Date</td>
+                  <td class="tt-v">{{ date }}</td>
+                </tr>
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Heure</td>
+                  <td class="tt-v">{{ time }}</td>
+                </tr>
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Adresse</td>
+                  <td class="tt-v">{{ address }}</td>
+                </tr>
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Lieu</td>
+                  <td class="tt-v">{{ place }}</td>
+                </tr>
+                <tr class="tt-row-opt">
+                  <td class="tt-k">Objet</td>
+                  <td class="tt-v">{{ topic }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- plats + total -->
+          <tr class="tt-opt">
+            <td class="tt-section">
+              <div class="tt-section-label">Plats souhaités</div>
+              <div class="tt-dishes">{{ dishes }}</div>
+              <table role="presentation" class="tt-total tt-opt" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="tt-total-l">Total estimé</td>
+                  <td class="tt-total-r">{{ total }}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- message -->
+          <tr class="tt-opt">
+            <td class="tt-section">
+              <div class="tt-section-label">Message</div>
+              <div class="tt-message">{{ message }}</div>
             </td>
           </tr>
 

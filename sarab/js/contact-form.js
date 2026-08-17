@@ -16,6 +16,9 @@
         "_subject": subject, "subject": subject,
         "name": v("cNom"), "email": v("cMail"), "_replyto": v("cMail"), "reply_to": v("cMail"),
         "phone": v("cTel"), "topic": v("cSujet"),
+        // order-only keys sent empty so the shared template hides those rows
+        "order_type": "", "event_type": "", "guests": "", "date": "", "time": "",
+        "address": "", "place": "", "dishes": "", "total": "",
         "message": v("cMsg"), "details": details
       };
     }

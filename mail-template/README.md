@@ -1,7 +1,7 @@
 # Template e-mail — Thalia's Traiteur (Formspree)
 
 **`formspree-template.html` est un document HTML complet et autonome**
-(du `<!doctype html>` au `</html>`, CSS déjà embarqué dans le `<head>`).
+(du `<!doctype html>` au `</html>`, CSS embarqué dans le `<head>`).
 C'est le seul fichier à coller.
 
 | Fichier | Usage |
@@ -14,29 +14,31 @@ C'est le seul fichier à coller.
 1. Formspree → ton formulaire → **Settings → Email Templates** (ou *Customize*).
 2. Colle **tout** le contenu de `formspree-template.html` (du `<!doctype>` au `</html>`).
 3. **Sujet de l'e-mail** : mets `{{ subject }}` (ou `Nouvelle demande — {{ name }}`).
-4. **Enregistre**, puis envoie une demande de test depuis le site pour vérifier.
+4. **Enregistre**, puis envoie une demande de test depuis le site.
 
-## Important : Formspree ne fait QUE de la substitution de variables
-Formspree remplace uniquement les `{{ variable }}` — **il ne gère aucune
-logique** (`{% if %}`, `{{#if}}`… sortent tels quels dans l'e-mail, ou font
-planter le rendu). Le template n'utilise donc **que 4 variables**, toujours
-présentes :
+## Comment ça marche (sans aucune logique)
+Formspree ne fait **que remplacer les `{{ variables }}`** — il n'exécute aucune
+condition (`{% if %}` / `{{#if}}` cassent ou s'affichent en clair, à ne jamais
+utiliser). Ici, **pas de logique du tout** :
 
-| Variable | Contenu |
-|---|---|
-| `{{ subject }}` | l'objet (« Commande livraison – Awa Koné », « Contact – … ») |
-| `{{ name }}` | le nom du client |
-| `{{ email }}` | le courriel du client (bouton **Répondre au client**) |
-| `{{ details }}` | **le récapitulatif complet déjà mis en forme** par le site |
+- Le **site envoie toujours tous les champs** (vides quand ils ne s'appliquent
+  pas), donc aucune balise ne reste jamais « en dur » dans l'e-mail.
+- Les lignes/sections dont la valeur est vide sont **masquées en CSS** via
+  `:empty` / `:has()`. Résultat : une **commande** montre Type / Date / Plats /
+  Total, un **message de contact** montre juste Objet / Message — proprement.
 
-`{{ details }}` contient tout le détail — coordonnées, date, plats, total,
-message — que ce soit une **commande** ou un simple **message de contact**.
-Un seul template gère donc les deux formulaires, sans aucune condition.
-La mise en forme des retours à la ligne est assurée par `white-space: pre-line`.
+Variables : `subject` · `name` · `email` · `phone` · `order_type` ·
+`event_type` · `guests` · `date` · `time` · `address` · `place` · `dishes` ·
+`total` · `topic` · `message`.
 
-## Bon à savoir
-- Les polices Google (Playfair / Poppins) se chargent sur Apple Mail / iOS ;
-  ailleurs (Gmail, Outlook) un repli **Georgia / Poppins système** prend le
-  relais — le rendu reste soigné.
-- Le bouton « Répondre au client » ouvre un mail pré-adressé à `{{ email }}`.
-- Aperçu local : ouvre `preview.html` dans un navigateur.
+## ⚠️ Note sur Gmail
+Le masquage des lignes vides utilise `:has()` / `:empty`, **supportés par Apple
+Mail, iOS Mail et la plupart des clients récents, mais PAS par Gmail**. Les
+e-mails de **commande / devis** sont parfaits partout (tous les champs sont
+remplis, rien à masquer). Pour un **message de contact lu dans Gmail**,
+quelques lignes vides peuvent apparaître.
+
+➡️ Si tu veux un rendu **impeccable aussi pour le contact dans Gmail**, le plus
+propre est de créer un **2ᵉ formulaire Formspree dédié au contact** avec un
+template simplifié. Dis-le-moi, je te le prépare et je branche
+`FORM_ENDPOINT_CONTACT` côté site.

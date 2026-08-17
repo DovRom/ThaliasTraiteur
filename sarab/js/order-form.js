@@ -142,27 +142,30 @@
     function payload() {
       var items = (window.TTCart ? window.TTCart.items() : []);
       var subject = (mode === "evenement" ? "Demande de devis – " : "Commande livraison – ") + (val("oNom") || "Nouveau client");
-      var p = {
+      var ev = (mode === "evenement");
+      // ALWAYS send every key (empty when N/A) so the email template never
+      // shows a leftover token; empty rows are hidden by the template CSS.
+      return {
         "_subject": subject,          // Formspree subject
-        "subject": subject,           // EmailJS {{subject}}
-        "order_type": (mode === "evenement" ? "Traiteur / Événement" : "Livraison"),
+        "subject": subject,
+        "order_type": ev ? "Traiteur / Événement" : "Livraison",
         "name": val("oNom"),
         "phone": val("oTel"),
-        "email": val("oMail"),        // Formspree reply-to + EmailJS {{email}}
+        "email": val("oMail"),        // reply-to
         "_replyto": val("oMail"),
         "reply_to": val("oMail"),
+        "event_type": ev ? val("oType") : "",
+        "guests": ev ? val("oConvives") : "",
+        "date": ev ? val("oDateE") : val("oDate"),
+        "time": ev ? "" : val("oHeure"),
+        "address": ev ? "" : val("oAdresse"),
+        "place": ev ? val("oLieu") : "",
+        "topic": "",                  // used by the contact form only
         "dishes": items.map(function (i) { return i.name + " × " + i.qty + " pers."; }).join(", "),
-        "total": (mode === "evenement" ? "Sur devis" : (window.TTCart ? Math.round(window.TTCart.total()) + " $" : "")),
-        "message": val("oMsg"),       // client note
-        "details": body()             // full formatted body (single var for templates)
+        "total": ev ? "Sur devis" : (window.TTCart ? Math.round(window.TTCart.total()) + " $" : ""),
+        "message": val("oMsg"),
+        "details": body()
       };
-      if (mode === "evenement") {
-        p["event_type"] = val("oType"); p["guests"] = val("oConvives");
-        p["date"] = val("oDateE"); p["place"] = val("oLieu");
-      } else {
-        p["date"] = val("oDate"); p["time"] = val("oHeure"); p["address"] = val("oAdresse");
-      }
-      return p;
     }
 
     function confirmDone() {
