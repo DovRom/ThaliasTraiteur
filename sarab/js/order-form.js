@@ -138,23 +138,29 @@
 
     function cfg(k, d) { return (window.TT_CONFIG && window.TT_CONFIG[k]) || d; }
 
+    // Clean keys: readable in Formspree AND usable as EmailJS template vars.
     function payload() {
       var items = (window.TTCart ? window.TTCart.items() : []);
+      var subject = (mode === "evenement" ? "Demande de devis – " : "Commande livraison – ") + (val("oNom") || "Nouveau client");
       var p = {
-        "_subject": (mode === "evenement" ? "Demande de devis – " : "Commande livraison – ") + (val("oNom") || "Nouveau client"),
-        "Type de commande": (mode === "evenement" ? "Traiteur / Événement" : "Livraison"),
-        "Nom": val("oNom"), "Téléphone": val("oTel"), "Courriel": val("oMail"),
-        "Plats": items.map(function (i) { return i.name + " × " + i.qty + " pers."; }).join(", "),
-        "Total estimé": (mode === "evenement" ? "Sur devis" : (window.TTCart ? Math.round(window.TTCart.total()) + " $" : "")),
-        "Précisions": val("oMsg"),
-        "email": val("oMail"),
-        "message": body()
+        "_subject": subject,          // Formspree subject
+        "subject": subject,           // EmailJS {{subject}}
+        "order_type": (mode === "evenement" ? "Traiteur / Événement" : "Livraison"),
+        "name": val("oNom"),
+        "phone": val("oTel"),
+        "email": val("oMail"),        // Formspree reply-to + EmailJS {{email}}
+        "_replyto": val("oMail"),
+        "reply_to": val("oMail"),
+        "dishes": items.map(function (i) { return i.name + " × " + i.qty + " pers."; }).join(", "),
+        "total": (mode === "evenement" ? "Sur devis" : (window.TTCart ? Math.round(window.TTCart.total()) + " $" : "")),
+        "message": val("oMsg"),       // client note
+        "details": body()             // full formatted body (single var for templates)
       };
       if (mode === "evenement") {
-        p["Type d'événement"] = val("oType"); p["Nombre de convives"] = val("oConvives");
-        p["Date"] = val("oDateE"); p["Lieu"] = val("oLieu");
+        p["event_type"] = val("oType"); p["guests"] = val("oConvives");
+        p["date"] = val("oDateE"); p["place"] = val("oLieu");
       } else {
-        p["Date de livraison"] = val("oDate"); p["Heure"] = val("oHeure"); p["Adresse"] = val("oAdresse");
+        p["date"] = val("oDate"); p["time"] = val("oHeure"); p["address"] = val("oAdresse");
       }
       return p;
     }
@@ -212,20 +218,13 @@
     if (btnSubmit) {
       btnSubmit.addEventListener("click", function () {
         if (!validateForm()) return;
-        var endpoint = cfg("FORM_ENDPOINT", "");
-        if (!endpoint) { mailtoFallback(); return; }
+        // No configured provider -> mailto right away.
+        if (!window.ttMail || window.ttMail.provider() === "mailto") { mailtoFallback(); return; }
         var self = this; var old = self.innerHTML;
         self.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi…'; self.disabled = true;
-        fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(payload())
-        }).then(function (r) {
-          if (r.ok) confirmDone();
-          else mailtoFallback();
-        }).catch(function () {
-          mailtoFallback();
-        });
+        window.ttMail.send(payload(), { template: cfg("EMAILJS_TEMPLATE_ID", "") })
+          .then(function () { confirmDone(); })
+          .catch(function () { self.innerHTML = old; self.disabled = false; mailtoFallback(); });
       });
     }
 

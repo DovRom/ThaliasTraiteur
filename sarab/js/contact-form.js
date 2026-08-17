@@ -7,11 +7,16 @@
     var btn = document.getElementById("contactBtn");
     if (!btn) return;
 
+    // Clean keys: readable in Formspree AND usable as EmailJS template vars.
     function payload() {
+      var subject = "Contact – " + (v("cSujet") || v("cNom") || "Site");
+      var details = ["Nom : " + v("cNom"), "Courriel : " + v("cMail"), "Téléphone : " + v("cTel"),
+        "Sujet : " + v("cSujet"), "", v("cMsg")].join("\n");
       return {
-        "_subject": "Contact – " + (v("cNom") || "Site"),
-        "Nom": v("cNom"), "Courriel": v("cMail"), "Téléphone": v("cTel"),
-        "Sujet": v("cSujet"), "email": v("cMail"), "message": v("cMsg")
+        "_subject": subject, "subject": subject,
+        "name": v("cNom"), "email": v("cMail"), "_replyto": v("cMail"), "reply_to": v("cMail"),
+        "phone": v("cTel"), "topic": v("cSujet"),
+        "message": v("cMsg"), "details": details
       };
     }
     function done() {
@@ -28,10 +33,8 @@
     }
     function mailtoFallback() {
       var p = payload();
-      var body = ["Nom : " + p["Nom"], "Courriel : " + p["Courriel"], "Téléphone : " + p["Téléphone"],
-        "Sujet : " + p["Sujet"], "", p["message"], "", "Merci !"].join("\n");
       window.location.href = "mailto:" + cfg("CONTACT_EMAIL", "contact@thaliastraiteur.ca") +
-        "?subject=" + encodeURIComponent(p["_subject"]) + "&body=" + encodeURIComponent(body);
+        "?subject=" + encodeURIComponent(p["_subject"]) + "&body=" + encodeURIComponent(p["details"] + "\n\nMerci !");
       done();
     }
 
@@ -42,15 +45,12 @@
         { id: "cMsg", msg: "Écrivez votre message." }
       ];
       if (window.ttForm && !window.ttForm.check(rules)) return;
-      var endpoint = cfg("FORM_ENDPOINT", "");
-      if (!endpoint) { mailtoFallback(); return; }
+      if (!window.ttMail || window.ttMail.provider() === "mailto") { mailtoFallback(); return; }
+      var old = btn.innerHTML;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi…'; btn.disabled = true;
-      fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(payload())
-      }).then(function (r) { r.ok ? done() : mailtoFallback(); })
-        .catch(function () { mailtoFallback(); });
+      window.ttMail.send(payload(), { template: cfg("EMAILJS_TEMPLATE_ID_CONTACT", "") })
+        .then(function () { done(); })
+        .catch(function () { btn.innerHTML = old; btn.disabled = false; mailtoFallback(); });
     });
   });
 })();
