@@ -4,21 +4,12 @@ AOS.init({
     offset: 55
 });
 
-/* NAVBAR SCROLL & ACTIVE LINK  */
+/* NAVBAR SCROLL  (active link is page-based, set in the HTML — no scroll-spy,
+   which would clear it since nav links now point to pages, not #sections) */
 window.addEventListener('scroll', function() {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-    document.getElementById('btt').classList.toggle('show', window.scrollY > 300);
-    document.querySelectorAll('section[id]').forEach(function(sec) {
-        var top = sec.offsetTop - 110,
-            bot = top + sec.offsetHeight;
-        if (window.scrollY >= top && window.scrollY < bot) {
-            document.querySelectorAll('.nav-link').forEach(function(l) {
-                l.classList.remove('active');
-            });
-            var lnk = document.querySelector('.nav-link[href="#' + sec.id + '"]');
-            if (lnk) lnk.classList.add('active');
-        }
-    });
+    var btt = document.getElementById('btt');
+    if (btt) btt.classList.toggle('show', window.scrollY > 300);
 });
 
 /*  SMOOTH SCROLL + MOBILE NAV CLOSE  */
