@@ -13,7 +13,7 @@ window.TT_CONFIG = {
       Dans tous les cas, si le fournisseur choisi échoue, on retombe
       automatiquement sur "mailto" pour ne jamais perdre une demande.
       ---------------------------------------------------------------- */
-   MAIL_PROVIDER: "auto",
+   MAIL_PROVIDER: "formspree",
 
    /* --- Option A : FORMSPREE ---
       1) Crée un formulaire sur https://formspree.io (gratuit, 50 envois/mois)
