@@ -1121,3 +1121,27 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 .howstep p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin: 0; }
 @media (max-width: 860px) { .howsteps { grid-template-columns: 1fr 1fr; gap: 34px; } .howsteps::before { display: none; } }
 @media (max-width: 520px) { .howsteps { grid-template-columns: 1fr; } }
+
+/* ================================================================
+   FIX: form card must stay in flow (template made .fcard absolute
+   for the old hero floating cards, which no longer exist) — this
+   was letting the form overlap the footer.
+   ================================================================ */
+.fcard { position: static !important; }
+
+/* ================================================================
+   Equal-height cards (menu, services, category, testimonials)
+   ================================================================ */
+.mwrap { display: flex; }
+.mcard { height: 100%; display: flex; flex-direction: column; }
+.mcard .mimg { aspect-ratio: 16 / 11; height: auto; flex-shrink: 0; overflow: hidden; }
+.mcard .mimg img { width: 100%; height: 100%; object-fit: cover; }
+.mcard .mbody { display: flex; flex-direction: column; flex: 1 1 auto; }
+.mcard .mfoot { margin-top: auto; }
+
+.svccard, .catcard { height: 100%; }
+
+.tesSwiper .swiper-wrapper { align-items: stretch; }
+.tesSwiper .swiper-slide { height: auto; }
+.tescard { height: 100%; display: flex; flex-direction: column; }
+.tescard .tesauth { margin-top: auto; }
