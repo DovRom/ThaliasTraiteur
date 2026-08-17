@@ -1145,3 +1145,33 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 .tesSwiper .swiper-slide { height: auto; }
 .tescard { height: 100%; display: flex; flex-direction: column; }
 .tescard .tesauth { margin-top: auto; }
+
+/* ================================================================
+   Commander page — informative guidance banner
+   ================================================================ */
+.order-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(var(--primary-rgb), 0.06);
+  border: 1px solid rgba(var(--primary-rgb), 0.22);
+  border-radius: 14px;
+  padding: 22px 26px;
+  margin-bottom: 34px;
+}
+.order-info > .oi-ic {
+  width: 46px; height: 46px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--primary); color: #fff; font-size: 1.25rem;
+}
+.order-info .oi-txt { flex: 1; }
+.order-info b {
+  display: block; font-family: "Playfair Display", serif; font-weight: 800;
+  color: var(--heading); font-size: 1.05rem; margin-bottom: 3px;
+}
+.order-info span { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; }
+.order-info span a { color: var(--primary); font-weight: 600; }
+.order-info .oi-cta { flex-shrink: 0; white-space: nowrap; }
+@media (max-width: 760px) {
+  .order-info { flex-direction: column; align-items: flex-start; gap: 14px; }
+}
