@@ -54,6 +54,7 @@
     /* ---- Dish checklist (event mode) ---- */
     var box = document.getElementById("dishChecklist");
     var shown = []; // names ever shown (keep struck items visible)
+    var lastQty = {}; // remember qty when a dish is unchecked, restore on recheck
     function seedShown() {
       if (!window.TTCart) return;
       window.TTCart.items().forEach(function (i) { if (shown.indexOf(i.name) < 0) shown.push(i.name); });
@@ -84,8 +85,9 @@
         var lab = e.target.closest(".dchk"); if (!lab) return;
         var name = lab.getAttribute("data-name");
         if (e.target.checked) {
-          if (!inCart(name)) window.TTCart.add(name, PRICE[name] || 0, 1, true); // silent: don't open drawer
+          if (!inCart(name)) window.TTCart.add(name, PRICE[name] || 0, lastQty[name] || 1, true); // restore prior qty; silent
         } else {
+          lastQty[name] = peopleOf(name); // remember before removing so recheck restores it
           window.TTCart.remove(name);
         }
       });
@@ -173,6 +175,7 @@
         card.scrollIntoView({ behavior: "smooth", block: "center" });
       }
       if (window.TTCart) window.TTCart.clear();
+      if (window.ttAlert) window.ttAlert.toast(mode === "evenement" ? "Demande de devis envoyée !" : "Commande envoyée !");
     }
 
     function mailtoFallback() {
@@ -182,13 +185,33 @@
       confirmDone();
     }
 
+    var emailOk = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
+    var telOk = function (v) { return v.replace(/\D/g, "").length >= 8; };
+    function validateForm() {
+      var rules = [
+        { id: "oNom", msg: "Indiquez votre nom." },
+        { id: "oTel", test: telOk, msg: "Numéro de téléphone invalide." },
+        { id: "oMail", test: emailOk, msg: "Adresse courriel invalide." }
+      ];
+      if (mode === "evenement") {
+        rules.push({ id: "oDateE", msg: "Choisissez la date de l'événement." });
+      } else {
+        rules.push({ id: "oDate", msg: "Choisissez une date de livraison." });
+        rules.push({ id: "oAdresse", msg: "Indiquez l'adresse de livraison." });
+      }
+      if (window.ttForm) {
+        if (!window.ttForm.check(rules)) return false;
+      }
+      if (!(window.TTCart && window.TTCart.count() > 0)) {
+        if (window.ttAlert) window.ttAlert.toast("Ajoutez au moins un plat depuis le menu.", "error");
+        return false;
+      }
+      return true;
+    }
+
     if (btnSubmit) {
       btnSubmit.addEventListener("click", function () {
-        // minimal validation
-        if (!val("oNom") || !val("oMail") || !val("oTel")) {
-          alert("Merci de renseigner votre nom, téléphone et courriel.");
-          return;
-        }
+        if (!validateForm()) return;
         var endpoint = cfg("FORM_ENDPOINT", "");
         if (!endpoint) { mailtoFallback(); return; }
         var self = this; var old = self.innerHTML;

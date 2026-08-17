@@ -10,15 +10,32 @@
     if (nav) nav.classList.toggle("scrolled", window.scrollY > 30);
   });
 
-  // ---- Category filter ----
+  // ---- Category filter + search ----
+  var curCat = "all";
+  var curQuery = "";
+  function norm(s) {
+    return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+  function applyFilters() {
+    var q = norm(curQuery.trim());
+    var visible = 0;
+    document.querySelectorAll(".mwrap").forEach(function (w) {
+      var card = w.querySelector(".mcard");
+      var okCat = curCat === "all" || w.getAttribute("data-c") === curCat;
+      var okQ = !q || norm(card ? card.getAttribute("data-title") : "").indexOf(q) > -1;
+      var show = okCat && okQ;
+      w.style.display = show ? "" : "none";
+      if (show) visible++;
+    });
+    var empty = document.getElementById("mNoResult");
+    if (empty) empty.style.display = visible === 0 ? "" : "none";
+  }
   function filterMenu(cat) {
+    curCat = cat;
     document.querySelectorAll(".filtbtn").forEach(function (b) {
       b.classList.toggle("active", b.getAttribute("data-f") === cat);
     });
-    document.querySelectorAll(".mwrap").forEach(function (w) {
-      var show = cat === "all" || w.getAttribute("data-c") === cat;
-      w.style.display = show ? "" : "none";
-    });
+    applyFilters();
   }
   document.querySelectorAll(".filtbtn").forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -26,9 +43,40 @@
     });
   });
 
+  var searchInput = document.getElementById("mSearch");
+  var searchClear = document.getElementById("mSearchClear");
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      curQuery = this.value;
+      if (searchClear) searchClear.hidden = !curQuery;
+      applyFilters();
+    });
+  }
+  if (searchClear) {
+    searchClear.addEventListener("click", function () {
+      curQuery = "";
+      searchInput.value = "";
+      this.hidden = true;
+      searchInput.focus();
+      applyFilters();
+    });
+  }
+
   // ---- Dish detail popup ----
   var menuPop = document.getElementById("menuPop");
   var qty = 1;
+  var qInput = document.getElementById("mpQnum");
+  function setQty(n) {
+    qty = Math.max(1, Math.floor(n) || 1);
+    if (qInput) qInput.value = qty;
+  }
+  if (qInput) {
+    qInput.addEventListener("input", function () {
+      var n = parseInt(this.value, 10);
+      qty = (n && n > 0) ? n : 1; // keep raw while typing; clamp on blur
+    });
+    qInput.addEventListener("blur", function () { setQty(qty); });
+  }
 
   function g(card, k) {
     return card.getAttribute(k);
@@ -73,8 +121,7 @@
       })
       .join("");
 
-    qty = 1;
-    document.getElementById("mpQnum").textContent = 1;
+    setQty(1);
     document.getElementById("mpAddCart").innerHTML =
       '<i class="fas fa-shopping-cart"></i> Ajouter à ma commande';
     document.getElementById("mpAddCart").style.background = "";
@@ -101,16 +148,13 @@
     if (e.target === menuPop) closePop();
   });
   document.getElementById("mpMinus").addEventListener("click", function () {
-    if (qty > 1) {
-      qty--;
-      document.getElementById("mpQnum").textContent = qty;
-    }
+    setQty(qty - 1);
   });
   document.getElementById("mpPlus").addEventListener("click", function () {
-    qty++;
-    document.getElementById("mpQnum").textContent = qty;
+    setQty(qty + 1);
   });
   document.getElementById("mpAddCart").addEventListener("click", function () {
+    setQty(qty);
     if (window.TTCart && window.__ttDish) window.TTCart.add(window.__ttDish.name, window.__ttDish.price, qty);
     this.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
     this.style.background = "linear-gradient(135deg,var(--green),var(--green-dark))";

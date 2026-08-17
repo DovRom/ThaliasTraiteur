@@ -156,6 +156,18 @@ document.querySelectorAll('.catcard').forEach(function(card) {
 
 var menuPop = document.getElementById('menuPop');
 var mpQty = 1;
+var mpQInput = document.getElementById('mpQnum');
+function mpSetQty(n) {
+    mpQty = Math.max(1, Math.floor(n) || 1);
+    if (mpQInput) mpQInput.value = mpQty;
+}
+if (mpQInput) {
+    mpQInput.addEventListener('input', function() {
+        var n = parseInt(this.value, 10);
+        mpQty = (n && n > 0) ? n : 1;
+    });
+    mpQInput.addEventListener('blur', function() { mpSetQty(mpQty); });
+}
 
 function openMenuPop(card) {
     var img = card.getAttribute('data-img');
@@ -197,8 +209,7 @@ function openMenuPop(card) {
             return '<span class="mptag">' + t.trim() + '</span>';
         }).join('');
 
-    mpQty = 1;
-    document.getElementById('mpQnum').textContent = 1;
+    mpSetQty(1);
     document.getElementById('mpAddCart').innerHTML = '<i class="fas fa-shopping-cart"></i> Ajouter à ma commande';
     document.getElementById('mpAddCart').style.background = '';
 
@@ -246,14 +257,15 @@ function closeMenuPop() {
 
 // Qty +/-
 document.getElementById('mpPlus').addEventListener('click', function() {
-    document.getElementById('mpQnum').textContent = ++mpQty;
+    mpSetQty(mpQty + 1);
 });
 document.getElementById('mpMinus').addEventListener('click', function() {
-    if (mpQty > 1) document.getElementById('mpQnum').textContent = --mpQty;
+    mpSetQty(mpQty - 1);
 });
 
 // Add to cart button
 document.getElementById('mpAddCart').addEventListener('click', function() {
+    mpSetQty(mpQty);
     if (window.TTCart && window.__ttDish) window.TTCart.add(window.__ttDish.name, window.__ttDish.price, mpQty);
     this.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
     this.style.background = 'linear-gradient(135deg,var(--green),var(--green-dark))';

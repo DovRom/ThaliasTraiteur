@@ -149,7 +149,7 @@
         "  </div>" +
         '  <div class="tt-ci-qty">' +
         '    <button data-cart-dec aria-label="moins">−</button>' +
-        "    <span>" + i.qty + "</span>" +
+        '    <input class="tt-ci-qtyv" type="number" min="1" step="1" value="' + i.qty + '" inputmode="numeric" aria-label="Quantité" />' +
         '    <button data-cart-inc aria-label="plus">+</button>' +
         "  </div>" +
         '  <button class="tt-ci-del" data-cart-del aria-label="retirer"><i class="fas fa-trash-can"></i></button>' +
@@ -222,6 +222,16 @@
     }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrawer(); });
+
+  // Typeable qty in the drawer: commit on change/blur, clamp to >= 1
+  document.addEventListener("change", function (e) {
+    var inp = e.target.closest ? e.target.closest(".tt-ci-qtyv") : null;
+    if (!inp) return;
+    var itemEl = inp.closest(".tt-cart-item");
+    if (!itemEl) return;
+    var n = Math.max(1, Math.floor(parseFloat(inp.value)) || 1);
+    API.setQty(itemEl.getAttribute("data-name"), n);
+  });
 
   function adjust(itemEl, delta) {
     if (!itemEl) return;

@@ -1197,7 +1197,6 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 /* ================================================================
    Mobile fixes — prevent horizontal overflow
    ================================================================ */
-html { overflow-x: hidden; }
 @media (max-width: 700px) {
   #hero .hbgtxt { display: none; }          /* decorative watermark overflowed */
   .hero-title { letter-spacing: -1px; }
@@ -1316,3 +1315,200 @@ html { overflow-x: hidden; }
 
 /* ---- Keep the theme toggle out of the way on phone ---- */
 @media (max-width: 600px) { .theme-toggle { width: 40px; height: 40px; left: 12px; bottom: 12px; opacity: 0.85; } }
+
+/* ================================================================
+   REVISION PASS — hero mobile / topbar theme / justify / services / sticky
+   ================================================================ */
+
+/* (4) Use overflow: clip (not hidden) so position:sticky keeps working */
+html, body { overflow-x: clip; }
+
+/* (2) TOP BAR — theme-coherent (brand) + fixed responsive layout */
+#topbar { background: var(--primary); color: #fff; }
+[data-theme="dark"] #topbar { background: var(--primary); border-bottom: none; }
+#topbar .top-contact span { color: rgba(255, 255, 255, 0.92); }
+#topbar .top-contact span i { color: #fff; }
+#topbar .top-contact span:not(:last-child)::after { background: rgba(255, 255, 255, 0.35); }
+#topbar .tsoc a { background: rgba(255, 255, 255, 0.16); color: #fff; border: 1px solid rgba(255, 255, 255, 0.28); }
+#topbar .tsoc a:hover { background: #fff; color: var(--primary); }
+/* readable, on-brand pill on the orange bar (scoped so menu-card badges keep their orange) */
+#topbar .ttag { background: #fff; color: var(--primary-dark); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.14); font-weight: 700; }
+#topbar .ttag i { color: var(--primary); }
+@media (max-width: 991.98px) {
+  #topbar .d-flex.justify-content-between { justify-content: center !important; row-gap: 6px; }
+  #topbar .top-contact { justify-content: center; width: 100%; }
+  #topbar .d-flex.align-items-center.gap-3 { justify-content: center; }
+}
+
+/* (1) HERO — image first & prominent on mobile/tablet + responsive sizing */
+@media (max-width: 991.98px) {
+  .hero-inner { display: flex; flex-direction: column; padding: 18px 0 46px; gap: 26px; }
+  .hero-media { order: -1; width: 100%; }
+  .hero-media img { height: 42vh; min-height: 240px; max-height: 420px; }
+  .hero-media::after { inset: 10px; }
+  .hero-copy { width: 100%; }
+}
+@media (max-width: 600px) {
+  .hero-media img { height: 40vh; min-height: 220px; }
+  .hero-title { font-size: clamp(2.4rem, 12vw, 3.2rem); }
+  .hero-sub { font-size: 1rem; }
+  .hero-meta b { font-size: 1.5rem; }
+}
+
+/* Responsive buttons & type across breakpoints (applies site-wide) */
+@media (max-width: 600px) {
+  .btn-ed--solid, .btn-red { padding: 14px 26px; font-size: 0.9rem; }
+  .btn-ed--ghost { font-size: 0.9rem; }
+  .slbl { font-size: 0.66rem; letter-spacing: 3px; }
+  .pagehero h1 { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+  .svcrow h2, .faq-group h3, .tt-cart-head h4 { font-size: 1.35rem; }
+}
+@media (max-width: 380px) {
+  .hero-title { font-size: clamp(2.1rem, 12vw, 2.8rem); }
+  .stitle { font-size: clamp(1.65rem, 8vw, 2.1rem); }
+}
+
+/* (3) Justify body paragraphs (pro look); keep centered intros centered */
+.hero-sub, .svcrow p, .fti p, .testxt, .legal p, .legal li, .faq-a,
+.fdesc, .tli p, .order-info span, .sdesc:not(.mx-auto), .svctxt {
+  text-align: justify;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+/* (3b) SERVICES — on mobile always image-first so rows don't clash */
+@media (max-width: 860px) {
+  .svcrow { grid-template-columns: 1fr; }
+  .svcrow .svcrow-media { order: -1 !important; }
+  .svcrow.rev .svcrow-media { order: -1 !important; }
+}
+
+/* (4) Sticky order recap on the commander page (desktop) */
+@media (min-width: 992px) {
+  #reservation .cartsum { position: sticky; top: 96px; }
+}
+
+/* ================================================================
+   SweetAlert2 — themed to match (works in all 3 themes)
+   ================================================================ */
+.swal2-popup { background: var(--surface); color: var(--text); border-radius: 16px; font-family: "Poppins", sans-serif; border: 1px solid var(--border); }
+.swal2-title { color: var(--heading); font-family: "Playfair Display", serif; font-weight: 800; }
+.swal2-html-container, .swal2-content { color: var(--text-muted); }
+.swal2-actions .swal2-confirm.swal2-styled { background: var(--primary); border-radius: 8px; box-shadow: none; font-weight: 600; }
+.swal2-actions .swal2-confirm.swal2-styled:hover { background: var(--primary-dark); }
+.swal2-actions .swal2-cancel.swal2-styled { background: var(--surface-2); color: var(--text); border-radius: 8px; box-shadow: none; font-weight: 600; }
+.swal2-timer-progress-bar { background: var(--primary); }
+.swal2-icon.swal2-success [class^="swal2-success-line"] { background-color: var(--secondary); }
+.swal2-icon.swal2-success .swal2-success-ring { border-color: rgba(var(--secondary-rgb), 0.3); }
+.swal2-icon.swal2-error { border-color: #e5484d; color: #e5484d; }
+.swal2-icon.swal2-warning { border-color: var(--primary); color: var(--primary); }
+.swal2-toast { background: var(--surface) !important; border: 1px solid var(--border); }
+.swal2-toast .swal2-title { font-family: "Poppins", sans-serif; font-size: 0.92rem; }
+
+/* ============================================================
+   Menu search field (point 6) + typeable qty stepper (point 7)
+   ============================================================ */
+.msearch-wrap{
+  position:relative; max-width:440px; margin:0 auto 22px;
+}
+.msearch-wrap .msearch-ic{
+  position:absolute; left:16px; top:50%; transform:translateY(-50%);
+  color:var(--text-faint); font-size:.9rem; pointer-events:none;
+}
+.msearch{
+  width:100%; height:48px; padding:0 42px 0 42px;
+  border:1px solid var(--border); border-radius:999px;
+  background:var(--surface); color:var(--text);
+  font-family:inherit; font-size:.95rem; outline:none;
+  transition:border-color .2s, box-shadow .2s;
+}
+.msearch::placeholder{ color:var(--text-faint); }
+.msearch:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(var(--primary-rgb), .16);
+}
+.msearch::-webkit-search-cancel-button{ -webkit-appearance:none; }
+.msearch-clr{
+  position:absolute; right:8px; top:50%; transform:translateY(-50%);
+  width:32px; height:32px; border:0; border-radius:50%;
+  background:var(--surface-2); color:var(--text-muted);
+  cursor:pointer; display:flex; align-items:center; justify-content:center;
+  font-size:.8rem; transition:background .15s, color .15s;
+}
+.msearch-clr:hover{ background:var(--primary); color:#fff; }
+.mnoresult{
+  text-align:center; color:var(--text-muted); font-size:1.02rem;
+  padding:48px 16px; margin:0;
+}
+.mnoresult i{ color:var(--primary); margin-right:6px; }
+
+/* Typeable qty input (replaces the old .mpqnum span) */
+input.mpqnum{
+  width:56px; text-align:center; font-weight:700; font-size:1.05rem;
+  color:var(--heading); background:transparent;
+  border:1px solid var(--border); border-radius:10px;
+  padding:6px 4px; margin:0 2px; font-family:inherit;
+  -moz-appearance:textfield;
+}
+input.mpqnum:focus{
+  outline:none; border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(var(--primary-rgb), .16);
+}
+input.mpqnum::-webkit-outer-spin-button,
+input.mpqnum::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
+
+/* ============================================================
+   Revision pass 2 — hero button pair, live validation, cart qty input
+   ============================================================ */
+
+/* (4) Hero: keep the two CTAs on ONE row on mobile (equal pills) */
+@media (max-width: 991.98px) {
+  .hero-actions { flex-wrap: nowrap; gap: 12px; width: 100%; }
+  .hero-actions .btn-ed--solid,
+  .hero-actions .btn-ed--ghost {
+    flex: 1 1 0; min-width: 0; justify-content: center; text-align: center;
+    padding: 13px 12px; white-space: nowrap; font-size: .86rem;
+  }
+  .hero-actions .btn-ed--ghost {
+    border: 1px solid var(--border); border-radius: 6px; color: var(--heading);
+  }
+  .hero-actions .btn-ed--ghost:hover { border-color: var(--primary); color: var(--primary); }
+}
+@media (max-width: 360px) {
+  .hero-actions .btn-ed--solid,
+  .hero-actions .btn-ed--ghost { font-size: .78rem; padding: 12px 6px; }
+  .hero-actions .btn-ed--ghost i { display: none; }
+}
+
+/* (point 4) Live form validation — red outline + inline message under the field */
+.tt-invalid,
+.fctrl.tt-invalid {
+  border-color: #e5484d !important;
+  box-shadow: 0 0 0 3px rgba(229, 72, 77, .14) !important;
+}
+.tt-field-err {
+  color: #e5484d;
+  font-size: .8rem;
+  margin: 6px 2px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.3;
+  animation: ttErrIn .18s ease;
+}
+.tt-field-err i { font-size: .82rem; }
+@keyframes ttErrIn { from { opacity: 0; transform: translateY(-3px); } to { opacity: 1; transform: none; } }
+
+/* (point 1) Typeable qty input inside the cart drawer */
+.tt-ci-qty .tt-ci-qtyv {
+  width: 46px; text-align: center; font-weight: 700; font-size: .95rem;
+  color: var(--heading); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 5px 2px; font-family: inherit; -moz-appearance: textfield;
+}
+.tt-ci-qty .tt-ci-qtyv:focus {
+  outline: none; border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), .16);
+}
+.tt-ci-qty .tt-ci-qtyv::-webkit-outer-spin-button,
+.tt-ci-qty .tt-ci-qtyv::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }

@@ -24,6 +24,7 @@
           cfg("REPLY_TIME", "24 h") + "</strong>.</p></div>";
         card.scrollIntoView({ behavior: "smooth", block: "center" });
       }
+      if (window.ttAlert) window.ttAlert.toast("Message envoyé !");
     }
     function mailtoFallback() {
       var p = payload();
@@ -35,10 +36,12 @@
     }
 
     btn.addEventListener("click", function () {
-      if (!v("cNom") || !v("cMail") || !v("cMsg")) {
-        alert("Merci de renseigner votre nom, courriel et message.");
-        return;
-      }
+      var rules = [
+        { id: "cNom", msg: "Indiquez votre nom." },
+        { id: "cMail", test: function (x) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x); }, msg: "Adresse courriel invalide." },
+        { id: "cMsg", msg: "Écrivez votre message." }
+      ];
+      if (window.ttForm && !window.ttForm.check(rules)) return;
       var endpoint = cfg("FORM_ENDPOINT", "");
       if (!endpoint) { mailtoFallback(); return; }
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi…'; btn.disabled = true;

@@ -18,6 +18,7 @@
    <link rel="stylesheet" href="css/all.min.css" />
    <link rel="stylesheet" href="css/style.css" />
    <link rel="stylesheet" href="css/redesign.css" />
+   <link rel="stylesheet" href="css/sweetalert2.min.css" />
    <style>
       /* Menu page banner */
       #menuhero { background: var(--cream); padding: 54px 0 34px; text-align: center; }
@@ -92,6 +93,11 @@
    <!-- MENU GRID -->
    <section id="menupage">
       <div class="container">
+         <div class="msearch-wrap">
+            <i class="fas fa-search msearch-ic"></i>
+            <input type="search" id="mSearch" class="msearch" placeholder="Rechercher un plat…" autocomplete="off" aria-label="Rechercher un plat" />
+            <button type="button" id="mSearchClear" class="msearch-clr" aria-label="Effacer" hidden><i class="fas fa-times"></i></button>
+         </div>
          <div class="text-center mb-4">
             <button class="filtbtn active" data-f="all">Tout</button>
             <button class="filtbtn" data-f="specialites">Spécialités</button>
@@ -885,6 +891,7 @@
                </div>
             </div>
          </div>
+         <p id="mNoResult" class="mnoresult" style="display:none;"><i class="fas fa-utensils"></i> Aucun plat ne correspond à votre recherche.</p>
       </div>
    </section>
 
@@ -925,7 +932,7 @@
                <div class="mpmeta" id="mpMeta"></div>
                <div class="mpqty">
                   <button class="mpqbtn" id="mpMinus">-</button>
-                  <span class="mpqnum" id="mpQnum">1</span>
+                  <input class="mpqnum" id="mpQnum" type="number" min="1" step="1" value="1" inputmode="numeric" aria-label="Quantité" />
                   <button class="mpqbtn" id="mpPlus">+</button>
                   <span id="mpQtyLabel" style="font-size:.82rem;color:#aaa;margin-left:9px;">portion(s)</span>
                </div>
@@ -1012,6 +1019,8 @@
 
    <script src="js/config.js"></script>
    <script src="js/analytics.js"></script>
+   <script src="js/sweetalert2.min.js"></script>
+   <script src="js/tt-alerts.js"></script>
    <script src="js/jquery-3.7.1.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
    <script src="js/menu-page.js"></script>

@@ -34,6 +34,7 @@
    <link rel="stylesheet" href="css/style.css" />
    <!-- Editorial redesign layer -->
    <link rel="stylesheet" href="css/redesign.css" />
+   <link rel="stylesheet" href="css/sweetalert2.min.css" />
 </head>
 
 <body>
@@ -491,7 +492,7 @@
                   </div>
                </div>
                <div class="fmcat">
-                  <div class="fmhead"><i class="fas fa-bowl-food"></i>Soupes &amp; Entrées</div>
+                  <div class="fmhead"><i class="fas fa-bowl-hot"></i>Soupes &amp; Entrées</div>
                   <div class="fmitem">
                      <div class="fmrow"><span class="fmname">Soupe du Chasseur</span><span class="fmlead"></span><span class="fmprice">37 $</span></div>
                   </div>
@@ -1127,7 +1128,7 @@
                <div class="mpmeta" id="mpMeta"></div>
                <div class="mpqty">
                   <button class="mpqbtn" id="mpMinus">-</button>
-                  <span class="mpqnum" id="mpQnum">1</span>
+                  <input class="mpqnum" id="mpQnum" type="number" min="1" step="1" value="1" inputmode="numeric" aria-label="Quantité" />
                   <button class="mpqbtn" id="mpPlus">+</button>
                   <span id="mpQtyLabel" style="font-size:.82rem;color:#aaa;margin-left:9px;">portion(s)</span>
                </div>
@@ -1231,6 +1232,8 @@
    <!-- jQuery -->
    <script src="js/config.js"></script>
    <script src="js/analytics.js"></script>
+   <script src="js/sweetalert2.min.js"></script>
+   <script src="js/tt-alerts.js"></script>
    <script src="js/jquery-3.7.1.min.js"></script>
    <!-- Bootstrap 5 -->
    <script src="js/bootstrap.bundle.min.js"></script>
