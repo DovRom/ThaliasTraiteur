@@ -1,0 +1,169 @@
+<!-- ================================================================
+     Thalia's Traiteur — Template e-mail de notification (Formspree)
+     >>> Colle CE fichier dans le champ HTML de Formspree.
+     >>> Colle formspree-template.css dans le champ CSS.
+     Variables utilisées (champs envoyés par le site) :
+       name · email · phone · subject · order_type · event_type
+       guests · date · time · address · place · dishes · total
+       topic · message
+     Les blocs {{#if ...}} n'affichent une section que si le champ existe,
+     donc le MÊME template gère la page Commander ET la page Contact.
+     ================================================================ -->
+<div class="tt-bg">
+
+  <!-- pré-en-tête masqué (aperçu dans la boîte de réception) -->
+  <div class="tt-preheader">Nouvelle demande reçue via le site — {{ name }}</div>
+
+  <table role="presentation" class="tt-outer" width="100%" cellpadding="0" cellspacing="0" bgcolor="#f3ece2">
+    <tr>
+      <td align="center">
+
+        <table role="presentation" class="tt-card" width="600" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+
+          <!-- bandeau drapeau ivoirien -->
+          <tr>
+            <td class="tt-flag">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="tt-flag-o">&nbsp;</td>
+                  <td class="tt-flag-w">&nbsp;</td>
+                  <td class="tt-flag-g">&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- marque -->
+          <tr>
+            <td class="tt-head">
+              <div class="tt-brand">Thalia&rsquo;s Traiteur</div>
+              <div class="tt-tag">Cuisine Ivoirienne &middot; Montréal</div>
+            </td>
+          </tr>
+
+          <!-- titre -->
+          <tr>
+            <td class="tt-hero">
+              <div class="tt-eyebrow">Nouvelle demande</div>
+              <div class="tt-title">{{ subject }}</div>
+            </td>
+          </tr>
+
+          <!-- coordonnées client -->
+          <tr>
+            <td class="tt-section">
+              <div class="tt-section-label">Coordonnées du client</div>
+              <table role="presentation" width="100%" class="tt-rows" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="tt-k">Nom</td>
+                  <td class="tt-v">{{ name }}</td>
+                </tr>
+                <tr>
+                  <td class="tt-k">Courriel</td>
+                  <td class="tt-v"><a class="tt-link" href="mailto:{{ email }}">{{ email }}</a></td>
+                </tr>
+                {{#if phone}}
+                <tr>
+                  <td class="tt-k">Téléphone</td>
+                  <td class="tt-v"><a class="tt-link" href="tel:{{ phone }}">{{ phone }}</a></td>
+                </tr>
+                {{/if}}
+              </table>
+            </td>
+          </tr>
+
+          <!-- détails de la commande / événement -->
+          {{#if order_type}}
+          <tr>
+            <td class="tt-section">
+              <div class="tt-section-label">Détails de la demande</div>
+              <table role="presentation" width="100%" class="tt-rows" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="tt-k">Type</td>
+                  <td class="tt-v"><span class="tt-chip">{{ order_type }}</span></td>
+                </tr>
+                {{#if event_type}}
+                <tr><td class="tt-k">Événement</td><td class="tt-v">{{ event_type }}</td></tr>
+                {{/if}}
+                {{#if guests}}
+                <tr><td class="tt-k">Convives</td><td class="tt-v">{{ guests }}</td></tr>
+                {{/if}}
+                {{#if date}}
+                <tr><td class="tt-k">Date</td><td class="tt-v">{{ date }}</td></tr>
+                {{/if}}
+                {{#if time}}
+                <tr><td class="tt-k">Heure</td><td class="tt-v">{{ time }}</td></tr>
+                {{/if}}
+                {{#if address}}
+                <tr><td class="tt-k">Adresse</td><td class="tt-v">{{ address }}</td></tr>
+                {{/if}}
+                {{#if place}}
+                <tr><td class="tt-k">Lieu</td><td class="tt-v">{{ place }}</td></tr>
+                {{/if}}
+              </table>
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- plats + total -->
+          {{#if dishes}}
+          <tr>
+            <td class="tt-section">
+              <div class="tt-section-label">Plats souhaités</div>
+              <div class="tt-dishes">{{ dishes }}</div>
+              {{#if total}}
+              <table role="presentation" width="100%" class="tt-total" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="tt-total-l">Total estimé</td>
+                  <td class="tt-total-r">{{ total }}</td>
+                </tr>
+              </table>
+              {{/if}}
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- objet (formulaire de contact) -->
+          {{#if topic}}
+          <tr>
+            <td class="tt-section">
+              <div class="tt-section-label">Objet</div>
+              <div class="tt-v">{{ topic }}</div>
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- message -->
+          {{#if message}}
+          <tr>
+            <td class="tt-section">
+              <div class="tt-section-label">Message</div>
+              <div class="tt-message">{{ message }}</div>
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- bouton répondre -->
+          <tr>
+            <td class="tt-cta-wrap">
+              <a class="tt-cta" href="mailto:{{ email }}">Répondre au client</a>
+            </td>
+          </tr>
+
+          <!-- pied -->
+          <tr>
+            <td class="tt-foot">
+              <div class="tt-foot-brand">Thalia&rsquo;s Traiteur</div>
+              <div class="tt-foot-line">Cuisine ivoirienne, faite maison &middot; Grand Montréal</div>
+              <div class="tt-foot-line">+1 (514) 549-3405</div>
+              <div class="tt-foot-note">Message automatique envoyé depuis le formulaire du site.</div>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</div>
