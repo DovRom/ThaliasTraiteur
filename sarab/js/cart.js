@@ -35,6 +35,7 @@
       if (ex) ex.qty += qty;
       else items.push({ name: name, price: parsePrice(price), qty: qty });
       write(items);
+      if (window.ttTrack) window.ttTrack("add_to_cart", { item_name: name, quantity: qty, value: parsePrice(price) * qty, currency: "CAD" });
       if (!silent) openDrawer();
     },
     setQty: function (name, qty) {

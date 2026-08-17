@@ -134,13 +134,75 @@
       return L.join("\n");
     }
 
+    function cfg(k, d) { return (window.TT_CONFIG && window.TT_CONFIG[k]) || d; }
+
+    function payload() {
+      var items = (window.TTCart ? window.TTCart.items() : []);
+      var p = {
+        "_subject": (mode === "evenement" ? "Demande de devis – " : "Commande livraison – ") + (val("oNom") || "Nouveau client"),
+        "Type de commande": (mode === "evenement" ? "Traiteur / Événement" : "Livraison"),
+        "Nom": val("oNom"), "Téléphone": val("oTel"), "Courriel": val("oMail"),
+        "Plats": items.map(function (i) { return i.name + " × " + i.qty + " pers."; }).join(", "),
+        "Total estimé": (mode === "evenement" ? "Sur devis" : (window.TTCart ? Math.round(window.TTCart.total()) + " $" : "")),
+        "Précisions": val("oMsg"),
+        "email": val("oMail"),
+        "message": body()
+      };
+      if (mode === "evenement") {
+        p["Type d'événement"] = val("oType"); p["Nombre de convives"] = val("oConvives");
+        p["Date"] = val("oDateE"); p["Lieu"] = val("oLieu");
+      } else {
+        p["Date de livraison"] = val("oDate"); p["Heure"] = val("oHeure"); p["Adresse"] = val("oAdresse");
+      }
+      return p;
+    }
+
+    function confirmDone() {
+      if (window.ttTrack) window.ttTrack(mode === "evenement" ? "generate_lead" : "order_submit",
+        { value: (window.TTCart ? window.TTCart.total() : 0), currency: "CAD" });
+      var content = document.getElementById("orderContent");
+      var card = document.querySelector("#reservation .fcard");
+      if (card) {
+        card.innerHTML =
+          '<div class="order-done"><i class="fas fa-circle-check"></i>' +
+          '<h3>Merci ' + (val("oNom") ? val("oNom").split(" ")[0] : "") + ' !</h3>' +
+          '<p>Votre ' + (mode === "evenement" ? "demande de devis" : "commande") +
+          " a bien été envoyée. Notre équipe vous recontacte sous <strong>" + cfg("REPLY_TIME", "24 h") +
+          "</strong> pour confirmer les détails" + (mode === "evenement" ? " et votre devis personnalisé." : " et la livraison.") + "</p>" +
+          '<a href="menu.html" class="btn-ed--ghost">Retour au menu <i class="fas fa-arrow-right"></i></a></div>';
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+      if (window.TTCart) window.TTCart.clear();
+    }
+
+    function mailtoFallback() {
+      var subject = payload()["_subject"];
+      window.location.href = "mailto:" + cfg("CONTACT_EMAIL", "contact@thaliastraiteur.ca") +
+        "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body());
+      confirmDone();
+    }
+
     if (btnSubmit) {
       btnSubmit.addEventListener("click", function () {
-        var subject = (mode === "evenement" ? "Demande de devis – " : "Commande livraison – ") + (val("oNom") || "Nouveau client");
-        var href = "mailto:contact@thaliastraiteur.ca?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body());
-        setTimeout(function () { window.location.href = href; }, 400);
-        var ok = document.getElementById("resOk");
-        if (ok) { ok.style.display = "block"; ok.scrollIntoView({ behavior: "smooth", block: "nearest" }); }
+        // minimal validation
+        if (!val("oNom") || !val("oMail") || !val("oTel")) {
+          alert("Merci de renseigner votre nom, téléphone et courriel.");
+          return;
+        }
+        var endpoint = cfg("FORM_ENDPOINT", "");
+        if (!endpoint) { mailtoFallback(); return; }
+        var self = this; var old = self.innerHTML;
+        self.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi…'; self.disabled = true;
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload())
+        }).then(function (r) {
+          if (r.ok) confirmDone();
+          else mailtoFallback();
+        }).catch(function () {
+          mailtoFallback();
+        });
       });
     }
 

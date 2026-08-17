@@ -266,24 +266,8 @@ document.getElementById('mpAddCart').addEventListener('click', function() {
 });
 
 
-document.getElementById('resBtn').addEventListener('click', function() {
-    var btn = this;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
-    btn.disabled = true;
-    setTimeout(function() {
-        btn.innerHTML = '<i class="fas fa-calendar-check"></i> Envoyer ma demande';
-        btn.disabled = false;
-        var ok = document.getElementById('resOk');
-        ok.style.display = 'block';
-        ok.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest'
-        });
-    }, 1500);
-});
-
-
-document.getElementById('ctcBtn').addEventListener('click', function() {
+var ctcBtnEl = document.getElementById('ctcBtn');
+if (ctcBtnEl) ctcBtnEl.addEventListener('click', function() {
     var btn = this;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
     btn.disabled = true;
@@ -376,28 +360,28 @@ new Swiper('.tesSwiper', {
 });
 
 
-var cH = 8,
-    cM = 45,
-    cS = 30;
-setInterval(function() {
-    cS--;
-    if (cS < 0) {
-        cS = 59;
-        cM--;
+/* Real weekly countdown — the offer runs until Sunday 23:59, then resets. */
+(function () {
+    var H = document.getElementById('cdH'), M = document.getElementById('cdM'), S = document.getElementById('cdS');
+    if (!H || !M || !S) return;
+    function endOfWeek() {
+        var d = new Date(), add = (7 - d.getDay()) % 7;
+        var e = new Date(d.getFullYear(), d.getMonth(), d.getDate() + add, 23, 59, 59, 0);
+        if (e.getTime() <= Date.now()) e = new Date(e.getTime() + 7 * 86400000);
+        return e;
     }
-    if (cM < 0) {
-        cM = 59;
-        cH--;
+    var target = endOfWeek();
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+        var diff = Math.floor((target - Date.now()) / 1000);
+        if (diff <= 0) { target = endOfWeek(); diff = Math.floor((target - Date.now()) / 1000); }
+        H.textContent = pad(Math.floor(diff / 3600));
+        M.textContent = pad(Math.floor((diff % 3600) / 60));
+        S.textContent = pad(diff % 60);
     }
-    if (cH < 0) {
-        cH = 8;
-        cM = 45;
-        cS = 30;
-    }
-    document.getElementById('cdH').textContent = String(cH).padStart(2, '0');
-    document.getElementById('cdM').textContent = String(cM).padStart(2, '0');
-    document.getElementById('cdS').textContent = String(cS).padStart(2, '0');
-}, 1000);
+    tick();
+    setInterval(tick, 1000);
+})();
 
 /* â”€â”€ NEWSLETTER â”€â”€ */
 document.getElementById('nlBtn').addEventListener('click', function() {

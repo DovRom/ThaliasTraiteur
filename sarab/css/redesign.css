@@ -1175,3 +1175,47 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 @media (max-width: 760px) {
   .order-info { flex-direction: column; align-items: flex-start; gap: 14px; }
 }
+
+/* ================================================================
+   Conversion — order confirmation + reassurance strip
+   ================================================================ */
+.order-done { text-align: center; padding: 34px 12px; }
+.order-done i { font-size: 3.2rem; color: var(--secondary); margin-bottom: 16px; }
+.order-done h3 { font-family: "Playfair Display", serif; font-weight: 800; color: var(--heading); font-size: 1.6rem; margin-bottom: 10px; }
+.order-done p { color: var(--text-muted); max-width: 34em; margin: 0 auto 22px; line-height: 1.75; }
+.order-done strong { color: var(--heading); }
+
+.reassure {
+  display: flex; flex-wrap: wrap; gap: 16px 34px; justify-content: center;
+  margin-bottom: 34px; padding: 18px 20px;
+  border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+}
+.reassure .r { display: flex; align-items: center; gap: 9px; color: var(--text-muted); font-size: 0.85rem; }
+.reassure .r i { color: var(--secondary); font-size: 1rem; }
+.reassure .r b { color: var(--heading); font-weight: 600; }
+
+/* ================================================================
+   Mobile fixes — prevent horizontal overflow
+   ================================================================ */
+html { overflow-x: hidden; }
+@media (max-width: 700px) {
+  #hero .hbgtxt { display: none; }          /* decorative watermark overflowed */
+  .hero-title { letter-spacing: -1px; }
+  .hero-meta { gap: 26px; }
+}
+
+/* Mobile: let hero grid items shrink & wrap (min-width:auto caused overflow) */
+@media (max-width: 991.98px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-inner > * { min-width: 0; max-width: 100%; }
+  .hero-sub { max-width: 100%; }
+}
+@media (max-width: 480px) {
+  .hero-meta { gap: 16px 22px; }
+  .hero-meta b { font-size: 1.55rem; }
+  .hero-meta span { font-size: 0.64rem; letter-spacing: 1px; }
+  .hero-actions { gap: 18px; }
+}
+@media (max-width: 991.98px) {
+  .hero-media::after { inset: 12px; }   /* was -16px right/bottom -> overflowed on mobile */
+}
