@@ -61,19 +61,19 @@
   --secondary-rgb: 0, 158, 96;
   --green: #009e60;
   --green-dark: #00623c;
-  /* shadcn/ui dark neutrals */
-  --bg: #09090b;
-  --surface: #18181b;
-  --surface-2: #27272a;
-  --border: #27272a;
-  --text: #e4e4e7;
-  --text-muted: #a1a1aa;
-  --text-faint: #71717a;
+  /* shadcn/ui dark neutrals (warm-tinted where the light theme is cream/orange) */
+  --bg: #0a0906;
+  --surface: #18160f;
+  --surface-2: #24201a;
+  --border: #2c2820;
+  --text: #e7e3dc;
+  --text-muted: #a8a196;
+  --text-faint: #746e63;
   --heading: #fafafa;
-  --dark: #18181b;
-  --cream: #09090b;
-  --cream2: #18181b;
-  --light: #18181b;
+  --dark: #18160f;
+  --cream: #17130c; /* warm equiv of #fff8f0 */
+  --cream2: #241b11; /* warm equiv of #fef0dc */
+  --light: #1c1710; /* warm equiv of #f9f5f0 */
   --shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.65);
 }

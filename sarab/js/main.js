@@ -4,21 +4,12 @@ AOS.init({
     offset: 55
 });
 
-/* NAVBAR SCROLL & ACTIVE LINK  */
+/* NAVBAR SCROLL  (active link is page-based, set in the HTML — no scroll-spy,
+   which would clear it since nav links now point to pages, not #sections) */
 window.addEventListener('scroll', function() {
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
-    document.getElementById('btt').classList.toggle('show', window.scrollY > 300);
-    document.querySelectorAll('section[id]').forEach(function(sec) {
-        var top = sec.offsetTop - 110,
-            bot = top + sec.offsetHeight;
-        if (window.scrollY >= top && window.scrollY < bot) {
-            document.querySelectorAll('.nav-link').forEach(function(l) {
-                l.classList.remove('active');
-            });
-            var lnk = document.querySelector('.nav-link[href="#' + sec.id + '"]');
-            if (lnk) lnk.classList.add('active');
-        }
-    });
+    var btt = document.getElementById('btt');
+    if (btt) btt.classList.toggle('show', window.scrollY > 300);
 });
 
 /*  SMOOTH SCROLL + MOBILE NAV CLOSE  */
@@ -165,6 +156,18 @@ document.querySelectorAll('.catcard').forEach(function(card) {
 
 var menuPop = document.getElementById('menuPop');
 var mpQty = 1;
+var mpQInput = document.getElementById('mpQnum');
+function mpSetQty(n) {
+    mpQty = Math.max(1, Math.floor(n) || 1);
+    if (mpQInput) mpQInput.value = mpQty;
+}
+if (mpQInput) {
+    mpQInput.addEventListener('input', function() {
+        var n = parseInt(this.value, 10);
+        mpQty = (n && n > 0) ? n : 1;
+    });
+    mpQInput.addEventListener('blur', function() { mpSetQty(mpQty); });
+}
 
 function openMenuPop(card) {
     var img = card.getAttribute('data-img');
@@ -179,7 +182,9 @@ function openMenuPop(card) {
     var desc = card.getAttribute('data-desc');
     var tags = card.getAttribute('data-tags') || '';
 
-    document.getElementById('mpImg').setAttribute('src', img);
+    window.__ttDish = { name: title, price: price };
+
+    if (window.TTCarousel) window.TTCarousel.load(card.getAttribute('data-imgs') || img, title);
     document.getElementById('mpCat').textContent = cat;
     document.getElementById('mpTitle').textContent = title;
 
@@ -204,13 +209,13 @@ function openMenuPop(card) {
             return '<span class="mptag">' + t.trim() + '</span>';
         }).join('');
 
-    mpQty = 1;
-    document.getElementById('mpQnum').textContent = 1;
+    mpSetQty(1);
     document.getElementById('mpAddCart').innerHTML = '<i class="fas fa-shopping-cart"></i> Ajouter à ma commande';
     document.getElementById('mpAddCart').style.background = '';
 
     menuPop.classList.add('open');
     document.body.style.overflow = 'hidden';
+    if (window.TTOrder) window.TTOrder.ensureView();
 }
 
 // Card click open popup
@@ -252,16 +257,16 @@ function closeMenuPop() {
 
 // Qty +/-
 document.getElementById('mpPlus').addEventListener('click', function() {
-    document.getElementById('mpQnum').textContent = ++mpQty;
+    mpSetQty(mpQty + 1);
 });
 document.getElementById('mpMinus').addEventListener('click', function() {
-    if (mpQty > 1) document.getElementById('mpQnum').textContent = --mpQty;
+    mpSetQty(mpQty - 1);
 });
 
 // Add to cart button
 document.getElementById('mpAddCart').addEventListener('click', function() {
-    var cnt = parseInt(document.getElementById('cartCount').textContent) + mpQty;
-    document.getElementById('cartCount').textContent = cnt;
+    mpSetQty(mpQty);
+    if (window.TTCart && window.__ttDish) window.TTCart.add(window.__ttDish.name, window.__ttDish.price, mpQty);
     this.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
     this.style.background = 'linear-gradient(135deg,var(--green),var(--green-dark))';
     var self = this;
@@ -273,24 +278,8 @@ document.getElementById('mpAddCart').addEventListener('click', function() {
 });
 
 
-document.getElementById('resBtn').addEventListener('click', function() {
-    var btn = this;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
-    btn.disabled = true;
-    setTimeout(function() {
-        btn.innerHTML = '<i class="fas fa-calendar-check"></i> Envoyer ma demande';
-        btn.disabled = false;
-        var ok = document.getElementById('resOk');
-        ok.style.display = 'block';
-        ok.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest'
-        });
-    }, 1500);
-});
-
-
-document.getElementById('ctcBtn').addEventListener('click', function() {
+var ctcBtnEl = document.getElementById('ctcBtn');
+if (ctcBtnEl) ctcBtnEl.addEventListener('click', function() {
     var btn = this;
     btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
     btn.disabled = true;
@@ -383,28 +372,28 @@ new Swiper('.tesSwiper', {
 });
 
 
-var cH = 8,
-    cM = 45,
-    cS = 30;
-setInterval(function() {
-    cS--;
-    if (cS < 0) {
-        cS = 59;
-        cM--;
+/* Real weekly countdown — the offer runs until Sunday 23:59, then resets. */
+(function () {
+    var H = document.getElementById('cdH'), M = document.getElementById('cdM'), S = document.getElementById('cdS');
+    if (!H || !M || !S) return;
+    function endOfWeek() {
+        var d = new Date(), add = (7 - d.getDay()) % 7;
+        var e = new Date(d.getFullYear(), d.getMonth(), d.getDate() + add, 23, 59, 59, 0);
+        if (e.getTime() <= Date.now()) e = new Date(e.getTime() + 7 * 86400000);
+        return e;
     }
-    if (cM < 0) {
-        cM = 59;
-        cH--;
+    var target = endOfWeek();
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+        var diff = Math.floor((target - Date.now()) / 1000);
+        if (diff <= 0) { target = endOfWeek(); diff = Math.floor((target - Date.now()) / 1000); }
+        H.textContent = pad(Math.floor(diff / 3600));
+        M.textContent = pad(Math.floor((diff % 3600) / 60));
+        S.textContent = pad(diff % 60);
     }
-    if (cH < 0) {
-        cH = 8;
-        cM = 45;
-        cS = 30;
-    }
-    document.getElementById('cdH').textContent = String(cH).padStart(2, '0');
-    document.getElementById('cdM').textContent = String(cM).padStart(2, '0');
-    document.getElementById('cdS').textContent = String(cS).padStart(2, '0');
-}, 1000);
+    tick();
+    setInterval(tick, 1000);
+})();
 
 /* â”€â”€ NEWSLETTER â”€â”€ */
 document.getElementById('nlBtn').addEventListener('click', function() {
