@@ -8,6 +8,24 @@
    <meta name="author" content="Thalia's Traiteur">
    <meta name="description" content="Le menu complet de Thalia's Traiteur - cuisine ivoirienne pour vos événements à Montréal.">
    <title>Notre Menu - Thalia's Traiteur</title>
+   <!-- Favicon + SEO / partage (og:url et og:image en relatif : mets ton domaine absolu quand le site est en ligne pour l'aperçu Facebook/WhatsApp) -->
+   <link rel="icon" type="image/png" href="img/logo.png" />
+   <link rel="apple-touch-icon" href="img/logo.png" />
+   <meta name="keywords" content="traiteur ivoirien Montréal, cuisine ivoirienne, traiteur africain Montréal, tchep, garba, attiéké, traiteur mariage, traiteur événement, livraison plats ivoiriens, devis traiteur" />
+   <meta name="robots" content="index, follow" />
+   <meta name="theme-color" content="#ff8200" />
+   <meta property="og:type" content="website" />
+   <meta property="og:site_name" content="Thalia's Traiteur" />
+   <meta property="og:locale" content="fr_CA" />
+   <meta property="og:title" content="Notre Menu - Thalia's Traiteur" />
+   <meta property="og:description" content="Le menu complet de Thalia's Traiteur - cuisine ivoirienne pour vos événements à Montréal." />
+   <meta property="og:image" content="img/banner-img.jpg" />
+   <meta property="og:url" content="menu.html" />
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:title" content="Notre Menu - Thalia's Traiteur" />
+   <meta name="twitter:description" content="Le menu complet de Thalia's Traiteur - cuisine ivoirienne pour vos événements à Montréal." />
+   <meta name="twitter:image" content="img/banner-img.jpg" />
+
    <script>
       (function () { try { var t = localStorage.getItem("tt-theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) {} })();
    </script>
@@ -34,17 +52,17 @@
       <div class="container">
          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div class="top-contact d-flex flex-wrap">
-               <span><i class="fas fa-phone-alt"></i>+1 (514) 549-3405</span>
-               <span><i class="fas fa-envelope"></i>contact@thaliastraiteur.ca</span>
+               <span><i class="fas fa-phone-alt"></i><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></span>
+               <span><i class="fas fa-envelope"></i>thalias.traiteur@gmail.com</span>
                <span><i class="fas fa-map-marker-alt"></i>Montréal, QC</span>
             </div>
             <div class="d-flex align-items-center gap-3">
                <span class="ttag"><i class="fas fa-fire me-1"></i>Réservez votre événement !</span>
                <div class="tsoc">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fab fa-tiktok"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a href="https://www.facebook.com/Thaliastraiteur" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-youtube"></i></a>
                </div>
             </div>
          </div>
@@ -952,10 +970,10 @@
                <p class="fdesc">Le service traiteur qui apporte les saveurs authentiques de la Côte d'Ivoire à tous vos
                   événements, dans le Grand Montréal. Chaque plat cuisiné maison, avec le cœur.</p>
                <div class="fsoc">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fab fa-tiktok"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a href="https://www.facebook.com/Thaliastraiteur" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-youtube"></i></a>
                </div>
             </div>
             <div class="col-sm-6 col-lg-2">
@@ -987,11 +1005,11 @@
                </div>
                <div class="fci">
                   <div class="fciico"><i class="fas fa-phone-alt"></i></div>
-                  <div class="fciinfo"><strong>Téléphone</strong>+1 (514) 549-3405</div>
+                  <div class="fciinfo"><strong>Téléphone</strong><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></div>
                </div>
                <div class="fci">
                   <div class="fciico"><i class="fas fa-envelope"></i></div>
-                  <div class="fciinfo"><strong>Courriel</strong>contact@thaliastraiteur.ca</div>
+                  <div class="fciinfo"><strong>Courriel</strong>thalias.traiteur@gmail.com</div>
                </div>
                <div class="fci">
                   <div class="fciico"><i class="fas fa-clock"></i></div>
@@ -1004,7 +1022,7 @@
          <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                <p>&copy; 2026 <span>Thalia's Traiteur</span>. Tous droits réservés.</p>
-               <div><a href="#">Confidentialité</a><a href="#">Conditions</a><a href="#">Cookies</a></div>
+               <div><a href="confidentialite.html">Confidentialité</a><a href="mentions-legales.html">Mentions légales</a></div>
             </div>
          </div>
       </div>

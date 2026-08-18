@@ -14,15 +14,23 @@
     classic: "Classic (Sarab)",
     dark: "Dark (shadcn)",
   };
+  // icon shown = the NEXT theme (what a click switches to)
+  var ICONS = { ivoire: "fa-sun", classic: "fa-utensils", dark: "fa-moon" };
   var root = document.documentElement;
 
   function current() {
     return root.getAttribute("data-theme") || "ivoire";
   }
+  function nextOf(theme) {
+    return THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length];
+  }
 
   function refreshBtn(btn, theme) {
     if (!btn) return;
-    btn.title = "Thème : " + (LABELS[theme] || theme) + " — cliquer pour changer";
+    var nxt = nextOf(theme);
+    btn.title = "Passer au thème : " + (LABELS[nxt] || nxt);
+    var ic = btn.querySelector("i");
+    if (ic) ic.className = "fas " + ICONS[nxt];
   }
 
   function apply(theme) {

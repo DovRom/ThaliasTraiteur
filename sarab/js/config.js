@@ -38,7 +38,7 @@ window.TT_CONFIG = {
    GA_ID: "",
 
    /* Adresse mail de repli (utilisée par le mailto si aucun fournisseur). */
-   CONTACT_EMAIL: "contact@thaliastraiteur.ca",
+   CONTACT_EMAIL: "thalias.traiteur@gmail.com",
 
    /* Délai de réponse annoncé (réassurance). */
    REPLY_TIME: "24 h"

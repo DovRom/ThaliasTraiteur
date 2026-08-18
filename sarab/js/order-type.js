@@ -73,6 +73,12 @@
   }
   TTOrder.refreshToggles = refreshToggles;
 
+  // Reflect the type on <html> so CSS can hide unit prices in event mode
+  function syncRoot() {
+    document.documentElement.setAttribute("data-ordtype", TTOrder.type() || "");
+  }
+  TTOrder.syncRoot = syncRoot;
+
   function popupOpen() {
     var p = document.getElementById("menuPop");
     return p && p.classList.contains("open");
@@ -95,7 +101,9 @@
   // Keep toggles + open popup in sync whenever the type changes
   document.addEventListener("tt-order-change", function () {
     refreshToggles();
+    syncRoot();
     if (popupOpen()) TTOrder.applyPopup();
   });
-  document.addEventListener("DOMContentLoaded", refreshToggles);
+  document.addEventListener("DOMContentLoaded", function () { refreshToggles(); syncRoot(); });
+  syncRoot(); // set as early as possible
 })();

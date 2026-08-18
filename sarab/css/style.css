@@ -2495,9 +2495,9 @@ footer {
 /* ===================== THEME SWITCHER (dev tool) ===================== */
 .theme-toggle {
   position: fixed;
-  left: 18px;
-  bottom: 18px;
-  z-index: 1200;
+  right: 18px;
+  top: 18px;
+  z-index: 2200;
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -2505,7 +2505,7 @@ footer {
   cursor: pointer;
   color: #fff;
   font-size: 1.05rem;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--primary);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
   display: flex;
   align-items: center;

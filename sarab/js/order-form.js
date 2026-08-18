@@ -115,8 +115,8 @@
         L.push("• Téléphone : " + (val("oTel") || "—"));
         L.push("• Courriel : " + (val("oMail") || "—"));
         L.push("• Type d'événement : " + (val("oType") || "—"));
-        L.push("• Nombre de convives : " + (val("oConvives") || "—"));
         L.push("• Date : " + (val("oDateE") || "—"));
+        L.push("• Heure : " + (val("oHeureE") || "—"));
         L.push("• Lieu : " + (val("oLieu") || "—"));
       } else {
         L.push("Bonjour Thalia's Traiteur,", "", "Je souhaite passer une COMMANDE À LIVRER :", "");
@@ -147,9 +147,9 @@
       // Inbox-friendly subject + preview text (no emoji)
       var subject, preheader;
       if (ev) {
-        subject = "Demande de devis · " + nom + (val("oConvives") ? " — " + val("oConvives") : "");
+        subject = "Demande de devis · " + nom + (val("oType") ? " — " + val("oType") : "");
         preheader = [(val("oType") ? "Événement " + val("oType") : "Événement"),
-                     val("oConvives"), "devis à préparer"].filter(Boolean).join(" · ");
+                     "devis à préparer"].filter(Boolean).join(" · ");
       } else {
         subject = "Nouvelle commande · " + nom + (totalStr ? " · " + totalStr : "");
         preheader = [nom, totalStr, "à confirmer sous " + cfg("REPLY_TIME", "24 h")].filter(Boolean).join(" · ");
@@ -165,8 +165,7 @@
       R.push("Type : " + (ev ? "Traiteur / Événement" : "Livraison"));
       if (ev) {
         if (val("oType")) R.push("Événement : " + val("oType"));
-        if (val("oConvives")) R.push("Convives : " + val("oConvives"));
-        if (val("oDateE")) R.push("Date : " + val("oDateE"));
+        if (val("oDateE")) R.push("Date : " + val("oDateE") + (val("oHeureE") ? "  ·  " + val("oHeureE") : ""));
         if (val("oLieu")) R.push("Lieu : " + val("oLieu"));
       } else {
         if (val("oDate")) R.push("Date : " + val("oDate") + (val("oHeure") ? "  ·  " + val("oHeure") : ""));
@@ -190,9 +189,9 @@
         "_replyto": val("oMail"),
         "reply_to": val("oMail"),
         "event_type": ev ? val("oType") : "",
-        "guests": ev ? val("oConvives") : "",
+        "guests": "",
         "date": ev ? val("oDateE") : val("oDate"),
-        "time": ev ? "" : val("oHeure"),
+        "time": ev ? val("oHeureE") : val("oHeure"),
         "address": ev ? "" : val("oAdresse"),
         "place": ev ? val("oLieu") : "",
         "topic": "",                  // used by the contact form only
@@ -232,6 +231,16 @@
 
     var emailOk = function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
     var telOk = function (v) { return v.replace(/\D/g, "").length >= 8; };
+    function todayStr() {
+      var d = new Date();
+      return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+    }
+    var dateFutureOk = function (v) { return !!v && v >= todayStr(); };
+    // block past dates in the native pickers
+    ["oDate", "oDateE"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.setAttribute("min", todayStr());
+    });
     function validateForm() {
       var rules = [
         { id: "oNom", msg: "Indiquez votre nom." },
@@ -239,9 +248,11 @@
         { id: "oMail", test: emailOk, msg: "Adresse courriel invalide." }
       ];
       if (mode === "evenement") {
-        rules.push({ id: "oDateE", msg: "Choisissez la date de l'événement." });
+        rules.push({ id: "oDateE", test: dateFutureOk, msg: "Choisissez une date à venir." });
+        rules.push({ id: "oHeureE", msg: "Indiquez l'heure de l'événement." });
       } else {
-        rules.push({ id: "oDate", msg: "Choisissez une date de livraison." });
+        rules.push({ id: "oDate", test: dateFutureOk, msg: "Choisissez une date à venir." });
+        rules.push({ id: "oHeure", msg: "Indiquez l'heure de livraison." });
         rules.push({ id: "oAdresse", msg: "Indiquez l'adresse de livraison." });
       }
       if (window.ttForm) {

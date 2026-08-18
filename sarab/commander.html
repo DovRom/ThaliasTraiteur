@@ -7,6 +7,24 @@
    <meta name="author" content="Thalia's Traiteur">
    <meta name="description" content="Composez votre commande et demandez un devis personnalisé au traiteur Thalia&#x27;s, livré dans le Grand Montréal.">
    <title>Commander / Devis — Thalia&#x27;s Traiteur</title>
+   <!-- Favicon + SEO / partage (og:url et og:image en relatif : mets ton domaine absolu quand le site est en ligne pour l'aperçu Facebook/WhatsApp) -->
+   <link rel="icon" type="image/png" href="img/logo.png" />
+   <link rel="apple-touch-icon" href="img/logo.png" />
+   <meta name="keywords" content="traiteur ivoirien Montréal, cuisine ivoirienne, traiteur africain Montréal, tchep, garba, attiéké, traiteur mariage, traiteur événement, livraison plats ivoiriens, devis traiteur" />
+   <meta name="robots" content="index, follow" />
+   <meta name="theme-color" content="#ff8200" />
+   <meta property="og:type" content="website" />
+   <meta property="og:site_name" content="Thalia's Traiteur" />
+   <meta property="og:locale" content="fr_CA" />
+   <meta property="og:title" content="Commander / Devis — Thalia's Traiteur" />
+   <meta property="og:description" content="Composez votre commande et demandez un devis personnalisé au traiteur Thalia's, livré dans le Grand Montréal." />
+   <meta property="og:image" content="img/banner-img.jpg" />
+   <meta property="og:url" content="commander.html" />
+   <meta name="twitter:card" content="summary_large_image" />
+   <meta name="twitter:title" content="Commander / Devis — Thalia's Traiteur" />
+   <meta name="twitter:description" content="Composez votre commande et demandez un devis personnalisé au traiteur Thalia's, livré dans le Grand Montréal." />
+   <meta name="twitter:image" content="img/banner-img.jpg" />
+
    <script>(function(){try{var t=localStorage.getItem("tt-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
    <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -21,17 +39,17 @@
       <div class="container">
          <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div class="top-contact d-flex flex-wrap">
-               <span><i class="fas fa-phone-alt"></i>+1 (514) 549-3405</span>
-               <span><i class="fas fa-envelope"></i>contact@thaliastraiteur.ca</span>
+               <span><i class="fas fa-phone-alt"></i><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></span>
+               <span><i class="fas fa-envelope"></i>thalias.traiteur@gmail.com</span>
                <span><i class="fas fa-map-marker-alt"></i>Montréal, QC</span>
             </div>
             <div class="d-flex align-items-center gap-3">
                <span class="ttag"><i class="fas fa-fire me-1"></i>Réservez votre événement !</span>
                <div class="tsoc">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fab fa-tiktok"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a href="https://www.facebook.com/Thaliastraiteur" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-youtube"></i></a>
                </div>
             </div>
          </div>
@@ -78,8 +96,8 @@
          <div class="order-info">
             <div class="oi-ic"><i class="fas fa-lightbulb"></i></div>
             <div class="oi-txt">
-               <b>Le plus simple pour bien commander</b>
-               <span>Parcourez d'abord notre <a href="menu.html">menu</a> et ajoutez vos plats préférés au panier — vous choisissez le nombre de portions ou de personnes. Revenez ensuite ici pour finaliser : livraison à domicile ou devis pour votre événement.</span>
+               <b>Vous n'avez pas encore choisi vos plats ?</b>
+               <span>Pour vous simplifier la vie, <strong>commencez par le <a href="menu.html">menu</a></strong> : ajoutez vos plats au panier en indiquant le nombre de portions (ou de personnes) pour chacun, puis revenez ici — votre commande sera déjà pré-remplie, il ne restera qu'à finaliser. <em>Si c'est déjà fait, poursuivez simplement ci-dessous.</em></span>
             </div>
             <a href="menu.html" class="btn-ed--solid oi-cta"><i class="fas fa-utensils"></i>Parcourir le menu</a>
          </div>
@@ -138,14 +156,9 @@
                            <option>Mariage</option><option>Baptême</option><option>Anniversaire</option><option>Événement d'entreprise</option><option>Réception / Cocktail</option><option>Autre</option>
                         </select>
                      </div>
-                     <div class="col-sm-6 js-evt">
-                        <label class="flbl">Nombre de convives *</label>
-                        <select id="oConvives" class="fctrl">
-                           <option>1 - 5 personnes</option><option>6 - 10 personnes</option><option>11 - 20 personnes</option><option>21 - 50 personnes</option><option>51 - 100 personnes</option><option>100+ personnes</option>
-                        </select>
-                     </div>
                      <div class="col-sm-6 js-evt"><label class="flbl">Date de l'événement *</label><input type="date" id="oDateE" class="fctrl" /></div>
-                     <div class="col-sm-6 js-evt"><label class="flbl">Lieu de l'événement</label><input type="text" id="oLieu" class="fctrl" placeholder="Salle, ville…" /></div>
+                     <div class="col-sm-6 js-evt"><label class="flbl">Heure *</label><input type="time" id="oHeureE" class="fctrl" /></div>
+                     <div class="col-12 js-evt"><label class="flbl">Lieu de l'événement</label><input type="text" id="oLieu" class="fctrl" placeholder="Salle, ville…" /></div>
                      <div class="col-12 js-evt">
                         <label class="flbl">Plats sélectionnés (synchronisés avec votre panier)</label>
                         <div class="dishcheck" id="dishChecklist"></div>
@@ -172,10 +185,10 @@
                <div class="fnm">Thalia's<span> Traiteur</span></div>
                <p class="fdesc">Le service traiteur qui apporte les saveurs authentiques de la Côte d'Ivoire à tous vos événements, dans le Grand Montréal. Chaque plat cuisiné maison, avec le cœur.</p>
                <div class="fsoc">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fab fa-tiktok"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a href="https://www.facebook.com/Thaliastraiteur" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-instagram"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-youtube"></i></a>
                </div>
             </div>
             <div class="col-sm-6 col-lg-2">
@@ -201,8 +214,8 @@
             <div class="col-lg-4">
                <div class="ftit">Nous joindre</div>
                <div class="fci"><div class="fciico"><i class="fas fa-map-marker-alt"></i></div><div class="fciinfo"><strong>Zone</strong>Grand Montréal, QC, Canada</div></div>
-               <div class="fci"><div class="fciico"><i class="fas fa-phone-alt"></i></div><div class="fciinfo"><strong>Téléphone</strong>+1 (514) 549-3405</div></div>
-               <div class="fci"><div class="fciico"><i class="fas fa-envelope"></i></div><div class="fciinfo"><strong>Courriel</strong>contact@thaliastraiteur.ca</div></div>
+               <div class="fci"><div class="fciico"><i class="fas fa-phone-alt"></i></div><div class="fciinfo"><strong>Téléphone</strong><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></div></div>
+               <div class="fci"><div class="fciico"><i class="fas fa-envelope"></i></div><div class="fciinfo"><strong>Courriel</strong>thalias.traiteur@gmail.com</div></div>
                <div class="fci"><div class="fciico"><i class="fas fa-clock"></i></div><div class="fciinfo"><strong>Commandes</strong>Sur réservation · 48h à l'avance</div></div>
             </div>
          </div>

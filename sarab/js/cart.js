@@ -36,7 +36,7 @@
       else items.push({ name: name, price: parsePrice(price), qty: qty });
       write(items);
       if (window.ttTrack) window.ttTrack("add_to_cart", { item_name: name, quantity: qty, value: parsePrice(price) * qty, currency: "CAD" });
-      if (!silent) openDrawer();
+      if (!silent) openDrawer(true); // auto-close after a short delay
     },
     setQty: function (name, qty) {
       var items = read();
@@ -77,14 +77,26 @@
     if (window.TTOrder && window.TTOrder.refreshToggles) window.TTOrder.refreshToggles();
   }
 
-  function openDrawer() {
+  var autoTimer = null;
+  function clearAuto() { if (autoTimer) { clearTimeout(autoTimer); autoTimer = null; } }
+  function openDrawer(auto) {
     var d = document.getElementById("ttCartDrawer");
     var o = document.getElementById("ttCartOverlay");
     if (d) { d.classList.add("open"); d.setAttribute("aria-hidden", "false"); }
     if (o) o.classList.add("open");
     document.body.style.overflow = "hidden";
+    clearAuto();
+    // opened after an "add to cart": auto-close unless the user interacts
+    if (auto && d) {
+      autoTimer = setTimeout(closeDrawer, 2800);
+      var cancel = function () { clearAuto(); };
+      ["mouseenter", "touchstart", "click", "wheel"].forEach(function (ev) {
+        d.addEventListener(ev, cancel, { once: true, passive: true });
+      });
+    }
   }
   function closeDrawer() {
+    clearAuto();
     var d = document.getElementById("ttCartDrawer");
     var o = document.getElementById("ttCartOverlay");
     if (d) { d.classList.remove("open"); d.setAttribute("aria-hidden", "true"); }

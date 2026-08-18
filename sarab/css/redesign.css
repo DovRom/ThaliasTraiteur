@@ -1314,7 +1314,7 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
 }
 
 /* ---- Keep the theme toggle out of the way on phone ---- */
-@media (max-width: 600px) { .theme-toggle { width: 40px; height: 40px; left: 12px; bottom: 12px; opacity: 0.85; } }
+@media (max-width: 600px) { .theme-toggle { width: 40px; height: 40px; right: 12px; top: 12px; opacity: 0.9; } }
 
 /* ================================================================
    REVISION PASS — hero mobile / topbar theme / justify / services / sticky
@@ -1512,3 +1512,30 @@ input.mpqnum::-webkit-inner-spin-button{ -webkit-appearance:none; margin:0; }
 }
 .tt-ci-qty .tt-ci-qtyv::-webkit-outer-spin-button,
 .tt-ci-qty .tt-ci-qtyv::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Phone links keep the surrounding color; "bientôt" socials dimmed */
+a.tt-tel { color: inherit; text-decoration: none; }
+a.tt-tel:hover { color: var(--primary); }
+a.soc-soon { opacity: 0.55; cursor: default; }
+a.soc-soon:hover { opacity: 0.8; }
+
+/* Event mode: hide per-unit prices on menu cards (quote-based) */
+[data-ordtype="evenement"] .mprice { display: none; }
+
+/* ============================================================
+   Revision — responsive type scale (#6) + top-bar breathing (#5)
+   ============================================================ */
+@media (max-width: 600px) {
+  #topbar { padding-top: 11px; padding-bottom: 10px; }         /* not cramped against the top */
+  .hero-sub, .sdesc, .pagehero p, .svcrow p, .fti p { font-size: 0.95rem; line-height: 1.75; }
+  .navbar-nav .nav-link { font-size: 0.9rem !important; }
+  .mtit { font-size: 1.02rem; }
+  .mdesc { font-size: 0.86rem; }
+}
+@media (max-width: 400px) {
+  .hero-title { font-size: clamp(2rem, 10.5vw, 2.6rem); }
+  .stitle, .pagehero h1 { font-size: 1.6rem; }
+  .hero-sub, .sdesc, .pagehero p { font-size: 0.92rem; }
+  .container { padding-left: 15px; padding-right: 15px; }
+  .btn-ed--solid, .btn-red, .btn-ed--ghost { font-size: 0.82rem; }
+}
