@@ -92,8 +92,11 @@
     // opened after an "add to cart": auto-close unless the user interacts
     if (auto && d) {
       autoTimer = setTimeout(closeDrawer, 1900);
+      // cancel ONLY on real review gestures (hover / scroll inside the drawer).
+      // NOT touchstart/click: on mobile the add-tap lands on the full-width
+      // drawer and would cancel the timer instantly (it stayed open).
       var cancel = function () { clearAuto(); };
-      ["mouseenter", "touchstart", "click", "wheel"].forEach(function (ev) {
+      ["mouseenter", "wheel", "touchmove"].forEach(function (ev) {
         d.addEventListener(ev, cancel, { once: true, passive: true });
       });
     }
@@ -111,8 +114,20 @@
     return (Math.round(n * 100) / 100).toFixed(0) + " $";
   }
 
+  /* ---------- Mark menu cards that are already in the cart ---------- */
+  function markCards() {
+    var names = read().map(function (i) { return i.name; });
+    document.querySelectorAll(".mcard[data-title]").forEach(function (card) {
+      var inCart = names.indexOf(card.getAttribute("data-title")) > -1;
+      card.classList.toggle("in-cart", inCart);
+      var add = card.querySelector(".madd");
+      if (add) add.innerHTML = inCart ? '<i class="fas fa-check"></i>' : '<i class="fas fa-plus"></i>';
+    });
+  }
+
   /* ---------- Render badge + drawer contents ---------- */
   function render() {
+    markCards();
     var items = read();
     var count = API.count();
     var ev = window.TTOrder && window.TTOrder.isEvent();
