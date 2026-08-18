@@ -9,7 +9,9 @@
 
     // Clean keys: readable in Formspree AND usable as EmailJS template vars.
     function payload() {
-      var subject = "Contact – " + (v("cSujet") || v("cNom") || "Site");
+      var nom = v("cNom") || "Client";
+      var subject = (v("cSujet") || "Nouveau message") + " — " + nom;
+      var preheader = nom + " attend ta réponse";
       var details = ["Nom : " + v("cNom"), "Courriel : " + v("cMail"), "Téléphone : " + v("cTel"),
         "Sujet : " + v("cSujet"), "", v("cMsg")].join("\n");
       // Recap block: only filled lines (Gmail-safe, no empty rows)
@@ -20,7 +22,7 @@
       R.push(v("cMsg"));
       var recap = R.join("\n");
       return {
-        "_subject": subject, "subject": subject,
+        "_subject": subject, "subject": subject, "preheader": preheader,
         "name": v("cNom"), "email": v("cMail"), "_replyto": v("cMail"), "reply_to": v("cMail"),
         "phone": v("cTel") || "—", "topic": v("cSujet"),
         "recap": recap,

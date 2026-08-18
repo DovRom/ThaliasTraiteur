@@ -141,8 +141,19 @@
     // Clean keys: readable in Formspree AND usable as EmailJS template vars.
     function payload() {
       var items = (window.TTCart ? window.TTCart.items() : []);
-      var subject = (mode === "evenement" ? "Demande de devis – " : "Commande livraison – ") + (val("oNom") || "Nouveau client");
       var ev = (mode === "evenement");
+      var nom = val("oNom") || "Nouveau client";
+      var totalStr = (window.TTCart ? Math.round(window.TTCart.total()) + " $" : "");
+      // Inbox-friendly subject + preview text (no emoji)
+      var subject, preheader;
+      if (ev) {
+        subject = "Demande de devis · " + nom + (val("oConvives") ? " — " + val("oConvives") : "");
+        preheader = [(val("oType") ? "Événement " + val("oType") : "Événement"),
+                     val("oConvives"), "devis à préparer"].filter(Boolean).join(" · ");
+      } else {
+        subject = "Nouvelle commande · " + nom + (totalStr ? " · " + totalStr : "");
+        preheader = [nom, totalStr, "à confirmer sous " + cfg("REPLY_TIME", "24 h")].filter(Boolean).join(" · ");
+      }
       var unit = ev ? "personne" : "portion";
       // one dish per line: "Nom — N portion(s)" (email box renders line breaks)
       var dishList = items.map(function (i) {
@@ -171,6 +182,7 @@
       return {
         "_subject": subject,          // Formspree subject
         "subject": subject,
+        "preheader": preheader,       // inbox preview text
         "order_type": ev ? "Traiteur / Événement" : "Livraison",
         "name": val("oNom"),
         "phone": val("oTel"),
