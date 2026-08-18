@@ -37,9 +37,34 @@ window.TT_CONFIG = {
       (laisse vide pour désactiver le suivi). */
    GA_ID: "",
 
+   /* Meta (Facebook/Instagram) Pixel : colle ton ID, ex: "123456789012345"
+      (laisse vide pour désactiver le retargeting). */
+   META_PIXEL_ID: "",
+
+   /* --- Contact & réassurance --- */
    /* Adresse mail de repli (utilisée par le mailto si aucun fournisseur). */
    CONTACT_EMAIL: "thalias.traiteur@gmail.com",
 
+   /* Téléphone (affiché + click-to-call). Garde le format lisible. */
+   PHONE_DISPLAY: "+1 (514) 549-3405",
+   PHONE_E164: "+15145493405",           // format international sans espaces (pour tel:/wa.me)
+
+   /* WhatsApp : numéro au format international sans "+" (ex: "15145493405").
+      Laisse vide pour masquer le bouton WhatsApp. */
+   WHATSAPP: "15145493405",
+   WHATSAPP_MSG: "Bonjour Thalia's Traiteur ! J'aimerais un devis pour un événement.",
+
    /* Délai de réponse annoncé (réassurance). */
-   REPLY_TIME: "24 h"
+   REPLY_TIME: "24 h",
+
+   /* --- Réassurance métier (affichée dans le bloc « Confiance ») ---
+      Renseigne le n° de permis MAPAQ dès que tu l'as ; laisse vide pour
+      afficher un libellé neutre sans numéro. */
+   MAPAQ_NUMBER: "",
+   ZONE: "Grand Montréal & environs",
+
+   /* --- Réseaux sociaux (utilisés pour le SEO / données structurées) --- */
+   FACEBOOK_URL: "https://www.facebook.com/Thaliastraiteur",
+   INSTAGRAM_URL: "",
+   TIKTOK_URL: ""
 };

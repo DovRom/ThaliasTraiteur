@@ -8,9 +8,9 @@
    <meta name="description" content="Mentions légales de Thalia&#x27;s Traiteur.">
    <title>Mentions légales — Thalia&#x27;s Traiteur</title>
    <!-- Favicon + SEO / partage (og:url et og:image en relatif : mets ton domaine absolu quand le site est en ligne pour l'aperçu Facebook/WhatsApp) -->
-   <link rel="icon" type="image/png" href="img/logo.png" />
-   <link rel="apple-touch-icon" href="img/logo.png" />
-   <meta name="keywords" content="traiteur ivoirien Montréal, cuisine ivoirienne, traiteur africain Montréal, tchep, garba, attiéké, traiteur mariage, traiteur événement, livraison plats ivoiriens, devis traiteur" />
+   <link rel="icon" type="image/png" href="img/favicon.png" />
+   <link rel="apple-touch-icon" href="img/favicon.png" />
+   <meta name="keywords" content="traiteur ivoirien Montréal, cuisine du monde, traiteur africain Montréal, cuisine ivoirienne, tchep, garba, attiéké, traiteur mariage, traiteur événement, livraison plats ivoiriens, devis traiteur" />
    <meta name="robots" content="index, follow" />
    <meta name="theme-color" content="#ff8200" />
    <meta property="og:type" content="website" />
@@ -18,17 +18,19 @@
    <meta property="og:locale" content="fr_CA" />
    <meta property="og:title" content="Mentions légales — Thalia's Traiteur" />
    <meta property="og:description" content="Mentions légales de Thalia's Traiteur." />
-   <meta property="og:image" content="img/banner-img.jpg" />
+   <meta property="og:image" content="img/banner-img.webp" />
    <meta property="og:url" content="mentions-legales.html" />
    <meta name="twitter:card" content="summary_large_image" />
    <meta name="twitter:title" content="Mentions légales — Thalia's Traiteur" />
    <meta name="twitter:description" content="Mentions légales de Thalia's Traiteur." />
-   <meta name="twitter:image" content="img/banner-img.jpg" />
+   <meta name="twitter:image" content="img/banner-img.webp" />
 
    <script>(function(){try{var t=localStorage.getItem("tt-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}})();</script>
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
    <link href="css/bootstrap.min.css" rel="stylesheet" />
-   <link rel="stylesheet" href="css/all.min.css" />
+   <link rel="stylesheet" href="css/all.min.css?v=3919fcba" />
    <link rel="stylesheet" href="css/style.css" />
    <link rel="stylesheet" href="css/redesign.css" />
    <link rel="stylesheet" href="css/sweetalert2.min.css" />
@@ -58,7 +60,7 @@
    <nav class="navbar navbar-expand-lg" id="nav">
       <div class="container">
          <a class="navbar-brand" href="index.html">
-            <img src="img/logo.png" alt="Thalia's Traiteur - Cuisine Ivoirienne" class="blogo-img" />
+            <img decoding="async" fetchpriority="high" src="img/logo.webp" alt="Thalia's Traiteur - Cuisine ivoirienne & du monde" class="blogo-img" />
          </a>
          <div class="nav-actions d-flex align-items-center gap-2 order-lg-last">
             <button class="tt-cart-btn" data-cart-toggle type="button" title="Mon panier" aria-label="Mon panier"><i class="fas fa-shopping-bag"></i><span class="tt-cart-count">0</span></button>
@@ -111,7 +113,7 @@
          <div class="row g-5">
             <div class="col-lg-4">
                <div class="fnm">Thalia's<span> Traiteur</span></div>
-               <p class="fdesc">Le service traiteur qui apporte les saveurs authentiques de la Côte d'Ivoire à tous vos événements, dans le Grand Montréal. Chaque plat cuisiné maison, avec le cœur.</p>
+               <p class="fdesc">Le service traiteur qui apporte les saveurs de la Côte d'Ivoire &mdash; et d'ailleurs &mdash; à tous vos événements, dans le Grand Montréal. Chaque plat cuisiné maison, avec le cœur.</p>
                <div class="fsoc">
                   <a href="https://www.facebook.com/Thaliastraiteur" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
                   <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-instagram"></i></a>
@@ -136,7 +138,7 @@
                   <li><a href="menu.html"><i class="fas fa-chevron-right"></i>Voir le menu</a></li>
                   <li><a href="commander.html"><i class="fas fa-chevron-right"></i>Demander un devis</a></li>
                   <li><a href="services.html"><i class="fas fa-chevron-right"></i>Nos prestations</a></li>
-                  <li><a href="faq.html"><i class="fas fa-chevron-right"></i>Questions fréquentes</a></li>
+                  <li><a href="avis.html"><i class="fas fa-chevron-right"></i>Avis clients</a></li>
                </ul>
             </div>
             <div class="col-lg-4">
@@ -161,6 +163,7 @@
    <script src="js/config.js"></script>
    <script src="js/tt-mail.js"></script>
    <script src="js/analytics.js"></script>
+   <script src="js/tt-widgets.js"></script>
    <script src="js/sweetalert2.min.js"></script>
    <script src="js/tt-alerts.js"></script>
    <script src="js/jquery-3.7.1.min.js"></script>
