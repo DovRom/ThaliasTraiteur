@@ -1,4 +1,4 @@
-# Publie UNIQUEMENT le dossier "sarab/" sur GitHub Pages.
+# Publie UNIQUEMENT le dossier "ThaliasTraiteur/" sur GitHub Pages.
 # Le reste du repo (mail-template/, sarab_ressources/, Documentation/…)
 # n'est jamais copié sur le site en ligne.
 name: Déploiement du site (sarab) sur GitHub Pages
@@ -31,7 +31,7 @@ jobs:
       - name: Upload the site folder only
         uses: actions/upload-pages-artifact@v3
         with:
-          path: sarab            # <-- SEUL ce dossier est publié
+          path: ThaliasTraiteur            # <-- SEUL ce dossier est publié
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

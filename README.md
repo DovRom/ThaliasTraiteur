@@ -7,13 +7,13 @@ et au menu de Thalia's Traiteur.
 
 ## Structure
 
-- `sarab/` — site (HTML/CSS/JS + assets)
+- `ThaliasTraiteur/` — site (HTML/CSS/JS + assets)
 - `Documentation/` — documentation du template d'origine
 - `sarab_ressources/` — logo et menu de Thalia's Traiteur
 
 ## Développement
 
-Ouvrir `sarab/index.html` dans un navigateur, ou servir le dossier :
+Ouvrir `ThaliasTraiteur/index.html` dans un navigateur, ou servir le dossier `ThaliasTraiteur/` :
 
 ```bash
 cd sarab && python3 -m http.server 8000
