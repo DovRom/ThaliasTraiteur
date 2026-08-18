@@ -51,6 +51,7 @@ body { margin: 0; padding: 0; }
 .tt-card {
   width: 600px;
   max-width: 600px;
+  margin: 0 auto;
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
@@ -113,7 +114,7 @@ body { margin: 0; padding: 0; }
   border-bottom: 1px solid #efe6da;
 }
 
-.tt-rows { border-collapse: collapse; width: 100%; }
+.tt-rows { border-collapse: collapse; width: 100%; table-layout: fixed; }
 .tt-rows td {
   padding: 9px 0;
   vertical-align: top;
@@ -121,7 +122,7 @@ body { margin: 0; padding: 0; }
   border-bottom: 1px solid #f5efe6;
 }
 .tt-k { width: 140px; color: #9a8b7b; font-weight: 500; text-align: left; }
-.tt-v { color: #3a2f26; font-weight: 500; text-align: right; }
+.tt-v { color: #3a2f26; font-weight: 500; text-align: right; word-break: break-word; }
 .tt-link { color: #e06f00; text-decoration: none; font-weight: 600; }
 
 /* masque une ligne dont la valeur est vide (champ non applicable) */
@@ -149,6 +150,7 @@ body { margin: 0; padding: 0; }
   color: #3a2f26;
   line-height: 2.15;
   white-space: pre-line;
+  word-break: break-word;
 }
 
 .tt-total { width: 100%; margin-top: 14px; background: #241a12; border-radius: 10px; }
@@ -176,6 +178,7 @@ body { margin: 0; padding: 0; }
   line-height: 1.75;
   color: #4a3f36;
   white-space: pre-line;
+  word-break: break-word;
 }
 
 /* sections entieres masquables si leur contenu est vide */

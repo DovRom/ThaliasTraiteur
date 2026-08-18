@@ -8,18 +8,31 @@ C'est le seul fichier à coller.
 |---|---|
 | `formspree-template.html` | pour **Formspree** — document complet (CSS inclus) |
 | `formspree-template.css`  | *optionnel* — le même CSS seul, si champs HTML/CSS séparés |
-| `emailjs-template.html`   | pour **EmailJS** — fragment `<div>` inline + conditions `{{#if}}` |
+| `emailjs-template.html`   | pour **EmailJS** — notification (t'est adressée), fragment `<div>` inline |
+| `emailjs-autoreply.html`  | pour **EmailJS** — confirmation automatique **envoyée au client** |
 | `preview.html` | aperçu local à ouvrir dans un navigateur (données d'exemple) |
 
-## EmailJS (recommandé)
-Même design que le template Formspree, mais en format EmailJS (commence par
-`<div>`, styles inline, conditions `{{#if}}` exécutées par EmailJS → aucune
+## EmailJS — notification (recommandé)
+Même design que le template Formspree, en format EmailJS (commence par `<div>`,
+styles inline, sections `{{#champ}}…{{/champ}}` exécutées par EmailJS → aucune
 ligne vide, même dans Gmail).
 1. EmailJS → ton template → onglet **Content** → mode **code `</>`** → colle
    tout `emailjs-template.html`.
 2. Onglet **Settings** : **Subject** = `{{subject}}` · **From Name** =
    `{{name}} — via le site` · **Reply To** = `{{email}}`.
-3. Fais-en **deux** (Commandes / Devis et Contact) — le même HTML gère les deux.
+3. Un seul suffit — le même HTML gère commande **et** contact.
+
+## EmailJS — auto-reply (confirmation au client)
+`emailjs-autoreply.html` = le mail « Merci, bien reçu » envoyé **au client**.
+1. Crée un **3e template** EmailJS, colle-y `emailjs-autoreply.html` (mode code).
+2. Onglet **Settings** : **To Email** = `{{email}}` (le client) · **From Name**
+   = `Thalia's Traiteur` · **Reply To** = `thalias.traiteur@gmail.com` ·
+   **Subject** = `Nous avons bien reçu votre demande — Thalia's Traiteur`.
+3. Dans le **template de notification**, onglet **Auto-Reply**, relie ce template.
+
+> Robustesse d'affichage : tables en `table-layout:fixed` + `word-break` sur les
+> valeurs → une adresse/courriel très long **revient à la ligne** au lieu de
+> pousser le cadre vers la droite (plus de décalage hors-cadre).
 
 ## Étapes
 1. Formspree → ton formulaire → **Settings → Email Templates** (ou *Customize*).
