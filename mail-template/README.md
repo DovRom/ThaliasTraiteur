@@ -6,9 +6,20 @@ C'est le seul fichier à coller.
 
 | Fichier | Usage |
 |---|---|
-| `formspree-template.html` | **le fichier à coller** (complet, CSS inclus) |
+| `formspree-template.html` | pour **Formspree** — document complet (CSS inclus) |
 | `formspree-template.css`  | *optionnel* — le même CSS seul, si champs HTML/CSS séparés |
+| `emailjs-template.html`   | pour **EmailJS** — fragment `<div>` inline + conditions `{{#if}}` |
 | `preview.html` | aperçu local à ouvrir dans un navigateur (données d'exemple) |
+
+## EmailJS (recommandé)
+Même design que le template Formspree, mais en format EmailJS (commence par
+`<div>`, styles inline, conditions `{{#if}}` exécutées par EmailJS → aucune
+ligne vide, même dans Gmail).
+1. EmailJS → ton template → onglet **Content** → mode **code `</>`** → colle
+   tout `emailjs-template.html`.
+2. Onglet **Settings** : **Subject** = `{{subject}}` · **From Name** =
+   `{{name}} — via le site` · **Reply To** = `{{email}}`.
+3. Fais-en **deux** (Commandes / Devis et Contact) — le même HTML gère les deux.
 
 ## Étapes
 1. Formspree → ton formulaire → **Settings → Email Templates** (ou *Customize*).
