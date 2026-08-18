@@ -148,8 +148,26 @@
       var dishList = items.map(function (i) {
         return i.name + " — " + i.qty + " " + unit + (i.qty > 1 ? "s" : "");
       }).join("\n");
-      // ALWAYS send every key (empty when N/A) so the email template never
-      // shows a leftover token; empty rows are hidden by the template CSS.
+      // Recap block: only the FILLED lines (no empty rows) -> renders cleanly
+      // in every client, incl. Gmail/Pixel which can't hide empty fields.
+      var R = [];
+      R.push("Type : " + (ev ? "Traiteur / Événement" : "Livraison"));
+      if (ev) {
+        if (val("oType")) R.push("Événement : " + val("oType"));
+        if (val("oConvives")) R.push("Convives : " + val("oConvives"));
+        if (val("oDateE")) R.push("Date : " + val("oDateE"));
+        if (val("oLieu")) R.push("Lieu : " + val("oLieu"));
+      } else {
+        if (val("oDate")) R.push("Date : " + val("oDate") + (val("oHeure") ? "  ·  " + val("oHeure") : ""));
+        if (val("oAdresse")) R.push("Adresse : " + val("oAdresse"));
+      }
+      R.push("");
+      R.push("Plats :");
+      items.forEach(function (i) { R.push("   • " + i.name + " — " + i.qty + " " + unit + (i.qty > 1 ? "s" : "")); });
+      R.push("");
+      R.push("Total" + (ev ? "" : " estimé") + " : " + (ev ? "Sur devis" : (window.TTCart ? Math.round(window.TTCart.total()) + " $" : "")));
+      if (val("oMsg")) { R.push(""); R.push("Précisions : " + val("oMsg")); }
+      var recap = R.join("\n");
       return {
         "_subject": subject,          // Formspree subject
         "subject": subject,
@@ -169,6 +187,7 @@
         "dishes": dishList,
         "total": ev ? "Sur devis" : (window.TTCart ? Math.round(window.TTCart.total()) + " $" : ""),
         "message": val("oMsg"),
+        "recap": recap,               // clean, filled-only block for the email
         "details": body()
       };
     }

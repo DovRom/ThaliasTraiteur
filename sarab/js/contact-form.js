@@ -12,13 +12,18 @@
       var subject = "Contact – " + (v("cSujet") || v("cNom") || "Site");
       var details = ["Nom : " + v("cNom"), "Courriel : " + v("cMail"), "Téléphone : " + v("cTel"),
         "Sujet : " + v("cSujet"), "", v("cMsg")].join("\n");
+      // Recap block: only filled lines (Gmail-safe, no empty rows)
+      var R = [];
+      if (v("cSujet")) R.push("Objet : " + v("cSujet"));
+      R.push("");
+      R.push("Message :");
+      R.push(v("cMsg"));
+      var recap = R.join("\n");
       return {
         "_subject": subject, "subject": subject,
         "name": v("cNom"), "email": v("cMail"), "_replyto": v("cMail"), "reply_to": v("cMail"),
-        "phone": v("cTel"), "topic": v("cSujet"),
-        // order-only keys sent empty so the shared template hides those rows
-        "order_type": "", "event_type": "", "guests": "", "date": "", "time": "",
-        "address": "", "place": "", "dishes": "", "total": "",
+        "phone": v("cTel") || "—", "topic": v("cSujet"),
+        "recap": recap,
         "message": v("cMsg"), "details": details
       };
     }
