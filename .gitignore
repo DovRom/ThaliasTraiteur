@@ -14,3 +14,8 @@ dist/
 
 # Logs
 *.log
+
+# Dev assets kept local (not published, not in the public repo)
+mail-template/
+sarab_ressources/
+Documentation/
