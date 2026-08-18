@@ -1,0 +1,159 @@
+<!-- ================================================================
+     Thalia's Traiteur — Template e-mail EmailJS
+     >>> Dans EmailJS : ouvre ton template -> onglet "Content" -> bascule en
+         mode CODE (</>) et colle CE contenu.
+     EmailJS exécute les conditions Handlebars {{#if ...}} : les champs vides
+     sont retirés AVANT l'envoi -> aucune ligne vide, même dans Gmail.
+     Styles 100% inline + carte fluide -> rendu correct sur Gmail/Pixel.
+     Variables (envoyées par le site) : subject . name . email . phone
+       order_type . event_type . guests . date . time . address . place
+       topic . dishes . total . message
+     Réglages du template EmailJS (onglet Settings) :
+       Subject   : {{subject}}
+       From Name : {{name}} — via le site
+       Reply To  : {{email}}
+     ================================================================ -->
+<div style="background:#f3ece2;padding:34px 12px;font-family:'Poppins',-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#4a3f36;">
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;" bgcolor="#f3ece2">
+    <tr>
+      <td align="center">
+
+        <table role="presentation" width="100%" align="center" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;background:#ffffff;border-radius:16px;" bgcolor="#ffffff">
+
+          <!-- bandeau drapeau -->
+          <tr>
+            <td style="padding:0;font-size:0;line-height:0;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;">
+                <tr>
+                  <td width="33%" height="5" style="height:5px;line-height:5px;font-size:0;background:#ff8200;">&nbsp;</td>
+                  <td width="34%" height="5" style="height:5px;line-height:5px;font-size:0;background:#ffffff;">&nbsp;</td>
+                  <td width="33%" height="5" style="height:5px;line-height:5px;font-size:0;background:#009e60;">&nbsp;</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- marque -->
+          <tr>
+            <td align="center" style="padding:36px 30px 6px;text-align:center;">
+              <div style="font-family:'Playfair Display',Georgia,'Times New Roman',serif;font-size:30px;font-weight:700;letter-spacing:0.4px;color:#241a12;">Thalia&rsquo;s Traiteur</div>
+              <div style="margin-top:7px;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#ff8200;font-weight:600;">Cuisine Ivoirienne &middot; Montréal</div>
+            </td>
+          </tr>
+
+          <!-- titre -->
+          <tr>
+            <td align="center" style="padding:22px 30px 6px;text-align:center;">
+              <div style="font-size:11px;letter-spacing:2.5px;text-transform:uppercase;font-weight:600;color:#009e60;margin-bottom:10px;">Nouvelle demande</div>
+              <div style="font-family:'Playfair Display',Georgia,serif;font-size:23px;line-height:1.3;font-weight:700;color:#241a12;">{{subject}}</div>
+            </td>
+          </tr>
+
+          <!-- coordonnées client -->
+          <tr>
+            <td style="padding:24px 30px 2px;">
+              <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:#a6957f;margin-bottom:10px;padding-bottom:9px;border-bottom:1px solid #efe6da;">Coordonnées du client</div>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
+                <tr>
+                  <td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Nom</td>
+                  <td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#3a2f26;font-weight:600;text-align:right;">{{name}}</td>
+                </tr>
+                <tr>
+                  <td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Courriel</td>
+                  <td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;text-align:right;"><a href="mailto:{{email}}" style="color:#e06f00;text-decoration:none;font-weight:600;">{{email}}</a></td>
+                </tr>
+                {{#if phone}}
+                <tr>
+                  <td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;color:#9a8b7b;font-weight:500;text-align:left;">Téléphone</td>
+                  <td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;color:#3a2f26;font-weight:600;text-align:right;">{{phone}}</td>
+                </tr>
+                {{/if}}
+              </table>
+            </td>
+          </tr>
+
+          <!-- détails -->
+          {{#if order_type}}
+          <tr>
+            <td style="padding:22px 30px 2px;">
+              <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:#a6957f;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid #efe6da;">Détails de la demande</div>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;">
+                <tr>
+                  <td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Type</td>
+                  <td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;text-align:right;"><span style="display:inline-block;background:#fff3e6;color:#c85f00;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:600;">{{order_type}}</span></td>
+                </tr>
+                {{#if event_type}}<tr><td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Événement</td><td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#3a2f26;font-weight:600;text-align:right;">{{event_type}}</td></tr>{{/if}}
+                {{#if guests}}<tr><td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Convives</td><td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#3a2f26;font-weight:600;text-align:right;">{{guests}}</td></tr>{{/if}}
+                {{#if date}}<tr><td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Date</td><td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#3a2f26;font-weight:600;text-align:right;">{{date}}</td></tr>{{/if}}
+                {{#if time}}<tr><td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Heure</td><td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#3a2f26;font-weight:600;text-align:right;">{{time}}</td></tr>{{/if}}
+                {{#if address}}<tr><td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Adresse</td><td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#3a2f26;font-weight:600;text-align:right;">{{address}}</td></tr>{{/if}}
+                {{#if place}}<tr><td align="left" width="120" style="width:120px;padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#9a8b7b;font-weight:500;text-align:left;">Lieu</td><td align="right" style="padding:9px 0;vertical-align:top;font-size:15px;border-bottom:1px solid #f5efe6;color:#3a2f26;font-weight:600;text-align:right;">{{place}}</td></tr>{{/if}}
+              </table>
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- objet (contact) -->
+          {{#if topic}}
+          <tr>
+            <td style="padding:22px 30px 2px;">
+              <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:#a6957f;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid #efe6da;">Objet</div>
+              <div style="font-size:15px;color:#3a2f26;font-weight:600;">{{topic}}</div>
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- plats + total -->
+          {{#if dishes}}
+          <tr>
+            <td style="padding:22px 30px 2px;">
+              <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:#a6957f;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid #efe6da;">Plats souhaités</div>
+              <div style="background:#faf5ef;border:1px solid #efe6da;border-radius:10px;padding:8px 20px;font-size:15px;color:#3a2f26;line-height:2.1;white-space:pre-line;">{{dishes}}</div>
+              {{#if total}}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="width:100%;margin-top:14px;background:#241a12;border-radius:10px;">
+                <tr>
+                  <td style="padding:15px 20px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#e9c9a5;vertical-align:middle;">Total estimé</td>
+                  <td align="right" style="padding:15px 20px;text-align:right;font-family:'Playfair Display',Georgia,serif;font-size:23px;font-weight:700;color:#ffb15c;vertical-align:middle;">{{total}}</td>
+                </tr>
+              </table>
+              {{/if}}
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- message -->
+          {{#if message}}
+          <tr>
+            <td style="padding:22px 30px 2px;">
+              <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:#a6957f;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid #efe6da;">Message</div>
+              <div style="background:#faf5ef;border-left:3px solid #ff8200;border-radius:0 10px 10px 0;padding:15px 18px;font-size:15px;line-height:1.75;color:#4a3f36;white-space:pre-line;">{{message}}</div>
+            </td>
+          </tr>
+          {{/if}}
+
+          <!-- bouton -->
+          <tr>
+            <td align="center" style="padding:28px 30px 10px;text-align:center;">
+              <a href="mailto:{{email}}" style="display:inline-block;background:#ff8200;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:15px 38px;border-radius:8px;letter-spacing:0.3px;">Répondre au client</a>
+              <div style="margin-top:12px;font-size:12px;color:#b6a998;">ou écrire à <a href="mailto:{{email}}" style="color:#e06f00;text-decoration:none;font-weight:600;">{{email}}</a></div>
+            </td>
+          </tr>
+
+          <!-- pied -->
+          <tr>
+            <td align="center" style="padding:30px 30px 34px;text-align:center;background:#faf5ef;">
+              <div style="font-family:'Playfair Display',Georgia,serif;font-size:17px;color:#241a12;font-weight:700;">Thalia&rsquo;s Traiteur</div>
+              <div style="font-size:13px;color:#8a7d70;margin-top:4px;">Cuisine ivoirienne, faite maison &middot; Grand Montréal</div>
+              <div style="font-size:13px;color:#8a7d70;margin-top:4px;">+1 (514) 549-3405</div>
+              <div style="font-size:11px;color:#b6a998;margin-top:15px;">Message automatique envoyé depuis le formulaire du site.</div>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</div>
