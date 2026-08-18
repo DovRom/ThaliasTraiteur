@@ -1547,3 +1547,6 @@ a.soc-soon:hover { opacity: 0.8; }
   line-height: 1; border-radius: 8px; transition: color 0.2s, background 0.2s;
 }
 .tt-theme-btn:hover { color: var(--primary); background: var(--surface-2); }
+
+/* Remove rating stars on menu cards + dish popup */
+.mstars, #mpStars { display: none !important; }

@@ -36,7 +36,10 @@
       else items.push({ name: name, price: parsePrice(price), qty: qty });
       write(items);
       if (window.ttTrack) window.ttTrack("add_to_cart", { item_name: name, quantity: qty, value: parsePrice(price) * qty, currency: "CAD" });
-      if (!silent) openDrawer(true); // auto-close after a short delay
+      if (!silent) {
+        if (window.ttAlert) window.ttAlert.toast((ex ? "Quantité mise à jour" : "Ajouté au panier") + " — " + name, "success");
+        openDrawer(true); // brief peek, then auto-closes
+      }
     },
     setQty: function (name, qty) {
       var items = read();
@@ -88,7 +91,7 @@
     clearAuto();
     // opened after an "add to cart": auto-close unless the user interacts
     if (auto && d) {
-      autoTimer = setTimeout(closeDrawer, 2800);
+      autoTimer = setTimeout(closeDrawer, 1900);
       var cancel = function () { clearAuto(); };
       ["mouseenter", "touchstart", "click", "wheel"].forEach(function (ev) {
         d.addEventListener(ev, cancel, { once: true, passive: true });

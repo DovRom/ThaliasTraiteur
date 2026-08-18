@@ -43,25 +43,28 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 
 
 var searchOv = document.getElementById('searchOv');
-
-document.getElementById('navSearchBtn').addEventListener('click', function() {
-    searchOv.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    setTimeout(function() {
-        document.getElementById('searchInput').focus();
-    }, 220);
-});
-
-document.getElementById('searchClose').addEventListener('click', closeSearch);
-
-// Close when clicking backdrop
-searchOv.addEventListener('click', function(e) {
-    if (e.target === searchOv) closeSearch();
-});
+var navSearchBtn = document.getElementById('navSearchBtn');
 
 function closeSearch() {
-    searchOv.classList.remove('open');
+    if (searchOv) searchOv.classList.remove('open');
     document.body.style.overflow = '';
+}
+
+// The nav search feature is optional (button removed from the header) — guard it
+if (navSearchBtn && searchOv) {
+    navSearchBtn.addEventListener('click', function() {
+        searchOv.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        setTimeout(function() {
+            var si = document.getElementById('searchInput');
+            if (si) si.focus();
+        }, 220);
+    });
+    var searchCloseBtn = document.getElementById('searchClose');
+    if (searchCloseBtn) searchCloseBtn.addEventListener('click', closeSearch);
+    searchOv.addEventListener('click', function(e) {
+        if (e.target === searchOv) closeSearch();
+    });
 }
 
 // Category buttons inside search box
