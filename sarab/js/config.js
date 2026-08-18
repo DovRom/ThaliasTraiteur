@@ -13,7 +13,9 @@ window.TT_CONFIG = {
       Dans tous les cas, si le fournisseur choisi échoue, on retombe
       automatiquement sur "mailto" pour ne jamais perdre une demande.
       ---------------------------------------------------------------- */
-   MAIL_PROVIDER: "formspree",
+   // MAIL_PROVIDER: "formspree",
+   MAIL_PROVIDER: "emailjs",
+
 
    /* --- Option A : FORMSPREE ---
       1) Crée un formulaire sur https://formspree.io (gratuit, 50 envois/mois)
@@ -26,9 +28,9 @@ window.TT_CONFIG = {
          avec les variables : {{name}} {{email}} {{phone}} {{subject}}
          {{order_type}} {{date}} {{dishes}} {{total}} {{message}} {{details}}
       3) Récupère ta Public Key (Account > API Keys) et colle tout ci-dessous. */
-   EMAILJS_PUBLIC_KEY: "",
-   EMAILJS_SERVICE_ID: "",
-   EMAILJS_TEMPLATE_ID: "",          // template commandes / devis (page Commander)
+   EMAILJS_PUBLIC_KEY: "rgcr-rSQ3kNzb-Sbw",
+   EMAILJS_SERVICE_ID: "service_dy18hzj",
+   EMAILJS_TEMPLATE_ID: "template_pt4z00n",          // template commandes / devis (page Commander)
    EMAILJS_TEMPLATE_ID_CONTACT: "",  // template messages (page Contact)
 
    /* Google Analytics 4 : colle ton ID de mesure, ex: "G-XXXXXXXXXX"
