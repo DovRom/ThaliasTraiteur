@@ -42,7 +42,7 @@ window.TT_CONFIG = {
 
    /* Google Analytics 4 : colle ton ID de mesure, ex: "G-XXXXXXXXXX"
       (laisse vide pour désactiver le suivi). */
-   GA_ID: "",
+   GA_ID: "G-X7SRLBND7G",
 
    /* Meta (Facebook/Instagram) Pixel : colle ton ID, ex: "123456789012345"
       (laisse vide pour désactiver le retargeting). */
