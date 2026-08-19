@@ -108,6 +108,35 @@ select:focus-visible, [tabindex]:focus-visible, .btn-red:focus-visible,
   .tesinvite-cta .btn-ed--solid, .tesinvite-cta .btn-ed--ghost { width: 100%; justify-content: center; }
 }
 
+/* ---- Formulaires : focus premium (halo doux) ---- */
+.fctrl, .nlinput, .msearch {
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.fctrl:focus, .nlinput:focus, .msearch:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(var(--primary-rgb), .14) !important;
+  outline: none !important;
+}
+.fctrl::placeholder, .msearch::placeholder { color: var(--text-faint); }
+
+/* ---- Page-heros (pages secondaires) : profondeur subtile ---- */
+.pagehero {
+  background: radial-gradient(130% 150% at 50% -30%,
+              color-mix(in srgb, var(--primary) 9%, var(--cream)) 0%,
+              var(--cream) 58%) !important;
+}
+.pagehero h1 { letter-spacing: -0.5px; }
+
+/* ---- Filtres du menu : pastilles plus vivantes ---- */
+.filtbtn { transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+.filtbtn:hover { transform: translateY(-1px); }
+
+/* ---- Marqueur de section : petit trait animé sous le label ---- */
+.slbl { position: relative; }
+
+/* ---- Liens de navigation : transition douce ---- */
+#nav .nav-link { transition: color .2s ease; }
+
 /* ---- Respect des préférences de mouvement ---- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
