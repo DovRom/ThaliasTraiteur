@@ -31,7 +31,10 @@ window.TT_CONFIG = {
    EMAILJS_PUBLIC_KEY: "rgcr-rSQ3kNzb-Sbw",
    EMAILJS_SERVICE_ID: "service_dy18hzj",
    EMAILJS_TEMPLATE_ID: "template_pt4z00n",          // template commandes / devis (page Commander)
-   EMAILJS_TEMPLATE_ID_CONTACT: "",  // template messages (page Contact)
+   // Template dédié aux MESSAGES (formulaire Contact + accueil). Crée-le dans EmailJS en
+   // collant mail-template/emailjs-contact.html (voir mail-template/README.md), puis colle
+   // son ID ici. Tant que c'est vide, les messages partent via le template devis ci-dessus.
+   EMAILJS_TEMPLATE_ID_CONTACT: "",
 
    /* Google Analytics 4 : colle ton ID de mesure, ex: "G-XXXXXXXXXX"
       (laisse vide pour désactiver le suivi). */
