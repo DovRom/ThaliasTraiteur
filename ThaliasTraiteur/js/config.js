@@ -31,9 +31,13 @@ window.TT_CONFIG = {
    EMAILJS_PUBLIC_KEY: "rgcr-rSQ3kNzb-Sbw",
    EMAILJS_SERVICE_ID: "service_dy18hzj",
    EMAILJS_TEMPLATE_ID: "template_pt4z00n",          // template commandes / devis (page Commander)
-   // Template dédié aux MESSAGES (formulaire Contact + accueil). Crée-le dans EmailJS en
-   // collant mail-template/emailjs-contact.html (voir mail-template/README.md), puis colle
-   // son ID ici. Tant que c'est vide, les messages partent via le template devis ci-dessus.
+   // Template dédié aux MESSAGES (Contact + accueil) — OPTIONNEL.
+   // Laissé VIDE VOLONTAIREMENT : le plan gratuit EmailJS est limité à 2 templates (déjà
+   // utilisés : devis + auto-réponse). Ce n'est pas un oubli — le template devis ci-dessus
+   // gère déjà proprement les messages : ses sections Mustache ({{#order_type}}…) masquent
+   // les champs de commande absents, un message n'affiche donc que Nom/Courriel/Tél/Objet/Message.
+   // Si un jour tu passes à un plan payant : crée le template avec mail-template/emailjs-contact.html
+   // et colle son ID ici.
    EMAILJS_TEMPLATE_ID_CONTACT: "",
 
    /* Google Analytics 4 : colle ton ID de mesure, ex: "G-XXXXXXXXXX"
