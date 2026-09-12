@@ -78,13 +78,13 @@
     var data = {
       "@context": "https://schema.org", "@type": "Caterer",
       "name": "Thalia's Traiteur",
-      "description": "Traiteur cuisine ivoirienne & du monde à Montréal : mariages, réceptions, entreprises. Fait maison.",
+      "description": "Traiteur cuisine ivoirienne & du monde au Québec : mariages, réceptions, entreprises. Fait maison.",
       "servesCuisine": ["Ivoirienne", "Africaine", "Cuisine du monde"],
       "telephone": cfg("PHONE_E164", ""),
       "email": cfg("CONTACT_EMAIL", ""),
       "priceRange": "$$",
-      "areaServed": cfg("ZONE", "Grand Montréal"),
-      "address": { "@type": "PostalAddress", "addressLocality": "Montréal", "addressRegion": "QC", "addressCountry": "CA" }
+      "areaServed": cfg("ZONE", "Québec"),
+      "address": { "@type": "PostalAddress", "addressRegion": "QC", "addressCountry": "CA" }
     };
     if (origin) { data.url = origin + "/"; data.image = origin + "/img/banner-img.webp"; data.logo = origin + "/img/logo.webp"; }
     if (sameAs.length) data.sameAs = sameAs;

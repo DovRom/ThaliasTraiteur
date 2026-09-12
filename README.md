@@ -1,6 +1,6 @@
 # ThaliasTraiteur
 
-Site web pour **Thalia's Traiteur — Cuisine Ivoirienne** (Montréal).
+Site web pour **Thalia's Traiteur — Cuisine Ivoirienne** (Québec).
 
 Basé sur le template HTML **Sarab** (restaurant / fast food) adapté aux couleurs
 et au menu de Thalia's Traiteur.
@@ -40,6 +40,33 @@ Le script :
 
 Les polices FontAwesome complètes (source du subset) sont dans `tools/fa-src/` — ne pas
 les supprimer, elles sont nécessaires à la régénération et ne sont pas publiées.
+
+## SEO (métadonnées, sitemap, données structurées)
+
+Les balises `canonical`, `og:*`, `title`/`description`, le `sitemap.xml`, le
+`robots.txt` et les données structurées JSON-LD sont **générés** par un script.
+Ne les édite pas à la main dans les `.html` : édite le script et relance-le.
+
+```bash
+python3 tools/seo.py      # aucune dépendance, idempotent
+```
+
+**Le jour où un nom de domaine est acheté**, une seule chose à faire :
+
+1. changer `SITE_URL` en haut de `tools/seo.py` ;
+2. relancer `python3 tools/seo.py` ;
+3. créer `ThaliasTraiteur/CNAME` contenant le domaine (ex. `thaliastraiteur.ca`) ;
+4. pointer le DNS du domaine vers GitHub Pages.
+
+⚠️ **Tant que le site vit sur `dovrom.github.io/ThaliasTraiteur/`, le
+`robots.txt` n'est pas lu par les moteurs** : ils ne lisent ce fichier qu'à la
+racine d'un domaine (`dovrom.github.io/robots.txt`), qui n'appartient pas à ce
+dépôt. Le fichier est en place et deviendra actif dès qu'un domaine propre sera
+branché. En attendant, le sitemap se soumet directement dans Google Search
+Console.
+
+Titres et descriptions de chaque page sont centralisés dans le dictionnaire
+`PAGES` de `tools/seo.py`.
 
 ## Crédits
 

@@ -1318,7 +1318,7 @@ details.faq-item .faq-a { padding: 0 0 20px; color: var(--text-muted); line-heig
   #topbar .top-contact span:not(:first-child)::after { display: none; }
 }
 @media (max-width: 420px) {
-  #topbar .top-contact span:nth-child(3) { display: none; } /* hide "Montréal, QC", keep phone+email */
+  #topbar .top-contact span:nth-child(3) { display: none; } /* hide "Québec", keep phone+email */
 }
 
 /* ---- Reassurance strip: 2 columns on phone ---- */

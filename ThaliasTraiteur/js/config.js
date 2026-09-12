@@ -68,7 +68,7 @@ window.TT_CONFIG = {
       Renseigne le n° de permis MAPAQ dès que tu l'as ; laisse vide pour
       afficher un libellé neutre sans numéro. */
    MAPAQ_NUMBER: "",
-   ZONE: "Grand Montréal & environs",
+   ZONE: "Québec",
 
    /* --- Réseaux sociaux (utilisés pour le SEO / données structurées) --- */
    FACEBOOK_URL: "https://www.facebook.com/Thaliastraiteur",
