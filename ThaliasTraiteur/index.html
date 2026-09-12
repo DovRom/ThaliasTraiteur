@@ -1,30 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-CA">
 
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="author" content="Thalia's Traiteur">
-   <meta name="description" content="Thalia's Traiteur - Service traiteur ivoirien à Montréal. Cuisine authentique faite maison pour mariages, réceptions et événements.">
-   <title>Thalia's Traiteur - Cuisine Ivoirienne à Montréal</title>
-   <!-- Favicon + SEO / partage (og:url et og:image en relatif : mets ton domaine absolu quand le site est en ligne pour l'aperçu Facebook/WhatsApp) -->
-   <link rel="icon" type="image/png" href="img/logo.png" />
-   <link rel="apple-touch-icon" href="img/logo.png" />
-   <meta name="keywords" content="traiteur ivoirien Montréal, cuisine ivoirienne, traiteur africain Montréal, tchep, garba, attiéké, traiteur mariage, traiteur événement, livraison plats ivoiriens, devis traiteur" />
+   <meta name="description" content="Traiteur ivoirien au Québec : tchep, attiéké, garba et cuisine du monde, faits maison pour mariages, réceptions et événements. Devis gratuit sous 24 h.">
+   <title>Traiteur ivoirien &amp; africain au Québec | Thalia's Traiteur</title>
+   <link rel="canonical" href="https://dovrom.github.io/ThaliasTraiteur/" />
+   <!-- seo.py:jsonld:start -->
+   <script type="application/ld+json">
+   {
+      "@context": "https://schema.org",
+      "@graph": [
+         {
+            "@type": "Caterer",
+            "@id": "https://dovrom.github.io/ThaliasTraiteur/#business",
+            "name": "Thalia's Traiteur",
+            "description": "Traiteur cuisine ivoirienne & du monde au Québec : mariages, réceptions, entreprises. Fait maison.",
+            "url": "https://dovrom.github.io/ThaliasTraiteur/",
+            "logo": "https://dovrom.github.io/ThaliasTraiteur/img/logo.webp",
+            "image": "https://dovrom.github.io/ThaliasTraiteur/img/banner-img.webp",
+            "servesCuisine": [
+               "Ivoirienne",
+               "Africaine",
+               "Cuisine du monde"
+            ],
+            "priceRange": "$$",
+            "currenciesAccepted": "CAD",
+            "hasMenu": "https://dovrom.github.io/ThaliasTraiteur/menu.html",
+            "areaServed": {
+               "@type": "AdministrativeArea",
+               "name": "Québec"
+            },
+            "address": {
+               "@type": "PostalAddress",
+               "addressRegion": "QC",
+               "addressCountry": "CA"
+            },
+            "telephone": "+15145493405",
+            "email": "thalias.traiteur@gmail.com",
+            "sameAs": [
+               "https://www.facebook.com/Thaliastraiteur"
+            ]
+         },
+         {
+            "@type": "WebSite",
+            "@id": "https://dovrom.github.io/ThaliasTraiteur/#website",
+            "name": "Thalia's Traiteur",
+            "url": "https://dovrom.github.io/ThaliasTraiteur/",
+            "inLanguage": "fr-CA",
+            "publisher": {
+               "@id": "https://dovrom.github.io/ThaliasTraiteur/#business"
+            }
+         }
+      ]
+   }
+   </script>
+   <!-- seo.py:jsonld:end -->
+   <!-- Favicon + SEO / partage — og:url, og:image et canonical sont
+        générées en absolu par tools/seo.py (SITE_URL). -->
+   <link rel="icon" type="image/png" href="img/favicon.png" />
+   <link rel="apple-touch-icon" href="img/favicon.png" />
    <meta name="robots" content="index, follow" />
    <meta name="theme-color" content="#ff8200" />
    <meta property="og:type" content="website" />
    <meta property="og:site_name" content="Thalia's Traiteur" />
    <meta property="og:locale" content="fr_CA" />
-   <meta property="og:title" content="Thalia's Traiteur - Cuisine Ivoirienne à Montréal" />
-   <meta property="og:description" content="Thalia's Traiteur - Service traiteur ivoirien à Montréal. Cuisine authentique faite maison pour mariages, réceptions et événements." />
-   <meta property="og:image" content="img/banner-img.jpg" />
-   <meta property="og:url" content="index.html" />
+   <meta property="og:title" content="Traiteur ivoirien &amp; africain au Québec | Thalia's Traiteur" />
+   <meta property="og:description" content="Traiteur ivoirien au Québec : tchep, attiéké, garba et cuisine du monde, faits maison pour mariages, réceptions et événements. Devis gratuit sous 24 h." />
+   <meta property="og:image" content="https://dovrom.github.io/ThaliasTraiteur/img/banner-img.webp" />
+   <meta property="og:url" content="https://dovrom.github.io/ThaliasTraiteur/" />
    <meta name="twitter:card" content="summary_large_image" />
-   <meta name="twitter:title" content="Thalia's Traiteur - Cuisine Ivoirienne à Montréal" />
-   <meta name="twitter:description" content="Thalia's Traiteur - Service traiteur ivoirien à Montréal. Cuisine authentique faite maison pour mariages, réceptions et événements." />
-   <meta name="twitter:image" content="img/banner-img.jpg" />
+   <meta name="twitter:title" content="Traiteur ivoirien &amp; africain au Québec | Thalia's Traiteur" />
+   <meta name="twitter:description" content="Traiteur ivoirien au Québec : tchep, attiéké, garba et cuisine du monde, faits maison pour mariages, réceptions et événements. Devis gratuit sous 24 h." />
+   <meta name="twitter:image" content="https://dovrom.github.io/ThaliasTraiteur/img/banner-img.webp" />
 
    <!-- Theme: apply saved theme before paint to avoid flash -->
    <script>
@@ -35,6 +86,8 @@
          } catch (e) {}
       })();
    </script>
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
    <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap"
       rel="stylesheet" />
@@ -45,13 +98,14 @@
    <!-- Swiper -->
    <link href="css/swiper-bundle.min.css" rel="stylesheet" />
    <!-- all min css -->
-   <link rel="stylesheet" href="css/all.min.css" />
+   <link rel="stylesheet" href="css/all.min.css?v=3919fcba" />
    <!-- magnific CSS -->
    <link rel="stylesheet" href="css/magnific-popup.css" />
    <!-- Style CSS -->
    <link rel="stylesheet" href="css/style.css" />
    <!-- Editorial redesign layer -->
    <link rel="stylesheet" href="css/redesign.css" />
+   <link rel="stylesheet" href="css/excellence.css" />
    <link rel="stylesheet" href="css/sweetalert2.min.css" />
 </head>
 
@@ -65,7 +119,7 @@
             <div class="top-contact d-flex flex-wrap">
                <span><i class="fas fa-phone-alt"></i><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></span>
                <span><i class="fas fa-envelope"></i>thalias.traiteur@gmail.com</span>
-               <span><i class="fas fa-map-marker-alt"></i>Montréal, QC</span>
+               <span><i class="fas fa-map-marker-alt"></i>Québec</span>
             </div>
             <div class="d-flex align-items-center gap-3">
                <span class="ttag"><i class="fas fa-fire me-1"></i>Réservez votre événement !</span>
@@ -85,7 +139,7 @@
    <nav class="navbar navbar-expand-lg" id="nav">
       <div class="container">
          <a class="navbar-brand" href="index.html">
-            <img src="img/logo.png" alt="Thalia's Traiteur - Cuisine Ivoirienne" class="blogo-img" />
+            <img decoding="async" fetchpriority="high" src="img/logo.webp" alt="Thalia's Traiteur - Cuisine ivoirienne & du monde" class="blogo-img" />
          </a>
          <div class="nav-actions d-flex align-items-center gap-2 order-lg-last">
             <button class="tt-cart-btn" data-cart-toggle type="button" title="Mon panier" aria-label="Mon panier"><i class="fas fa-shopping-bag"></i><span class="tt-cart-count">0</span></button>
@@ -123,25 +177,25 @@
          <!-- Categories inside search box -->
          <div class="sovcats">
             <div class="sovcat active" data-cat="all">
-               <img src="img/dishes/tchep.jpg" alt="" />Tout
+               <img loading="lazy" decoding="async" src="img/dishes/tchep.webp" alt="" />Tout
             </div>
             <div class="sovcat" data-cat="specialites">
-               <img src="img/dishes/tchep.jpg" alt="" />Spécialités
+               <img loading="lazy" decoding="async" src="img/dishes/tchep.webp" alt="" />Spécialités
             </div>
             <div class="sovcat" data-cat="grillades">
-               <img src="img/dishes/poulet-braise.jpg" alt="" />Grillades
+               <img loading="lazy" decoding="async" src="img/dishes/poulet-braise.webp" alt="" />Grillades
             </div>
             <div class="sovcat" data-cat="soupes">
-               <img src="img/dishes/soupe-pecheur.jpg" alt="" />Soupes &amp; Entrées
+               <img loading="lazy" decoding="async" src="img/dishes/soupe-chasseur.webp" alt="" />Soupes &amp; Entrées
             </div>
             <div class="sovcat" data-cat="exotiques">
-               <img src="img/dishes/marmite.jpg" alt="" />Plats Exotiques
+               <img loading="lazy" decoding="async" src="img/dishes/marmite.webp" alt="" />Plats Exotiques
             </div>
             <div class="sovcat" data-cat="fraiches">
-               <img src="img/menu/4.jpg" alt="" />Entrées Fraîches
+               <img loading="lazy" decoding="async" src="img/menu/4.webp" alt="" />Entrées Fraîches
             </div>
             <div class="sovcat" data-cat="desserts">
-               <img src="img/menu/5.jpg" alt="" />Desserts
+               <img loading="lazy" decoding="async" src="img/menu/5.webp" alt="" />Desserts
             </div>
          </div>
          <div class="sovtrend">
@@ -159,27 +213,27 @@
          HERO
          ============================================================ -->
    <section id="hero">
-      <div class="hbgtxt">TRAITEUR</div>
+      <div class="hbgtxt">CUISINE</div>
       <div class="container">
          <div class="hero-inner">
             <div class="hero-copy" data-aos="fade-up">
-               <div class="hero-eyebrow">Traiteur ivoirien · Montréal</div>
-               <h1 class="hero-title">La Cuisine<br /><em>Ivoirienne.</em></h1>
-               <p class="hero-sub">Thalia's Traiteur met les saveurs authentiques d'Abidjan au cœur de vos plus beaux
-                  événements — mariages, réceptions et tables d'entreprise. Fait maison, avec le cœur.</p>
+               <div class="hero-eyebrow">Traiteur ivoirien &amp; cuisine du monde · Québec</div>
+               <h1 class="hero-title">Traiteur<br /><em>Ivoirien &amp; d'ailleurs.</em></h1>
+               <p class="hero-sub">Thalia's Traiteur célèbre les saveurs d'Abidjan <b>et d'ailleurs</b> au cœur de vos
+                  plus beaux événements — mariages, réceptions et tables d'entreprise. Fait maison, avec le cœur.</p>
                <div class="hero-actions">
-                  <a href="menu.html" class="btn-ed--solid">Découvrir le menu</a>
-                  <a href="contact.html" class="btn-ed--ghost">Demander un devis <i class="fas fa-arrow-right"></i></a>
+                  <a href="commander.html" class="btn-ed--solid">Demander un devis gratuit <i class="fas fa-arrow-right"></i></a>
+                  <a href="menu.html" class="btn-ed--ghost">Voir le menu</a>
                </div>
                <div class="hero-meta">
-                  <div><b>500+</b><span>Événements servis</span></div>
-                  <div><b>34</b><span>Plats au menu</span></div>
                   <div><b>100%</b><span>Fait maison</span></div>
+                  <div><b>Sur mesure</b><span>Chaque événement</span></div>
+                  <div><b>Québec</b><span>Livraison &amp; service</span></div>
                </div>
             </div>
             <div class="hero-media" data-aos="fade-left">
-               <img src="img/banner-img.jpg" alt="Plat signature Thalia's Traiteur" />
-               <div class="hero-media-cap"><i class="fas fa-utensils"></i>Cuisine ivoirienne, faite maison</div>
+               <img decoding="async" fetchpriority="high" src="img/banner-img.webp" alt="Plat signature Thalia's Traiteur" />
+               <div class="hero-media-cap"><i class="fas fa-utensils"></i>Cuisine ivoirienne &amp; du monde, faite maison</div>
             </div>
          </div>
       </div>
@@ -203,6 +257,38 @@
          <div class="mqitem"><i class="fas fa-circle"></i>Soupe du Pêcheur</div>
       </div>
    </div>
+   <!-- TRUST / CONFIANCE -->
+   <section id="trust">
+      <div class="container">
+         <div class="text-center" data-aos="fade-up">
+            <span class="slbl">Pourquoi nous faire confiance</span>
+            <h2 class="stitle">Un traiteur <span>sérieux</span>, pas d'improvisation</h2>
+            <div class="sline"></div>
+         </div>
+         <div class="trustgrid">
+            <div class="trustcard" data-aos="fade-up">
+               <div class="tc-ic"><i class="fas fa-utensils"></i></div>
+               <h4>100% fait maison</h4>
+               <p>Tout est cuisiné maison, le jour même, avec des produits frais — jamais de surgelé industriel.</p>
+            </div>
+            <div class="trustcard" data-aos="fade-up" data-aos-delay="60">
+               <div class="tc-ic"><i class="fas fa-lock"></i></div>
+               <h4>Hygiène &amp; MAPAQ</h4>
+               <p data-mapaq>Cuisine conforme aux normes d'hygiène alimentaire du Québec (permis MAPAQ).</p>
+            </div>
+            <div class="trustcard" data-aos="fade-up" data-aos-delay="120">
+               <div class="tc-ic"><i class="fas fa-leaf"></i></div>
+               <h4>Allergènes pris au sérieux</h4>
+               <p>Informations et adaptations allergènes sur demande — dites-nous vos contraintes, on s'adapte.</p>
+            </div>
+            <div class="trustcard" data-aos="fade-up" data-aos-delay="180">
+               <div class="tc-ic"><i class="fas fa-check-circle"></i></div>
+               <h4>Fiable &amp; assuré</h4>
+               <p data-zone>Traiteur assuré et ponctuel, dressage soigné. Service partout au Québec.</p>
+            </div>
+         </div>
+      </div>
+   </section>
    <!-- CATEGORY -->
       <section id="category">
       <div class="container">
@@ -216,42 +302,42 @@
          <div class="row g-3 justify-content-center">
             <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="0">
                <div class="catcard active" data-filter="all">
-                  <img class="catimg" src="img/category/1.jpg" alt="" />
+                  <img loading="lazy" decoding="async" class="catimg" src="img/category/1.webp" alt="" />
                   <div class="catnm">Tout le menu</div>
                   <div class="catct">30+ plats</div>
                </div>
             </div>
             <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="70">
                <div class="catcard" data-filter="specialites">
-                  <img class="catimg" src="img/category/2.jpg" alt="" />
+                  <img loading="lazy" decoding="async" class="catimg" src="img/category/2.webp" alt="" />
                   <div class="catnm">Nos Spécialités</div>
                   <div class="catct">7 plats</div>
                </div>
             </div>
             <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="140">
                <div class="catcard" data-filter="grillades">
-                  <img class="catimg" src="img/category/3.jpg" alt="" />
+                  <img loading="lazy" decoding="async" class="catimg" src="img/category/3.webp" alt="" />
                   <div class="catnm">Plats Grillés</div>
                   <div class="catct">7 plats</div>
                </div>
             </div>
             <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="210">
                <div class="catcard" data-filter="soupes">
-                  <img class="catimg" src="img/category/4.jpg" alt="" />
+                  <img loading="lazy" decoding="async" class="catimg" src="img/category/4.webp" alt="" />
                   <div class="catnm">Soupes &amp; Entrées</div>
                   <div class="catct">4 plats</div>
                </div>
             </div>
             <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="280">
                <div class="catcard" data-filter="exotiques">
-                  <img class="catimg" src="img/category/5.jpg" alt="" />
+                  <img loading="lazy" decoding="async" class="catimg" src="img/category/5.webp" alt="" />
                   <div class="catnm">Plats Exotiques</div>
                   <div class="catct">4 plats</div>
                </div>
             </div>
             <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="350">
                <div class="catcard" data-filter="desserts">
-                  <img class="catimg" src="img/category/6.jpg" alt="" />
+                  <img loading="lazy" decoding="async" class="catimg" src="img/category/6.webp" alt="" />
                   <div class="catnm">Desserts</div>
                   <div class="catct">4 plats</div>
                </div>
@@ -279,13 +365,13 @@
          <div class="row g-4" id="mgrid">
             <!-- CARD 1: Tchep (Spécialités) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="specialites" data-aos="fade-up">
-               <div class="mcard" data-img="img/dishes/tchep.jpg" data-imgs="img/dishes/tchep.jpg,img/dishes/tchep-2.jpg" data-title="Tchep" data-cat="Nos Spécialités"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Tchep" data-cat="Nos Spécialités"
                   data-price="32 $" data-old="" data-rating="5.0" data-reviews="214" data-cal="1 pers."
                   data-time="48h"
                   data-desc="Le grand classique festif ivoirien : riz parfumé mijoté à la tomate, servi au poisson ou à la viande au choix. Généreux, coloré et plein de saveurs."
                   data-tags="Signature,Riz,Au choix">
                   <div class="mimg">
-                     <img src="img/dishes/tchep.jpg" alt="Tchep" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Tchep &mdash; photo à venir" />
                      <div class="mbdg hot"><i class="fas fa-star"></i> Populaire</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -307,13 +393,13 @@
             </div>
             <!-- CARD 2: Marmite de Fruits de Mer (Plats Exotiques) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="exotiques" data-aos="fade-up" data-aos-delay="80">
-               <div class="mcard" data-img="img/dishes/marmite.jpg" data-title="Marmite de Fruits de Mer et Légumes" data-cat="Plats Exotiques"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Marmite de Fruits de Mer et Légumes" data-cat="Plats Exotiques"
                   data-price="37 $" data-old="" data-rating="4.9" data-reviews="64" data-cal="1 pers."
                   data-time="48h"
                   data-desc="Une généreuse marmite de fruits de mer et de légumes frais, mijotée dans une sauce épicée aux parfums d'Afrique de l'Ouest."
                   data-tags="Fruits de mer,Généreux,Épicé">
                   <div class="mimg">
-                     <img src="img/dishes/marmite.jpg" alt="Marmite de Fruits de Mer" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Marmite de Fruits de Mer et Légumes &mdash; photo à venir" />
                      <div class="mbdg new"><i class="fas fa-star"></i> Nouveau</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -335,13 +421,13 @@
             </div>
             <!-- CARD 3: Poulet Braisé (Grillades) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="grillades" data-aos="fade-up" data-aos-delay="160">
-               <div class="mcard" data-img="img/dishes/poulet-braise.jpg" data-imgs="img/dishes/poulet-braise.jpg,img/dishes/poulet-braise-2.jpg,img/dishes/poulet-braise-3.jpg,img/dishes/poulet-braise-4.jpg,img/dishes/poulet-braise-5.jpg" data-title="Poulet Braisé" data-cat="Plats Grillés"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Poulet Braisé" data-cat="Plats Grillés"
                   data-price="27 $" data-old="" data-rating="4.9" data-reviews="176" data-cal="1 pers."
                   data-time="48h"
                   data-desc="Poulet mariné aux épices puis braisé au feu, servi avec frites, alloco et igname frite. Une valeur sûre qui fait l'unanimité."
                   data-tags="Braisé,Populaire,Grillé">
                   <div class="mimg">
-                     <img src="img/dishes/poulet-braise.jpg" alt="Poulet Braisé" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Poulet Braisé &mdash; photo à venir" />
                      <div class="mbdg"><i class="fas fa-star"></i> Best-seller</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -362,12 +448,12 @@
             </div>
             <!-- CARD 4: Salade Crevettes Avocat (Entrées Fraîches) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="fraiches" data-aos="fade-up">
-               <div class="mcard" data-img="img/menu/4.jpg" data-title="Salade Crevettes Avocat" data-cat="Entrées Fraîches"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Salade Crevettes Avocat" data-cat="Entrées Fraîches"
                   data-price="17 $" data-old="" data-rating="4.7" data-reviews="51" data-cal="1 pers." data-time="48h"
                   data-desc="Crevettes fraîches, avocat fondant et crudités croquantes : une entrée légère, colorée et pleine de fraîcheur pour ouvrir le repas."
                   data-tags="Frais,Léger,Entrée">
                   <div class="mimg">
-                     <img src="img/menu/4.jpg" alt="Salade Crevettes Avocat" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Salade Crevettes Avocat &mdash; photo à venir" />
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
                   <div class="mbody">
@@ -387,12 +473,12 @@
             </div>
             <!-- CARD 5: Deguê (Desserts) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="desserts" data-aos="fade-up" data-aos-delay="80">
-               <div class="mcard" data-img="img/menu/5.jpg" data-title="Deguê" data-cat="Desserts"
+               <div class="mcard" data-img="img/dishes/degue.webp" data-title="Deguê" data-cat="Desserts"
                   data-price="10 $" data-old="" data-rating="4.9" data-reviews="73" data-cal="1 pers." data-time="48h"
                   data-desc="Dessert traditionnel à base de mil et de yaourt onctueux, délicatement sucré et parfumé. La touche gourmande qui clôt le repas en douceur."
                   data-tags="Sucré,Traditionnel,Onctueux">
                   <div class="mimg">
-                     <img src="img/menu/5.jpg" alt="Deguê" />
+                     <img loading="lazy" decoding="async" src="img/dishes/degue.webp" alt="Deguê" />
                      <div class="mbdg new"><i class="fas fa-star"></i> Nouveau</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -413,12 +499,12 @@
             </div>
             <!-- CARD 6: Soupe du Pêcheur (Soupes & Entrées) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="soupes" data-aos="fade-up" data-aos-delay="160">
-               <div class="mcard" data-img="img/dishes/soupe-pecheur.jpg" data-title="Soupe du Pêcheur" data-cat="Soupes &amp; Entrées"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Soupe du Pêcheur" data-cat="Soupes &amp; Entrées"
                   data-price="37 $" data-old="" data-rating="4.8" data-reviews="92" data-cal="1 pers." data-time="48h"
                   data-desc="Soupe riche en poisson et fruits de mer, longuement mijotée aux épices du pays. Réconfortante et parfumée, une entrée qui réchauffe le cœur."
                   data-tags="Poisson,Épicé,Réconfortant">
                   <div class="mimg">
-                     <img src="img/dishes/soupe-pecheur.jpg" alt="Soupe du Pêcheur" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Soupe du Pêcheur &mdash; photo à venir" />
                      <div class="mbdg hot">Coup de cœur</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -592,6 +678,63 @@
          <div class="text-center mt-4" data-aos="fade-up"><a href="contact.html" class="btn-red"><i class="fas fa-file-signature"></i>Demander un devis pour mon événement</a></div>
       </div>
    </section>
+   <!-- FORMULES -->
+   <section id="formules">
+      <div class="container">
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Nos formules</span>
+            <h2 class="stitle">Une formule pour <span>chaque événement</span></h2>
+            <div class="sline"></div>
+            <p class="sdesc mx-auto" style="max-width:520px;">Des prix clairs pour se projeter. Chaque menu est
+               ensuite personnalisé selon vos goûts, votre budget et le nombre d'invités.</p>
+         </div>
+         <div class="formgrid">
+            <!-- PRIX À CONFIRMER PAR LA CLIENTE -->
+            <div class="formcard" data-aos="fade-up">
+               <div class="fc-ic"><i class="fas fa-briefcase"></i></div>
+               <h3>Plateaux entreprise</h3>
+               <div class="fc-sub">Lunchs, réunions, afterworks</div>
+               <div class="fc-price">à partir de <b>18&nbsp;$</b> / pers.</div>
+               <ul>
+                  <li>Dès 10 personnes</li>
+                  <li>Plats chauds ou boîtes-repas individuelles</li>
+                  <li>Livraison au bureau, partout au Québec</li>
+                  <li>Facture entreprise</li>
+               </ul>
+               <a href="commander.html" class="btn-red"><i class="fas fa-file-signature"></i>Demander un devis</a>
+            </div>
+            <div class="formcard is-featured" data-aos="fade-up" data-aos-delay="80">
+               <span class="fc-tag">Le plus demandé</span>
+               <div class="fc-ic"><i class="fas fa-champagne-glasses"></i></div>
+               <h3>Buffet événement</h3>
+               <div class="fc-sub">Réceptions, anniversaires, baptêmes</div>
+               <div class="fc-price">à partir de <b>25&nbsp;$</b> / pers.</div>
+               <ul>
+                  <li>Dès 20 convives</li>
+                  <li>Buffet ivoirien &amp; du monde, au choix</li>
+                  <li>Dressage &amp; matériel sur demande</li>
+                  <li>Livraison ou service sur place</li>
+               </ul>
+               <a href="commander.html" class="btn-red"><i class="fas fa-file-signature"></i>Demander un devis</a>
+            </div>
+            <div class="formcard" data-aos="fade-up" data-aos-delay="160">
+               <div class="fc-ic"><i class="fas fa-ring"></i></div>
+               <h3>Menu mariage sur mesure</h3>
+               <div class="fc-sub">Le grand jour, sans stress</div>
+               <div class="fc-price"><b>Sur devis</b></div>
+               <ul>
+                  <li>Accompagnement complet</li>
+                  <li>Dégustation &amp; menu personnalisé</li>
+                  <li>Cuisine ivoirienne, du monde ou mixte</li>
+                  <li>Coordination le jour J</li>
+               </ul>
+               <a href="commander.html" class="btn-red"><i class="fas fa-file-signature"></i>Composer mon menu</a>
+            </div>
+         </div>
+         <p class="formnote">Prix indicatifs, hors taxes — le devis final dépend du menu, du nombre d'invités et des
+            services choisis. <a href="contact.html">Une question&nbsp;?</a></p>
+      </div>
+   </section>
    <section id="how">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
@@ -602,9 +745,9 @@
          </div>
          <div class="howsteps" data-aos="fade-up">
             <div class="howstep"><div class="n">Étape 01</div><div class="ic"><i class="fas fa-hand-pointer"></i></div><h5>Choisissez votre formule</h5><p>Commande à livrer, ou devis traiteur pour un événement.</p></div>
-            <div class="howstep"><div class="n">Étape 02</div><div class="ic"><i class="fas fa-utensils"></i></div><h5>Composez votre menu</h5><p>Ajoutez vos plats au panier depuis notre carte ivoirienne.</p></div>
+            <div class="howstep"><div class="n">Étape 02</div><div class="ic"><i class="fas fa-utensils"></i></div><h5>Composez votre menu</h5><p>Ajoutez vos plats au panier depuis notre carte ivoirienne & du monde.</p></div>
             <div class="howstep"><div class="n">Étape 03</div><div class="ic"><i class="fas fa-file-signature"></i></div><h5>Envoyez votre demande</h5><p>On vous confirme prix et détails avec un devis personnalisé.</p></div>
-            <div class="howstep"><div class="n">Étape 04</div><div class="ic"><i class="fas fa-truck"></i></div><h5>On s'occupe du reste</h5><p>Cuisine maison, livraison et dressage partout à Montréal.</p></div>
+            <div class="howstep"><div class="n">Étape 04</div><div class="ic"><i class="fas fa-truck"></i></div><h5>On s'occupe du reste</h5><p>Cuisine maison, livraison et dressage partout au Québec.</p></div>
          </div>
          <div class="text-center mt-5" data-aos="fade-up"><a href="commander.html" class="btn-ed--solid"><i class="fas fa-bag-shopping"></i>Commencer ma commande</a></div>
       </div>
@@ -644,7 +787,7 @@
                <div class="svccard">
                   <div class="svcico g"><i class="fas fa-truck"></i></div>
                   <div class="svctit">Livraison &amp; Dressage</div>
-                  <p class="svctxt">Partout dans le Grand Montréal, vos plats arrivent prêts à régaler vos convives.</p>
+                  <p class="svctxt">Partout au Québec, vos plats arrivent prêts à régaler vos convives.</p>
                </div>
             </div>
          </div>
@@ -656,9 +799,9 @@
          <div class="row align-items-center g-5">
             <div class="col-lg-5" data-aos="fade-right">
                <div class="astack">
-                  <div class="aexp"><span class="anum">10+</span><small>Ans de<br />Passion</small></div>
-                  <div class="amain"><img src="img/about1.jpg" alt="Thalia's Traiteur" /></div>
-                  <div class="asm"><img src="img/about2.jpg" alt="" /></div>
+                  <div class="aexp"><span class="anum">100%</span><small>Fait<br />maison</small></div>
+                  <div class="amain"><img loading="lazy" decoding="async" src="img/about1.webp" alt="Thalia's Traiteur" /></div>
+                  <div class="asm"><img loading="lazy" decoding="async" src="img/about2.webp" alt="" /></div>
                </div>
             </div>
             <div class="col-lg-7" data-aos="fade-left">
@@ -689,97 +832,12 @@
                      <div class="ftico g"><i class="fas fa-truck"></i></div>
                      <div>
                         <h6>Livraison & dressage</h6>
-                        <p>Nous livrons et dressons vos plats partout dans le Grand Montréal, prêts à régaler vos
+                        <p>Nous livrons et dressons vos plats partout au Québec, prêts à régaler vos
                            convives.</p>
                      </div>
                   </div>
                </div>
                <a href="#menu" class="btn-red"><i class="fas fa-book-open"></i>Voir tout le menu</a>
-            </div>
-         </div>
-      </div>
-   </section>
-   <section id="history">
-      <div class="container">
-         <div class="text-center mb-5" data-aos="fade-up">
-            <span class="slbl">Notre Parcours</span>
-            <h2 class="stitle">L'histoire de <span>Thalia's Traiteur</span></h2>
-            <div class="sline"></div>
-            <p class="sdesc mx-auto" style="max-width:480px;">D'une passion familiale pour la cuisine ivoirienne au
-               traiteur préféré des événements montréalais — chaque étape écrite avec le cœur.</p>
-         </div>
-         <div class="timeline" data-aos="fade-up">
-            <!-- ODD ? text on LEFT -->
-            <div class="tli">
-               <div class="tl-left">
-                  <div class="tlyear">2015</div>
-                  <h5>Une passion partagée</h5>
-                  <p>Tout commence en cuisine, en famille : les recettes d'Abidjan préparées pour les proches. Le
-                     bouche-à-oreille fait le reste, les premières commandes arrivent.</p>
-               </div>
-               <div class="tl-center">
-                  <div class="tldot"></div>
-               </div>
-               <div class="tl-right">
-                  <div class="tlyear">2015</div>
-                  <h5>Une passion partagée</h5>
-                  <p>Tout commence en cuisine, en famille : les recettes d'Abidjan préparées pour les proches. Le
-                     bouche-à-oreille fait le reste, les premières commandes arrivent.</p>
-               </div>
-            </div>
-            <!-- EVEN ? text on RIGHT -->
-            <div class="tli">
-               <div class="tl-left">
-                  <div class="tlyear">2018</div>
-                  <h5>Naissance du traiteur</h5>
-                  <p>La demande grandit : Thalia's Traiteur devient officiellement un service traiteur, avec un menu
-                     complet de spécialités, grillades et desserts ivoiriens.</p>
-               </div>
-               <div class="tl-center">
-                  <div class="tldot"></div>
-               </div>
-               <div class="tl-right">
-                  <div class="tlyear">2018</div>
-                  <h5>Naissance du traiteur</h5>
-                  <p>La demande grandit : Thalia's Traiteur devient officiellement un service traiteur, avec un menu
-                     complet de spécialités, grillades et desserts ivoiriens.</p>
-               </div>
-            </div>
-            <!-- ODD ? text on LEFT -->
-            <div class="tli">
-               <div class="tl-left">
-                  <div class="tlyear">2021</div>
-                  <h5>Les grands événements</h5>
-                  <p>Mariages, baptêmes et réceptions d'entreprise nous font confiance. Nous perfectionnons la
-                     livraison et le dressage pour régaler des dizaines de convives à la fois.</p>
-               </div>
-               <div class="tl-center">
-                  <div class="tldot"></div>
-               </div>
-               <div class="tl-right">
-                  <div class="tlyear">2021</div>
-                  <h5>Les grands événements</h5>
-                  <p>Mariages, baptêmes et réceptions d'entreprise nous font confiance. Nous perfectionnons la
-                     livraison et le dressage pour régaler des dizaines de convives à la fois.</p>
-               </div>
-            </div>
-            <!-- EVEN ? text on RIGHT -->
-            <div class="tli">
-               <div class="tl-left">
-                  <div class="tlyear">2026</div>
-                  <h5>Le goût du pays à Montréal</h5>
-                  <p>Aujourd'hui, Thalia's Traiteur régale tout le Grand Montréal avec une cuisine ivoirienne
-                     authentique, faite maison — et ce n'est que le début de l'aventure.</p>
-               </div>
-               <div class="tl-center">
-                  <div class="tldot"></div>
-               </div>
-               <div class="tl-right">
-                  <div class="tlyear">2026</div>
-                  <h5>Le goût du pays à Montréal</h5>
-                  <p>Aujourd'hui, Thalia's Traiteur régale tout le Grand Montréal avec une cuisine ivoirienne
-                     authentique, faite maison — et ce n'est que le début de l'aventure.</p>
-               </div>
             </div>
          </div>
       </div>
@@ -792,30 +850,30 @@
             <div class="sline"></div>
          </div>
          <div class="ggrid" data-aos="fade-up">
-            <div class="gitem" data-gi="0" data-gimg="img/portfolio/work1.jpg" data-gtitle="Grandes Spécialités"
-               data-gdesc="Tchep, placali, riz sauce graine : nos plats signatures, cuisinés maison pour vos plus belles réceptions.">
-               <img src="img/portfolio/work1.jpg" alt="Spécialités ivoiriennes" />
+            <div class="gitem" data-gi="0" data-gimg="img/portfolio/work1.webp" data-gtitle="Grandes Spécialités"
+               data-gdesc="Foutou, placali, sauces du pays : nos plats signatures, cuisinés maison pour vos plus belles réceptions.">
+               <img loading="lazy" decoding="async" src="img/portfolio/work1.webp" alt="Spécialités ivoiriennes" />
                <div class="gover"><span><i class="fas fa-expand-alt"></i> Grandes Spécialités</span></div>
             </div>
-            <div class="gitem" data-gi="1" data-gimg="img/portfolio/work2.jpg" data-gtitle="Grillades & Braisés"
+            <div class="gitem" data-gi="1" data-gimg="img/portfolio/work2.webp" data-gtitle="Grillades & Braisés"
                data-gdesc="Poulet et poisson braisés au feu, brochettes et alloco doré : le goût de la rue d'Abidjan chez vous.">
-               <img src="img/portfolio/work2.jpg" alt="Grillades" />
+               <img loading="lazy" decoding="async" src="img/portfolio/work2.webp" alt="Grillades" />
                <div class="gover"><span><i class="fas fa-expand-alt"></i> Grillades &amp; Braisés</span></div>
             </div>
-            <div class="gitem" data-gi="2" data-gimg="img/portfolio/work3.jpg" data-gtitle="Buffets d'événements"
+            <div class="gitem" data-gi="2" data-gimg="img/portfolio/work3.webp" data-gtitle="Buffets d'événements"
                data-gdesc="Des buffets généreux et colorés, dressés avec soin pour mariages, baptêmes et fêtes de famille.">
-               <img src="img/portfolio/work3.jpg" alt="Buffet traiteur" />
+               <img loading="lazy" decoding="async" src="img/portfolio/work3.webp" alt="Buffet traiteur" />
                <div class="gover"><span><i class="fas fa-expand-alt"></i> Buffets d'événements</span></div>
             </div>
-            <div class="gitem" data-gi="3" data-gimg="img/portfolio/work4.jpg" data-gtitle="Desserts du Pays"
+            <div class="gitem" data-gi="3" data-gimg="img/portfolio/work4.webp" data-gtitle="Desserts du Pays"
                data-gdesc="Deguê, dôkounou, salade de fruits et douceurs maison pour terminer le repas sur une note sucrée.">
-               <img src="img/portfolio/work4.jpg" alt="Desserts" />
+               <img loading="lazy" decoding="async" src="img/portfolio/work4.webp" alt="Desserts" />
                <div class="gover"><span><i class="fas fa-expand-alt"></i> Desserts du Pays</span></div>
             </div>
-            <div class="gitem" data-gi="4" data-gimg="img/portfolio/work5.jpg" data-gtitle="Entrées Fraîches"
-               data-gdesc="Salades, nems et rouleaux, tomates farcies : des entrées fraîches et raffinées pour ouvrir vos réceptions.">
-               <img src="img/portfolio/work5.jpg" alt="Entrées fraîches" />
-               <div class="gover"><span><i class="fas fa-expand-alt"></i> Entrées Fraîches</span></div>
+            <div class="gitem" data-gi="4" data-gimg="img/portfolio/work5.webp" data-gtitle="Entrées &amp; Bouchées"
+               data-gdesc="Pâtés, nems et rouleaux, salades et tomates farcies : de quoi ouvrir vos réceptions en beauté.">
+               <img loading="lazy" decoding="async" src="img/portfolio/work5.webp" alt="Pâtés et bouchées" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Entrées &amp; Bouchées</span></div>
             </div>
          </div>
       </div>
@@ -823,81 +881,27 @@
    <section id="testimonials">
       <div class="container">
          <div class="text-center mb-5" data-aos="fade-up">
-            <span class="slbl">Ils nous font confiance</span>
-            <h2 class="stitle">L'avis de nos <span>clients</span></h2>
+            <span class="slbl">Vos avis</span>
+            <h2 class="stitle">Bientôt, <span>vos témoignages</span> ici</h2>
             <div class="sline"></div>
          </div>
-         <div class="swiper tesSwiper" data-aos="fade-up">
-            <div class="swiper-wrapper">
-               <div class="swiper-slide">
-                  <div class="tescard">
-                     <div class="tesq">"</div>
-                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Thalia's a assuré le traiteur de notre mariage : 120 invités conquis ! Le tchep et
-                        le poulet braisé étaient exactement comme au pays. Un service impeccable, on recommande à 200%.</p>
-                     <div class="tesauth">
-                        <img src="img/testimonial/1.jpg" alt="" />
-                        <div>
-                           <div class="tesnm">Mariam & Serge</div>
-                           <div class="tesrl">Mariage · Laval</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="swiper-slide">
-                  <div class="tescard">
-                     <div class="tesq">"</div>
-                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Livraison à l'heure, plats chauds et généreux, présentation soignée. Le placali sauce
-                        kopé a fait l'unanimité au baptême de ma fille. Une adresse à garder précieusement !</p>
-                     <div class="tesauth">
-                        <img src="img/testimonial/2.jpg" alt="" />
-                        <div>
-                           <div class="tesnm">Fatou D.</div>
-                           <div class="tesrl">Baptême · Montréal</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="swiper-slide">
-                  <div class="tescard">
-                     <div class="tesq">"</div>
-                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Des saveurs authentiques et une cheffe passionnée. La marmite de fruits de mer était
-                        divine. Thalia s'adapte à tous les budgets et conseille avec le sourire. Merci pour tout !</p>
-                     <div class="tesauth">
-                        <img src="img/testimonial/3.jpg" alt="" />
-                        <div>
-                           <div class="tesnm">Grace A.</div>
-                           <div class="tesrl">Anniversaire · Brossard</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="swiper-slide">
-                  <div class="tescard">
-                     <div class="tesq">"</div>
-                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Nous avons fait appel à Thalia's pour un événement d'entreprise de 50 personnes :
-                        tout était parfait, frais, à l'heure et joliment présenté. Le poulet braisé a fait sensation !</p>
-                     <div class="tesauth">
-                        <img src="img/testimonial/4.jpg" alt="" />
-                        <div>
-                           <div class="tesnm">David P.</div>
-                           <div class="tesrl">Client entreprise</div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+         <div class="tesinvite" data-aos="fade-up">
+            <div class="tesinvite-ic"><i class="fas fa-heart"></i></div>
+            <p>Nous démarrons une belle aventure, et votre voix compte. Vous avez déjà régalé vos
+               invités avec Thalia's Traiteur ? Partagez votre expérience — et aidez d'autres hôtes à
+               composer un événement inoubliable.</p>
+            <div class="tesinvite-cta">
+               <a href="contact.html" class="btn-ed--solid">Laisser un avis <i class="fas fa-arrow-right"></i></a>
+               <a href="avis.html" class="btn-ed--ghost">Voir les avis</a>
             </div>
-            <div class="swiper-pagination mt-4" style="position:static;"></div>
          </div>
       </div>
    </section>
+   <!-- [SECTION DESACTIVEE] « Offre decouverte » : compte a rebours + badge prix a l'unite =
+        reste du template restaurant, contradictoire avec le modele « sur devis » d'un traiteur.
+        Pour reactiver : retirer la balise d'ouverture ci-dessous et la fermeture plus bas.
+        Un vrai incitatif (reduction 1re commande) irait plutot dans la newsletter. -->
+   <!--
    <section id="special">
       <div class="spbg"></div>
       <div class="container" style="position:relative;z-index:2;">
@@ -918,12 +922,13 @@
                <div class="spimgw">
                   <div class="spglow"></div>
                   <div class="sppbdg"><span class="old">$24.99</span><span class="np">$17.49</span></div>
-                  <img src="img/off-img.jpg" alt="Offre découverte traiteur" />
+                  <img loading="lazy" decoding="async" src="img/off-img.webp" alt="Offre découverte traiteur" />
                </div>
             </div>
          </div>
       </div>
    </section>
+   -->
    <section id="reservation">
       <div class="container">
          <div class="text-center" data-aos="fade-up">
@@ -939,6 +944,12 @@
          </div>
       </div>
    </section>
+   <!-- [SECTION DESACTIVEE] « Disponibilites » : des horaires d'ouverture fixes = reste du
+        template restaurant, trompeur pour un traiteur (laisse croire a un resto ou l'on passe),
+        alors que tout se fait sur commande / RDV. Les infos utiles (contact, zone, delai 48h)
+        sont deja dans le bloc confiance, la section contact et le footer.
+        Pour reactiver : retirer la balise d'ouverture ci-dessous et la fermeture plus bas. -->
+   <!--
    <section id="hours">
       <div class="hrsbg"></div>
       <div class="container" style="position:relative;z-index:2;">
@@ -1008,7 +1019,7 @@
                   </h5>
                   <div class="hrsrow"><span class="hrsday"><i class="fas fa-location-dot me-2"
                            style="color:var(--secondary);"></i>Zone</span><span class="hrstime"
-                        style="font-size:.8rem;">Grand Montréal, QC</span></div>
+                        style="font-size:.8rem;">Québec</span></div>
                   <div class="hrsrow"><span class="hrsday"><i class="fas fa-phone me-2"
                            style="color:var(--secondary);"></i>Téléphone</span><span class="hrstime"
                         style="font-size:.8rem;"><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></span></div>
@@ -1020,6 +1031,7 @@
          </div>
       </div>
    </section>
+   -->
    <section id="newsletter">
       <div class="nlbg"></div>
       <div class="container">
@@ -1054,8 +1066,7 @@
                   <p class="ctsub">Nous répondons généralement dans les 2 heures ouvrables.</p>
                   <div class="ctitem">
                      <div class="cticon"><i class="fas fa-map-marker-alt"></i></div>
-                     <div class="ctinfo"><strong>Zone de service</strong><span>Grand Montréal &amp; environs,<br />Québec,
-                           Canada</span></div>
+                     <div class="ctinfo"><strong>Zone de service</strong><span>Québec, Canada</span></div>
                   </div>
                   <div class="ctitem">
                      <div class="cticon"><i class="fas fa-phone-alt"></i></div>
@@ -1080,15 +1091,15 @@
             <div class="col-lg-8" data-aos="fade-left">
                <div class="fcard">
                   <div class="row g-3">
-                     <div class="col-sm-6"><label class="flbl">Votre nom *</label><input type="text" class="fctrl"
+                     <div class="col-sm-6"><label class="flbl">Votre nom *</label><input type="text" id="cNom" class="fctrl"
                            placeholder="Ex : Awa Koné" /></div>
-                     <div class="col-sm-6"><label class="flbl">Courriel *</label><input type="email" class="fctrl"
+                     <div class="col-sm-6"><label class="flbl">Courriel *</label><input type="email" id="cMail" class="fctrl"
                            placeholder="vous@courriel.com" /></div>
-                     <div class="col-sm-6"><label class="flbl">Téléphone</label><input type="tel" class="fctrl"
+                     <div class="col-sm-6"><label class="flbl">Téléphone</label><input type="tel" id="cTel" class="fctrl"
                            placeholder="+1 (514) 000-0000" /></div>
                      <div class="col-sm-6">
                         <label class="flbl">Sujet *</label>
-                        <select class="fctrl">
+                        <select id="cSujet" class="fctrl">
                            <option>Demande générale</option>
                            <option>Traiteur &amp; événements</option>
                            <option>Devis</option>
@@ -1096,9 +1107,9 @@
                            <option>Presse &amp; médias</option>
                         </select>
                      </div>
-                     <div class="col-12"><label class="flbl">Message *</label><textarea class="fctrl" rows="5"
+                     <div class="col-12"><label class="flbl">Message *</label><textarea id="cMsg" class="fctrl" rows="5"
                            placeholder="Écrivez votre message ici..."></textarea></div>
-                     <div class="col-12"><button class="btn-red" id="ctcBtn"><i class="fas fa-paper-plane"></i>Envoyer le
+                     <div class="col-12"><button class="btn-red" id="contactBtn"><i class="fas fa-paper-plane"></i>Envoyer le
                            message</button></div>
                   </div>
                   <div class="sucmsg" id="ctcOk">
@@ -1160,7 +1171,7 @@
    <div id="galPop">
       <div class="gpbox">
          <button class="gpclose" id="gpClose"><i class="fas fa-times"></i></button>
-         <img id="gpImg" src="" alt="" />
+         <img loading="lazy" decoding="async" id="gpImg" src="" alt="" />
          <div class="gpcap">
             <h5 id="gpTitle"></h5>
             <p id="gpDesc"></p>
@@ -1178,56 +1189,40 @@
          <div class="row g-5">
             <div class="col-lg-4">
                <div class="fnm">Thalia's<span> Traiteur</span></div>
-               <p class="fdesc">Le service traiteur qui apporte les saveurs authentiques de la Côte d'Ivoire à tous vos
-                  événements, dans le Grand Montréal. Chaque plat cuisiné maison, avec le cœur.</p>
+               <p class="fdesc">Le service traiteur qui apporte les saveurs de la Côte d'Ivoire &mdash; et d'ailleurs &mdash; à tous vos événements, au Québec. Chaque plat cuisiné maison, avec le cœur.</p>
                <div class="fsoc">
                   <a href="https://www.facebook.com/Thaliastraiteur" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
                   <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-instagram"></i></a>
-                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-twitter"></i></a>
-                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-youtube"></i></a>
                   <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-youtube"></i></a>
                </div>
             </div>
             <div class="col-sm-6 col-lg-2">
                <div class="ftit">Navigation</div>
                <ul class="flinks ps-0">
-                  <li><a href="#hero"><i class="fas fa-chevron-right"></i>Accueil</a></li>
+                  <li><a href="index.html"><i class="fas fa-chevron-right"></i>Accueil</a></li>
                   <li><a href="apropos.html"><i class="fas fa-chevron-right"></i>À propos</a></li>
-                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Le menu</a></li>
-                  <li><a href="#reservation"><i class="fas fa-chevron-right"></i>Devis</a></li>
-                  <li><a href="#how"><i class="fas fa-chevron-right"></i>Comment ça marche</a></li>
+                  <li><a href="services.html"><i class="fas fa-chevron-right"></i>Services</a></li>
+                  <li><a href="menu.html"><i class="fas fa-chevron-right"></i>Le menu</a></li>
+                  <li><a href="faq.html"><i class="fas fa-chevron-right"></i>FAQ</a></li>
                   <li><a href="contact.html"><i class="fas fa-chevron-right"></i>Contact</a></li>
                </ul>
             </div>
             <div class="col-sm-6 col-lg-2">
-               <div class="ftit">Le Menu</div>
+               <div class="ftit">Commander</div>
                <ul class="flinks ps-0">
-                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Spécialités</a></li>
-                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Plats Grillés</a></li>
-                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Soupes &amp; Entrées</a></li>
-                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Plats Exotiques</a></li>
-                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Entrées Fraîches</a></li>
-                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Desserts</a></li>
+                  <li><a href="menu.html"><i class="fas fa-chevron-right"></i>Voir le menu</a></li>
+                  <li><a href="commander.html"><i class="fas fa-chevron-right"></i>Demander un devis</a></li>
+                  <li><a href="services.html"><i class="fas fa-chevron-right"></i>Nos prestations</a></li>
+                  <li><a href="avis.html"><i class="fas fa-chevron-right"></i>Avis clients</a></li>
                </ul>
             </div>
             <div class="col-lg-4">
                <div class="ftit">Nous joindre</div>
-               <div class="fci">
-                  <div class="fciico"><i class="fas fa-map-marker-alt"></i></div>
-                  <div class="fciinfo"><strong>Zone</strong>Grand Montréal, QC, Canada</div>
-               </div>
-               <div class="fci">
-                  <div class="fciico"><i class="fas fa-phone-alt"></i></div>
-                  <div class="fciinfo"><strong>Téléphone</strong><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></div>
-               </div>
-               <div class="fci">
-                  <div class="fciico"><i class="fas fa-envelope"></i></div>
-                  <div class="fciinfo"><strong>Courriel</strong>thalias.traiteur@gmail.com</div>
-               </div>
-               <div class="fci">
-                  <div class="fciico"><i class="fas fa-clock"></i></div>
-                  <div class="fciinfo"><strong>Commandes</strong>Sur réservation · 48h à l'avance</div>
-               </div>
+               <div class="fci"><div class="fciico"><i class="fas fa-map-marker-alt"></i></div><div class="fciinfo"><strong>Zone</strong>Québec, Canada</div></div>
+               <div class="fci"><div class="fciico"><i class="fas fa-phone-alt"></i></div><div class="fciinfo"><strong>Téléphone</strong><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></div></div>
+               <div class="fci"><div class="fciico"><i class="fas fa-envelope"></i></div><div class="fciinfo"><strong>Courriel</strong>thalias.traiteur@gmail.com</div></div>
+               <div class="fci"><div class="fciico"><i class="fas fa-clock"></i></div><div class="fciinfo"><strong>Commandes</strong>Sur réservation · 48h à l'avance</div></div>
             </div>
          </div>
       </div>
@@ -1235,7 +1230,7 @@
          <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                <p>&copy; 2026 <span>Thalia's Traiteur</span>. Tous droits réservés.</p>
-               <div><a href="confidentialite.html">Confidentialité</a><a href="mentions-legales.html">Mentions légales</a></div>
+               <div><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a><!-- <a href="credits.html">Crédits photos</a> --></div>
             </div>
          </div>
       </div>
@@ -1249,6 +1244,7 @@
    <script src="js/config.js"></script>
    <script src="js/tt-mail.js"></script>
    <script src="js/analytics.js"></script>
+   <script src="js/tt-widgets.js"></script>
    <script src="js/sweetalert2.min.js"></script>
    <script src="js/tt-alerts.js"></script>
    <script src="js/jquery-3.7.1.min.js"></script>
@@ -1266,6 +1262,8 @@
    <script src="js/order-type.js"></script>
    <script src="js/cart.js"></script>
    <script src="js/popup-carousel.js"></script>
+   <!-- Contact form (même scénario que la page contact) -->
+   <script src="js/contact-form.js"></script>
    <!-- Theme switcher (dev tool — remove button + script to lock a single theme) -->
    <script src="js/theme-switch.js"></script>
 </body>

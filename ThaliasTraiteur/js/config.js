@@ -31,15 +31,47 @@ window.TT_CONFIG = {
    EMAILJS_PUBLIC_KEY: "rgcr-rSQ3kNzb-Sbw",
    EMAILJS_SERVICE_ID: "service_dy18hzj",
    EMAILJS_TEMPLATE_ID: "template_pt4z00n",          // template commandes / devis (page Commander)
-   EMAILJS_TEMPLATE_ID_CONTACT: "",  // template messages (page Contact)
+   // Template dédié aux MESSAGES (Contact + accueil) — OPTIONNEL.
+   // Laissé VIDE VOLONTAIREMENT : le plan gratuit EmailJS est limité à 2 templates (déjà
+   // utilisés : devis + auto-réponse). Ce n'est pas un oubli — le template devis ci-dessus
+   // gère déjà proprement les messages : ses sections Mustache ({{#order_type}}…) masquent
+   // les champs de commande absents, un message n'affiche donc que Nom/Courriel/Tél/Objet/Message.
+   // Si un jour tu passes à un plan payant : crée le template avec mail-template/emailjs-contact.html
+   // et colle son ID ici.
+   EMAILJS_TEMPLATE_ID_CONTACT: "",
 
    /* Google Analytics 4 : colle ton ID de mesure, ex: "G-XXXXXXXXXX"
       (laisse vide pour désactiver le suivi). */
-   GA_ID: "",
+   GA_ID: "G-X7SRLBND7G",
 
+   /* Meta (Facebook/Instagram) Pixel : colle ton ID, ex: "123456789012345"
+      (laisse vide pour désactiver le retargeting). */
+   META_PIXEL_ID: "",
+
+   /* --- Contact & réassurance --- */
    /* Adresse mail de repli (utilisée par le mailto si aucun fournisseur). */
    CONTACT_EMAIL: "thalias.traiteur@gmail.com",
 
+   /* Téléphone (affiché + click-to-call). Garde le format lisible. */
+   PHONE_DISPLAY: "+1 (514) 549-3405",
+   PHONE_E164: "+15145493405",           // format international sans espaces (pour tel:/wa.me)
+
+   /* WhatsApp : numéro au format international sans "+" (ex: "15145493405").
+      Laisse vide pour masquer le bouton WhatsApp. */
+   WHATSAPP: "15145493405",
+   WHATSAPP_MSG: "Bonjour Thalia's Traiteur ! J'aimerais un devis pour un événement.",
+
    /* Délai de réponse annoncé (réassurance). */
-   REPLY_TIME: "24 h"
+   REPLY_TIME: "24 h",
+
+   /* --- Réassurance métier (affichée dans le bloc « Confiance ») ---
+      Renseigne le n° de permis MAPAQ dès que tu l'as ; laisse vide pour
+      afficher un libellé neutre sans numéro. */
+   MAPAQ_NUMBER: "",
+   ZONE: "Québec",
+
+   /* --- Réseaux sociaux (utilisés pour le SEO / données structurées) --- */
+   FACEBOOK_URL: "https://www.facebook.com/Thaliastraiteur",
+   INSTAGRAM_URL: "",
+   TIKTOK_URL: ""
 };
