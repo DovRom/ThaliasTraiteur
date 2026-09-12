@@ -1,30 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr-CA">
 
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="author" content="Thalia's Traiteur">
-   <meta name="description" content="Thalia's Traiteur - Service traiteur à Montréal : cuisine ivoirienne & du monde, faite maison pour mariages, réceptions et événements.">
-   <title>Thalia's Traiteur - Cuisine ivoirienne & du monde à Montréal</title>
-   <!-- Favicon + SEO / partage (og:url et og:image en relatif : mets ton domaine absolu quand le site est en ligne pour l'aperçu Facebook/WhatsApp) -->
+   <meta name="description" content="Traiteur ivoirien au Québec : tchep, attiéké, garba et cuisine du monde, faits maison pour mariages, réceptions et événements. Devis gratuit sous 24 h.">
+   <title>Traiteur ivoirien &amp; africain au Québec | Thalia's Traiteur</title>
+   <link rel="canonical" href="https://dovrom.github.io/ThaliasTraiteur/" />
+   <!-- seo.py:jsonld:start -->
+   <script type="application/ld+json">
+   {
+      "@context": "https://schema.org",
+      "@graph": [
+         {
+            "@type": "Caterer",
+            "@id": "https://dovrom.github.io/ThaliasTraiteur/#business",
+            "name": "Thalia's Traiteur",
+            "description": "Traiteur cuisine ivoirienne & du monde au Québec : mariages, réceptions, entreprises. Fait maison.",
+            "url": "https://dovrom.github.io/ThaliasTraiteur/",
+            "logo": "https://dovrom.github.io/ThaliasTraiteur/img/logo.webp",
+            "image": "https://dovrom.github.io/ThaliasTraiteur/img/banner-img.webp",
+            "servesCuisine": [
+               "Ivoirienne",
+               "Africaine",
+               "Cuisine du monde"
+            ],
+            "priceRange": "$$",
+            "currenciesAccepted": "CAD",
+            "hasMenu": "https://dovrom.github.io/ThaliasTraiteur/menu.html",
+            "areaServed": {
+               "@type": "AdministrativeArea",
+               "name": "Québec"
+            },
+            "address": {
+               "@type": "PostalAddress",
+               "addressRegion": "QC",
+               "addressCountry": "CA"
+            },
+            "telephone": "+15145493405",
+            "email": "thalias.traiteur@gmail.com",
+            "sameAs": [
+               "https://www.facebook.com/Thaliastraiteur"
+            ]
+         },
+         {
+            "@type": "WebSite",
+            "@id": "https://dovrom.github.io/ThaliasTraiteur/#website",
+            "name": "Thalia's Traiteur",
+            "url": "https://dovrom.github.io/ThaliasTraiteur/",
+            "inLanguage": "fr-CA",
+            "publisher": {
+               "@id": "https://dovrom.github.io/ThaliasTraiteur/#business"
+            }
+         }
+      ]
+   }
+   </script>
+   <!-- seo.py:jsonld:end -->
+   <!-- Favicon + SEO / partage — og:url, og:image et canonical sont
+        générées en absolu par tools/seo.py (SITE_URL). -->
    <link rel="icon" type="image/png" href="img/favicon.png" />
    <link rel="apple-touch-icon" href="img/favicon.png" />
-   <meta name="keywords" content="traiteur ivoirien Montréal, cuisine du monde, traiteur africain Montréal, cuisine ivoirienne, tchep, garba, attiéké, traiteur mariage, traiteur événement, livraison plats ivoiriens, devis traiteur" />
    <meta name="robots" content="index, follow" />
    <meta name="theme-color" content="#ff8200" />
    <meta property="og:type" content="website" />
    <meta property="og:site_name" content="Thalia's Traiteur" />
    <meta property="og:locale" content="fr_CA" />
-   <meta property="og:title" content="Thalia's Traiteur - Cuisine ivoirienne & du monde à Montréal" />
-   <meta property="og:description" content="Thalia's Traiteur - Service traiteur à Montréal : cuisine ivoirienne & du monde, faite maison pour mariages, réceptions et événements." />
-   <meta property="og:image" content="img/banner-img.webp" />
-   <meta property="og:url" content="index.html" />
+   <meta property="og:title" content="Traiteur ivoirien &amp; africain au Québec | Thalia's Traiteur" />
+   <meta property="og:description" content="Traiteur ivoirien au Québec : tchep, attiéké, garba et cuisine du monde, faits maison pour mariages, réceptions et événements. Devis gratuit sous 24 h." />
+   <meta property="og:image" content="https://dovrom.github.io/ThaliasTraiteur/img/banner-img.webp" />
+   <meta property="og:url" content="https://dovrom.github.io/ThaliasTraiteur/" />
    <meta name="twitter:card" content="summary_large_image" />
-   <meta name="twitter:title" content="Thalia's Traiteur - Cuisine ivoirienne & du monde à Montréal" />
-   <meta name="twitter:description" content="Thalia's Traiteur - Service traiteur à Montréal : cuisine ivoirienne & du monde, faite maison pour mariages, réceptions et événements." />
-   <meta name="twitter:image" content="img/banner-img.webp" />
+   <meta name="twitter:title" content="Traiteur ivoirien &amp; africain au Québec | Thalia's Traiteur" />
+   <meta name="twitter:description" content="Traiteur ivoirien au Québec : tchep, attiéké, garba et cuisine du monde, faits maison pour mariages, réceptions et événements. Devis gratuit sous 24 h." />
+   <meta name="twitter:image" content="https://dovrom.github.io/ThaliasTraiteur/img/banner-img.webp" />
 
    <!-- Theme: apply saved theme before paint to avoid flash -->
    <script>
@@ -68,7 +119,7 @@
             <div class="top-contact d-flex flex-wrap">
                <span><i class="fas fa-phone-alt"></i><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></span>
                <span><i class="fas fa-envelope"></i>thalias.traiteur@gmail.com</span>
-               <span><i class="fas fa-map-marker-alt"></i>Montréal, QC</span>
+               <span><i class="fas fa-map-marker-alt"></i>Québec</span>
             </div>
             <div class="d-flex align-items-center gap-3">
                <span class="ttag"><i class="fas fa-fire me-1"></i>Réservez votre événement !</span>
@@ -135,7 +186,7 @@
                <img loading="lazy" decoding="async" src="img/dishes/poulet-braise.webp" alt="" />Grillades
             </div>
             <div class="sovcat" data-cat="soupes">
-               <img loading="lazy" decoding="async" src="img/dishes/soupe-pecheur.webp" alt="" />Soupes &amp; Entrées
+               <img loading="lazy" decoding="async" src="img/dishes/soupe-chasseur.webp" alt="" />Soupes &amp; Entrées
             </div>
             <div class="sovcat" data-cat="exotiques">
                <img loading="lazy" decoding="async" src="img/dishes/marmite.webp" alt="" />Plats Exotiques
@@ -162,12 +213,12 @@
          HERO
          ============================================================ -->
    <section id="hero">
-      <div class="hbgtxt">TRAITEUR</div>
+      <div class="hbgtxt">CUISINE</div>
       <div class="container">
          <div class="hero-inner">
             <div class="hero-copy" data-aos="fade-up">
-               <div class="hero-eyebrow">Traiteur ivoirien &amp; cuisine du monde · Montréal</div>
-               <h1 class="hero-title">La Cuisine<br /><em>Ivoirienne &amp; d'ailleurs.</em></h1>
+               <div class="hero-eyebrow">Traiteur ivoirien &amp; cuisine du monde · Québec</div>
+               <h1 class="hero-title">Traiteur<br /><em>Ivoirien &amp; d'ailleurs.</em></h1>
                <p class="hero-sub">Thalia's Traiteur célèbre les saveurs d'Abidjan <b>et d'ailleurs</b> au cœur de vos
                   plus beaux événements — mariages, réceptions et tables d'entreprise. Fait maison, avec le cœur.</p>
                <div class="hero-actions">
@@ -177,7 +228,7 @@
                <div class="hero-meta">
                   <div><b>100%</b><span>Fait maison</span></div>
                   <div><b>Sur mesure</b><span>Chaque événement</span></div>
-                  <div><b>Grand MTL</b><span>Livraison &amp; service</span></div>
+                  <div><b>Québec</b><span>Livraison &amp; service</span></div>
                </div>
             </div>
             <div class="hero-media" data-aos="fade-left">
@@ -233,7 +284,7 @@
             <div class="trustcard" data-aos="fade-up" data-aos-delay="180">
                <div class="tc-ic"><i class="fas fa-check-circle"></i></div>
                <h4>Fiable &amp; assuré</h4>
-               <p data-zone>Traiteur assuré et ponctuel, dressage soigné. Service dans le Grand Montréal &amp; environs.</p>
+               <p data-zone>Traiteur assuré et ponctuel, dressage soigné. Service partout au Québec.</p>
             </div>
          </div>
       </div>
@@ -314,13 +365,13 @@
          <div class="row g-4" id="mgrid">
             <!-- CARD 1: Tchep (Spécialités) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="specialites" data-aos="fade-up">
-               <div class="mcard" data-img="img/dishes/tchep.webp" data-imgs="img/dishes/tchep.webp,img/dishes/tchep-2.webp" data-title="Tchep" data-cat="Nos Spécialités"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Tchep" data-cat="Nos Spécialités"
                   data-price="32 $" data-old="" data-rating="5.0" data-reviews="214" data-cal="1 pers."
                   data-time="48h"
                   data-desc="Le grand classique festif ivoirien : riz parfumé mijoté à la tomate, servi au poisson ou à la viande au choix. Généreux, coloré et plein de saveurs."
                   data-tags="Signature,Riz,Au choix">
                   <div class="mimg">
-                     <img loading="lazy" decoding="async" src="img/dishes/tchep.webp" alt="Tchep" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Tchep &mdash; photo à venir" />
                      <div class="mbdg hot"><i class="fas fa-star"></i> Populaire</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -342,13 +393,13 @@
             </div>
             <!-- CARD 2: Marmite de Fruits de Mer (Plats Exotiques) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="exotiques" data-aos="fade-up" data-aos-delay="80">
-               <div class="mcard" data-img="img/dishes/marmite.webp" data-title="Marmite de Fruits de Mer et Légumes" data-cat="Plats Exotiques"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Marmite de Fruits de Mer et Légumes" data-cat="Plats Exotiques"
                   data-price="37 $" data-old="" data-rating="4.9" data-reviews="64" data-cal="1 pers."
                   data-time="48h"
                   data-desc="Une généreuse marmite de fruits de mer et de légumes frais, mijotée dans une sauce épicée aux parfums d'Afrique de l'Ouest."
                   data-tags="Fruits de mer,Généreux,Épicé">
                   <div class="mimg">
-                     <img loading="lazy" decoding="async" src="img/dishes/marmite.webp" alt="Marmite de Fruits de Mer" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Marmite de Fruits de Mer et Légumes &mdash; photo à venir" />
                      <div class="mbdg new"><i class="fas fa-star"></i> Nouveau</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -370,13 +421,13 @@
             </div>
             <!-- CARD 3: Poulet Braisé (Grillades) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="grillades" data-aos="fade-up" data-aos-delay="160">
-               <div class="mcard" data-img="img/dishes/poulet-braise.webp" data-imgs="img/dishes/poulet-braise.webp,img/dishes/poulet-braise-2.webp,img/dishes/poulet-braise-3.webp,img/dishes/poulet-braise-4.webp,img/dishes/poulet-braise-5.webp" data-title="Poulet Braisé" data-cat="Plats Grillés"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Poulet Braisé" data-cat="Plats Grillés"
                   data-price="27 $" data-old="" data-rating="4.9" data-reviews="176" data-cal="1 pers."
                   data-time="48h"
                   data-desc="Poulet mariné aux épices puis braisé au feu, servi avec frites, alloco et igname frite. Une valeur sûre qui fait l'unanimité."
                   data-tags="Braisé,Populaire,Grillé">
                   <div class="mimg">
-                     <img loading="lazy" decoding="async" src="img/dishes/poulet-braise.webp" alt="Poulet Braisé" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Poulet Braisé &mdash; photo à venir" />
                      <div class="mbdg"><i class="fas fa-star"></i> Best-seller</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -397,12 +448,12 @@
             </div>
             <!-- CARD 4: Salade Crevettes Avocat (Entrées Fraîches) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="fraiches" data-aos="fade-up">
-               <div class="mcard" data-img="img/menu/4.webp" data-title="Salade Crevettes Avocat" data-cat="Entrées Fraîches"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Salade Crevettes Avocat" data-cat="Entrées Fraîches"
                   data-price="17 $" data-old="" data-rating="4.7" data-reviews="51" data-cal="1 pers." data-time="48h"
                   data-desc="Crevettes fraîches, avocat fondant et crudités croquantes : une entrée légère, colorée et pleine de fraîcheur pour ouvrir le repas."
                   data-tags="Frais,Léger,Entrée">
                   <div class="mimg">
-                     <img loading="lazy" decoding="async" src="img/menu/4.webp" alt="Salade Crevettes Avocat" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Salade Crevettes Avocat &mdash; photo à venir" />
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
                   <div class="mbody">
@@ -422,12 +473,12 @@
             </div>
             <!-- CARD 5: Deguê (Desserts) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="desserts" data-aos="fade-up" data-aos-delay="80">
-               <div class="mcard" data-img="img/menu/5.webp" data-title="Deguê" data-cat="Desserts"
+               <div class="mcard" data-img="img/dishes/degue.webp" data-title="Deguê" data-cat="Desserts"
                   data-price="10 $" data-old="" data-rating="4.9" data-reviews="73" data-cal="1 pers." data-time="48h"
                   data-desc="Dessert traditionnel à base de mil et de yaourt onctueux, délicatement sucré et parfumé. La touche gourmande qui clôt le repas en douceur."
                   data-tags="Sucré,Traditionnel,Onctueux">
                   <div class="mimg">
-                     <img loading="lazy" decoding="async" src="img/menu/5.webp" alt="Deguê" />
+                     <img loading="lazy" decoding="async" src="img/dishes/degue.webp" alt="Deguê" />
                      <div class="mbdg new"><i class="fas fa-star"></i> Nouveau</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -448,12 +499,12 @@
             </div>
             <!-- CARD 6: Soupe du Pêcheur (Soupes & Entrées) -->
             <div class="col-sm-6 col-lg-4 mwrap" data-c="soupes" data-aos="fade-up" data-aos-delay="160">
-               <div class="mcard" data-img="img/dishes/soupe-pecheur.webp" data-title="Soupe du Pêcheur" data-cat="Soupes &amp; Entrées"
+               <div class="mcard" data-img="img/photo-manquante.svg" data-title="Soupe du Pêcheur" data-cat="Soupes &amp; Entrées"
                   data-price="37 $" data-old="" data-rating="4.8" data-reviews="92" data-cal="1 pers." data-time="48h"
                   data-desc="Soupe riche en poisson et fruits de mer, longuement mijotée aux épices du pays. Réconfortante et parfumée, une entrée qui réchauffe le cœur."
                   data-tags="Poisson,Épicé,Réconfortant">
                   <div class="mimg">
-                     <img loading="lazy" decoding="async" src="img/dishes/soupe-pecheur.webp" alt="Soupe du Pêcheur" />
+                     <img loading="lazy" decoding="async" src="img/photo-manquante.svg" alt="Soupe du Pêcheur &mdash; photo à venir" />
                      <div class="mbdg hot">Coup de cœur</div>
                      <div class="mhrt"><i class="far fa-heart"></i></div>
                   </div>
@@ -647,7 +698,7 @@
                <ul>
                   <li>Dès 10 personnes</li>
                   <li>Plats chauds ou boîtes-repas individuelles</li>
-                  <li>Livraison au bureau, Grand Montréal</li>
+                  <li>Livraison au bureau, partout au Québec</li>
                   <li>Facture entreprise</li>
                </ul>
                <a href="commander.html" class="btn-red"><i class="fas fa-file-signature"></i>Demander un devis</a>
@@ -696,7 +747,7 @@
             <div class="howstep"><div class="n">Étape 01</div><div class="ic"><i class="fas fa-hand-pointer"></i></div><h5>Choisissez votre formule</h5><p>Commande à livrer, ou devis traiteur pour un événement.</p></div>
             <div class="howstep"><div class="n">Étape 02</div><div class="ic"><i class="fas fa-utensils"></i></div><h5>Composez votre menu</h5><p>Ajoutez vos plats au panier depuis notre carte ivoirienne & du monde.</p></div>
             <div class="howstep"><div class="n">Étape 03</div><div class="ic"><i class="fas fa-file-signature"></i></div><h5>Envoyez votre demande</h5><p>On vous confirme prix et détails avec un devis personnalisé.</p></div>
-            <div class="howstep"><div class="n">Étape 04</div><div class="ic"><i class="fas fa-truck"></i></div><h5>On s'occupe du reste</h5><p>Cuisine maison, livraison et dressage partout à Montréal.</p></div>
+            <div class="howstep"><div class="n">Étape 04</div><div class="ic"><i class="fas fa-truck"></i></div><h5>On s'occupe du reste</h5><p>Cuisine maison, livraison et dressage partout au Québec.</p></div>
          </div>
          <div class="text-center mt-5" data-aos="fade-up"><a href="commander.html" class="btn-ed--solid"><i class="fas fa-bag-shopping"></i>Commencer ma commande</a></div>
       </div>
@@ -736,7 +787,7 @@
                <div class="svccard">
                   <div class="svcico g"><i class="fas fa-truck"></i></div>
                   <div class="svctit">Livraison &amp; Dressage</div>
-                  <p class="svctxt">Partout dans le Grand Montréal, vos plats arrivent prêts à régaler vos convives.</p>
+                  <p class="svctxt">Partout au Québec, vos plats arrivent prêts à régaler vos convives.</p>
                </div>
             </div>
          </div>
@@ -781,7 +832,7 @@
                      <div class="ftico g"><i class="fas fa-truck"></i></div>
                      <div>
                         <h6>Livraison & dressage</h6>
-                        <p>Nous livrons et dressons vos plats partout dans le Grand Montréal, prêts à régaler vos
+                        <p>Nous livrons et dressons vos plats partout au Québec, prêts à régaler vos
                            convives.</p>
                      </div>
                   </div>
@@ -800,7 +851,7 @@
          </div>
          <div class="ggrid" data-aos="fade-up">
             <div class="gitem" data-gi="0" data-gimg="img/portfolio/work1.webp" data-gtitle="Grandes Spécialités"
-               data-gdesc="Tchep, placali, riz sauce graine : nos plats signatures, cuisinés maison pour vos plus belles réceptions.">
+               data-gdesc="Foutou, placali, sauces du pays : nos plats signatures, cuisinés maison pour vos plus belles réceptions.">
                <img loading="lazy" decoding="async" src="img/portfolio/work1.webp" alt="Spécialités ivoiriennes" />
                <div class="gover"><span><i class="fas fa-expand-alt"></i> Grandes Spécialités</span></div>
             </div>
@@ -819,10 +870,10 @@
                <img loading="lazy" decoding="async" src="img/portfolio/work4.webp" alt="Desserts" />
                <div class="gover"><span><i class="fas fa-expand-alt"></i> Desserts du Pays</span></div>
             </div>
-            <div class="gitem" data-gi="4" data-gimg="img/portfolio/work5.webp" data-gtitle="Entrées Fraîches"
-               data-gdesc="Salades, nems et rouleaux, tomates farcies : des entrées fraîches et raffinées pour ouvrir vos réceptions.">
-               <img loading="lazy" decoding="async" src="img/portfolio/work5.webp" alt="Entrées fraîches" />
-               <div class="gover"><span><i class="fas fa-expand-alt"></i> Entrées Fraîches</span></div>
+            <div class="gitem" data-gi="4" data-gimg="img/portfolio/work5.webp" data-gtitle="Entrées &amp; Bouchées"
+               data-gdesc="Pâtés, nems et rouleaux, salades et tomates farcies : de quoi ouvrir vos réceptions en beauté.">
+               <img loading="lazy" decoding="async" src="img/portfolio/work5.webp" alt="Pâtés et bouchées" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Entrées &amp; Bouchées</span></div>
             </div>
          </div>
       </div>
@@ -968,7 +1019,7 @@
                   </h5>
                   <div class="hrsrow"><span class="hrsday"><i class="fas fa-location-dot me-2"
                            style="color:var(--secondary);"></i>Zone</span><span class="hrstime"
-                        style="font-size:.8rem;">Grand Montréal, QC</span></div>
+                        style="font-size:.8rem;">Québec</span></div>
                   <div class="hrsrow"><span class="hrsday"><i class="fas fa-phone me-2"
                            style="color:var(--secondary);"></i>Téléphone</span><span class="hrstime"
                         style="font-size:.8rem;"><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></span></div>
@@ -1015,8 +1066,7 @@
                   <p class="ctsub">Nous répondons généralement dans les 2 heures ouvrables.</p>
                   <div class="ctitem">
                      <div class="cticon"><i class="fas fa-map-marker-alt"></i></div>
-                     <div class="ctinfo"><strong>Zone de service</strong><span>Grand Montréal &amp; environs,<br />Québec,
-                           Canada</span></div>
+                     <div class="ctinfo"><strong>Zone de service</strong><span>Québec, Canada</span></div>
                   </div>
                   <div class="ctitem">
                      <div class="cticon"><i class="fas fa-phone-alt"></i></div>
@@ -1139,7 +1189,7 @@
          <div class="row g-5">
             <div class="col-lg-4">
                <div class="fnm">Thalia's<span> Traiteur</span></div>
-               <p class="fdesc">Le service traiteur qui apporte les saveurs de la Côte d'Ivoire &mdash; et d'ailleurs &mdash; à tous vos événements, dans le Grand Montréal. Chaque plat cuisiné maison, avec le cœur.</p>
+               <p class="fdesc">Le service traiteur qui apporte les saveurs de la Côte d'Ivoire &mdash; et d'ailleurs &mdash; à tous vos événements, au Québec. Chaque plat cuisiné maison, avec le cœur.</p>
                <div class="fsoc">
                   <a href="https://www.facebook.com/Thaliastraiteur" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
                   <a href="#" class="soc-soon" title="Bientôt" onclick="return false;"><i class="fab fa-instagram"></i></a>
@@ -1169,7 +1219,7 @@
             </div>
             <div class="col-lg-4">
                <div class="ftit">Nous joindre</div>
-               <div class="fci"><div class="fciico"><i class="fas fa-map-marker-alt"></i></div><div class="fciinfo"><strong>Zone</strong>Grand Montréal, QC, Canada</div></div>
+               <div class="fci"><div class="fciico"><i class="fas fa-map-marker-alt"></i></div><div class="fciinfo"><strong>Zone</strong>Québec, Canada</div></div>
                <div class="fci"><div class="fciico"><i class="fas fa-phone-alt"></i></div><div class="fciinfo"><strong>Téléphone</strong><a href="tel:+15145493405" class="tt-tel">+1 (514) 549-3405</a></div></div>
                <div class="fci"><div class="fciico"><i class="fas fa-envelope"></i></div><div class="fciinfo"><strong>Courriel</strong>thalias.traiteur@gmail.com</div></div>
                <div class="fci"><div class="fciico"><i class="fas fa-clock"></i></div><div class="fciinfo"><strong>Commandes</strong>Sur réservation · 48h à l'avance</div></div>
